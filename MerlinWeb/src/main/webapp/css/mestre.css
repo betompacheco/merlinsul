@@ -1,0 +1,189 @@
+.texto {
+   font-family: Verdana;
+   font-size: 12px;
+   color: black;
+   text-align: justify;
+   text-decoration: none;
+}
+
+.erro {
+   font-family: Verdana;
+   font-size: 11px;
+   color: #CC0000;
+   text-align: justify;
+   text-decoration: none;
+   font-weight: bold;
+   background-color: #FFF2B6;
+   border-right: #CC0000 1px solid; 
+   border-top: #CC0000 1px solid; 
+   border-left: #CC0000 1px solid; 
+   border-bottom: #CC0000 1px solid;
+}
+
+.sucesso {
+   font-family: Verdana;
+   font-size: 11px;
+   color: #005500;
+   text-align: justify;
+   text-decoration: none;
+   font-weight: bold;
+   background-color: #FFF2B6;
+   border-right: #CC0000 1px solid; 
+   border-top: #CC0000 1px solid; 
+   border-left: #CC0000 1px solid; 
+   border-bottom: #CC0000 1px solid;
+}
+
+.textologin { 
+   color: #FFFFFF;
+   font-family: Verdana;
+   font-size: 10px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.destaque { 
+   color: #FFFFFF;
+   font-family: Verdana;
+   font-size: 13px;
+   font-weight: bold;
+   text-decoration: none;
+   text-align: center;
+}
+
+
+.texto_formulario { 
+   color: #FFFFFF;
+   font-family: Verdana;
+   font-size: 11px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.texto_negrito {
+   font-family: Verdana;
+   font-size: 10px;
+   color: #993300;
+   font-weight: bold;
+}
+
+.rodape {
+	font-family: Verdana;
+	font-size: 9px;
+	collor: #A7A7A7;
+	text-align: center;
+
+}
+
+a.link2:link { 
+   color: #FFFFFF;
+   font-family: Verdana;
+   font-size: 10px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+a.link2:visited { 
+   color: #FFFFFF;
+   font-family: Verdana;
+   font-size: 10px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+a.link2:hover {
+   color: #FFFF00;
+   font-family: Verdana;
+   font-size: 10px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.separador_link { 
+   color: #FFCC00;
+   font-family: Verdana;
+   font-size: 10px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.saudacao { 
+   color: #FFFF00;
+   font-family: Verdana;
+   font-size: 10px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+/** BASEBUTTON - CLASSE RESPONS�VEL POR DEFINIR PADR�ES DOS BOT�ES DOS FORMUL�RIOS */
+.baseButton {
+   font-size: 9px;
+   font-family: verdana, arial, sans-serif;
+   color: #595959; 
+   font-weight:bold;
+   cursor: hand;  
+   heigth: 20px;
+   border-right: #666666 1px solid; 
+   border-top: #FFFFFF 1px solid; 
+   border-left: #FFFFFF 1px solid; 
+   border-bottom: #666666 1px solid;
+   background-color: #E6E6E6; 
+   
+}
+
+/** BASEFIELD - CLASSE RESPONS�VEL POR DEFINIR PADR�ES DOS CAMPOS DOS FORMUL�RIOS */
+.baseField {
+   font-size: 10px;
+   font-family: Verdana, Arial, sans-serif;
+   color: #000000; 
+   cursor: hand;  
+   heigth: 18px;
+   border-right: #E0E0E0 1px solid; 
+   border-top: #404040 1px solid; 
+   border-left: #404040 1px solid; 
+   border-bottom: #E0E0E0 1px solid;
+   background color: #F7FFF6;
+   margin-left:7px;
+   width=auto
+}
+
+.baseField2 {
+   font-size: 10px;
+   font-family: Verdana, Arial, sans-serif;
+   color: #444444; 
+   cursor: hand;  
+   heigth: 18px;
+   border-right: #FDDFBC 1px solid; 
+   border-top: #7B4A0E 1px solid; 
+   border-left: #7B4A0E 1px solid; 
+   border-bottom: #FDDFBC 1px solid;
+   background color: #FBCA8E;
+   margin-left:7px;
+   width=auto
+}
+
+.baseCheckBoxField {
+   font-size: 10px;
+   font-family: Verdana, Arial, sans-serif;
+   color: #000000; 
+   cursor: hand;  
+   heigth: 18px;
+   margin-left:7px;
+   width=auto
+}
+.box {
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	background color: #F7941D;	
+
+}
+.cell {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-align: justify;
+	text-decoration: none;
+	background-color: #FF6600;
+
+}
+
