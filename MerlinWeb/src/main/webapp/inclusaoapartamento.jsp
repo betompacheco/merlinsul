@@ -8,6 +8,7 @@
             <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
             <title>:::Condom&iacute;nio MERLIN SUL:::</title>
             <link href="css/estilo.css" rel="stylesheet" type="text/css">
+            <link href="css/buttons.css" rel="stylesheet" type="text/css">
         </head>
         <body topmargin="0" leftmargin="0" background="imagens/fundoPagina.gif">
             <script type="text/javascript" src="js/item_menu.js"></script>

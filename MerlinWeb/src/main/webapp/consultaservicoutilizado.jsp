@@ -8,6 +8,7 @@
             <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
             <title>:::Condom&iacute;nio MERLIN SUL:::</title>
             <link href="css/estilo.css" rel="stylesheet" type="text/css">
+            <link href="css/buttons.css" rel="stylesheet" type="text/css">
         </head>
         <body topmargin="0" leftmargin="0" background="imagens/fundoPagina.gif">
 
@@ -35,112 +36,112 @@
                                     </table>
                                 <td width="99%">&nbsp;
                                     <!-- inicio do conteudo -->
-                            <h:form id="form">
-                                <table border="0">
-                                    <tr>
-                                        <td colspan="3"><h2>Consulta de Servi&ccedil;o Utilizado </h2>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">Crit&eacute;rio:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Apartamento:</td>
-                                        <td>
-                                    <h:selectOneMenu id="codigoApartamento" value="#{consultarServicoUtilizado.codigoApartamento}"  styleClass="selecao" required="true">
-                                        <f:selectItems value="#{combos.comboApartamento}" />
-                                    </h:selectOneMenu >
-                                    </td>
-                                    <td><h:message for="codigoApartamento" errorClass="erros"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ano:</td>
-                                        <td><h:selectOneMenu id="ano"  value="#{consultarServicoUtilizado.ano}"  styleClass="selecao" required="true">
-                                        <f:selectItem itemValue="" itemLabel=""/>
-                                        <f:selectItem itemValue="2004" itemLabel="2004"/>
-                                        <f:selectItem itemValue="2005" itemLabel="2005"/>
-                                        <f:selectItem itemValue="2006" itemLabel="2006"/>
-                                        <f:selectItem itemValue="2007" itemLabel="2007"/>
-                                        <f:selectItem itemValue="2008" itemLabel="2008"/>
-                                        <f:selectItem itemValue="2009" itemLabel="2009"/>
-                                        <f:selectItem itemValue="2010" itemLabel="2010"/>
-                                        <f:selectItem itemValue="2011" itemLabel="2011"/>
-                                        <f:selectItem itemValue="2012" itemLabel="2012"/>
-                                        <f:selectItem itemValue="2013" itemLabel="2013"/>
-                                        <f:selectItem itemValue="2014" itemLabel="2014"/>
-                                        <f:selectItem itemValue="2015" itemLabel="2015"/>
-                                        <f:selectItem itemValue="2016" itemLabel="2016"/>
-                                        <f:selectItem itemValue="2017" itemLabel="2017"/>
-                                        <f:selectItem itemValue="2018" itemLabel="2018"/>
-                                        <f:selectItem itemValue="2019" itemLabel="2019"/>
-                                        <f:selectItem itemValue="2020" itemLabel="2020"/>
-                                        <f:selectItem itemValue="2021" itemLabel="2021"/>
-                                        <f:selectItem itemValue="2022" itemLabel="2022"/>
-                                        <f:selectItem itemValue="2023" itemLabel="2023"/>
-                                        <f:selectItem itemValue="2024" itemLabel="2024"/>
-                                        <f:selectItem itemValue="2025" itemLabel="2025"/>
-                                    </h:selectOneMenu >
+                                    <h:form id="form">
+                                        <table border="0">
+                                            <tr>
+                                                <td colspan="3"><h2>Consulta de Servi&ccedil;o Utilizado </h2>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">Crit&eacute;rio:</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apartamento:</td>
+                                                <td>
+                                                    <h:selectOneMenu id="codigoApartamento" value="#{consultarServicoUtilizado.codigoApartamento}"  styleClass="selecao" required="true">
+                                                        <f:selectItems value="#{combos.comboApartamento}" />
+                                                    </h:selectOneMenu >
+                                                </td>
+                                                <td><h:message for="codigoApartamento" errorClass="erros"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ano:</td>
+                                                <td><h:selectOneMenu id="ano"  value="#{consultarServicoUtilizado.ano}"  styleClass="selecao" required="true">
+                                                        <f:selectItem itemValue="" itemLabel=""/>
+                                                        <f:selectItem itemValue="2004" itemLabel="2004"/>
+                                                        <f:selectItem itemValue="2005" itemLabel="2005"/>
+                                                        <f:selectItem itemValue="2006" itemLabel="2006"/>
+                                                        <f:selectItem itemValue="2007" itemLabel="2007"/>
+                                                        <f:selectItem itemValue="2008" itemLabel="2008"/>
+                                                        <f:selectItem itemValue="2009" itemLabel="2009"/>
+                                                        <f:selectItem itemValue="2010" itemLabel="2010"/>
+                                                        <f:selectItem itemValue="2011" itemLabel="2011"/>
+                                                        <f:selectItem itemValue="2012" itemLabel="2012"/>
+                                                        <f:selectItem itemValue="2013" itemLabel="2013"/>
+                                                        <f:selectItem itemValue="2014" itemLabel="2014"/>
+                                                        <f:selectItem itemValue="2015" itemLabel="2015"/>
+                                                        <f:selectItem itemValue="2016" itemLabel="2016"/>
+                                                        <f:selectItem itemValue="2017" itemLabel="2017"/>
+                                                        <f:selectItem itemValue="2018" itemLabel="2018"/>
+                                                        <f:selectItem itemValue="2019" itemLabel="2019"/>
+                                                        <f:selectItem itemValue="2020" itemLabel="2020"/>
+                                                        <f:selectItem itemValue="2021" itemLabel="2021"/>
+                                                        <f:selectItem itemValue="2022" itemLabel="2022"/>
+                                                        <f:selectItem itemValue="2023" itemLabel="2023"/>
+                                                        <f:selectItem itemValue="2024" itemLabel="2024"/>
+                                                        <f:selectItem itemValue="2025" itemLabel="2025"/>
+                                                    </h:selectOneMenu >
 
-                                    </td>
-                                    <td><h:message for="ano" errorClass="erros"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>M&ecirc;s:</td>
-                                        <td><h:selectOneMenu id="mes" value="#{consultarServicoUtilizado.mes}"  styleClass="selecao"  required="true">
-                                        <f:selectItem itemValue="" itemLabel=""/>
-                                        <f:selectItem itemValue="0" itemLabel="Janeiro"/>
-                                        <f:selectItem itemValue="1" itemLabel="Fevereiro"/>
-                                        <f:selectItem itemValue="2" itemLabel="Março"/>
-                                        <f:selectItem itemValue="3" itemLabel="Abril"/>
-                                        <f:selectItem itemValue="4" itemLabel="Maio"/>
-                                        <f:selectItem itemValue="5" itemLabel="Junho"/>
-                                        <f:selectItem itemValue="6" itemLabel="Julho"/>
-                                        <f:selectItem itemValue="7" itemLabel="Agosto"/>
-                                        <f:selectItem itemValue="8" itemLabel="Setembro"/>
-                                        <f:selectItem itemValue="9" itemLabel="Outubro"/>
-                                        <f:selectItem itemValue="10" itemLabel="Novembro"/>
-                                        <f:selectItem itemValue="11" itemLabel="Dezembro"/>
-                                    </h:selectOneMenu >
-                                    </td>
-                                    <td><h:message for="mes" errorClass="erros"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3"><h:commandButton value="Consultar" action="#{consultarServicoUtilizado.doConsultar}" styleClass="botao" /></td>
-                                    </tr>
-                                    <tr>
+                                                </td>
+                                                <td><h:message for="ano" errorClass="erros"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>M&ecirc;s:</td>
+                                                <td><h:selectOneMenu id="mes" value="#{consultarServicoUtilizado.mes}"  styleClass="selecao"  required="true">
+                                                        <f:selectItem itemValue="" itemLabel=""/>
+                                                        <f:selectItem itemValue="0" itemLabel="Janeiro"/>
+                                                        <f:selectItem itemValue="1" itemLabel="Fevereiro"/>
+                                                        <f:selectItem itemValue="2" itemLabel="Março"/>
+                                                        <f:selectItem itemValue="3" itemLabel="Abril"/>
+                                                        <f:selectItem itemValue="4" itemLabel="Maio"/>
+                                                        <f:selectItem itemValue="5" itemLabel="Junho"/>
+                                                        <f:selectItem itemValue="6" itemLabel="Julho"/>
+                                                        <f:selectItem itemValue="7" itemLabel="Agosto"/>
+                                                        <f:selectItem itemValue="8" itemLabel="Setembro"/>
+                                                        <f:selectItem itemValue="9" itemLabel="Outubro"/>
+                                                        <f:selectItem itemValue="10" itemLabel="Novembro"/>
+                                                        <f:selectItem itemValue="11" itemLabel="Dezembro"/>
+                                                    </h:selectOneMenu >
+                                                </td>
+                                                <td><h:message for="mes" errorClass="erros"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarServicoUtilizado.doConsultar}" styleClass="botao" /></td>
+                                            </tr>
+                                            <tr>
 
-                                        <td colspan="3">
-                                    <h:dataTable value="#{consultarServicoUtilizado.dados}" var="servicoUtilizado"
-                                                 headerClass="columnHeader"
-                                                 rowClasses="evenRow, oddRow"  >
-                                        <h:column>
-                                            <f:facet name="header"><h:outputText value="Nome" /></f:facet>
-                                            <h:outputText value="#{servicoUtilizado.servico.nomeServico}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header"><h:outputText value="Data" /></f:facet>
-                                            <h:outputText value="#{servicoUtilizado.dataUtilizacao}">
-                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                            </h:outputText>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header"><h:outputText value="Valor" /></f:facet>
-                                            <h:outputText value="#{servicoUtilizado.servico.valorServico}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <h:commandButton value="Editar" action="#{consultarServicoUtilizado.doEditar}" styleClass="botao" immediate="true"/>
-                                        </h:column>
-                                        <h:column>
-                                            <h:commandButton value="Excluir" action="#{consultarServicoUtilizado.doExcluir}" onclick="javascript: return confirm('Confirmar exclusão');" styleClass="botao" />
-                                        </h:column>
+                                                <td colspan="3">
+                                                    <h:dataTable value="#{consultarServicoUtilizado.dados}" var="servicoUtilizado"
+                                                                 headerClass="columnHeader"
+                                                                 rowClasses="evenRow, oddRow"  >
+                                                        <h:column>
+                                                            <f:facet name="header"><h:outputText value="Nome" /></f:facet>
+                                                            <h:outputText value="#{servicoUtilizado.servico.nomeServico}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header"><h:outputText value="Data" /></f:facet>
+                                                            <h:outputText value="#{servicoUtilizado.dataUtilizacao}">
+                                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                            </h:outputText>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header"><h:outputText value="Valor" /></f:facet>
+                                                            <h:outputText value="#{servicoUtilizado.servico.valorServico}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <h:commandButton value="Editar" action="#{consultarServicoUtilizado.doEditar}" styleClass="botao" immediate="true"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <h:commandButton value="Excluir" action="#{consultarServicoUtilizado.doExcluir}" onclick="javascript: return confirm('Confirmar exclusão');" styleClass="botao" />
+                                                        </h:column>
 
-                                    </h:dataTable>
-                                    </td>
+                                                    </h:dataTable>
+                                                </td>
 
-                                    </tr>
-                            </h:form>
-                        </table>
-                    </td>
-                    </body>
-                    </f:view>
-                    </html>
+                                            </tr>
+                                        </h:form>
+                                    </table>
+                                </td>
+                                </body>
+                            </f:view>
+                            </html>
