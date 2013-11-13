@@ -39,32 +39,29 @@
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
-                                    </tr>          
+                                    </tr>
                                     <tr>
                                         <td>Bem vindo ao sistema de controle do Condom&iacute;nio MERLIN SUL.</td>
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
-                                    </tr>                    
+                                    </tr>
                                     <tr>
                                         <td>&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em 13/11/2013</td>
-                                    </tr>                      
+                                    </tr>
                                     <tr>
                                         <td>&nbsp;</td>
-                                    </tr>               
+                                    </tr>
                                     <tr>
                                         <td><h5>Links de acesso rápido</h5></td>
-                                    </tr>                   
-                                    <tr><f:view>
-                                            <h:form>
-                                                <td><h:commandLink styleClass="button orange" value="okidoki"/>
-                                                    <a href="inclusaoorcamento.faces" class="button orange">Incluir Or&ccedil;amentos</a>
-                                                    <a href="inclusaocobranca.faces"class="button orange">Gerar Cobran&ccedil;as</a>
-                                                    <a href="imprimirboleto.faces" class="button orange">Emitir Boletos Banc&aacute;rios</a>
-                                                </td>
-                                            </h:form>
-                                        </f:view>
-                                    </tr>          
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="inclusaoorcamento.faces" class="button orange">Incluir Or&ccedil;amentos</a>
+                                            <a href="inclusaocobranca.faces"class="button orange">Gerar Cobran&ccedil;as</a>
+                                            <a href="imprimirboleto.faces" class="button orange">Emitir Boletos Banc&aacute;rios</a>
+                                        </td>
+                                    </tr>
                                 </table>
                             </td>
                             </body>
