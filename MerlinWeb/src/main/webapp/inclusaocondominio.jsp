@@ -7,7 +7,7 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
             <title>:::Condom&iacute;nio MERLIN SUL:::</title>
-            <!--<link href="css/estilo.css" rel="stylesheet" type="text/css">-->
+            <link href="css/estilo.css" rel="stylesheet" type="text/css">
             <link href="css/buttons.css" rel="stylesheet" type="text/css">
         </head>
         <body topmargin="0" leftmargin="0" background="imagens/fundoPagina.gif">
@@ -42,16 +42,16 @@
                                             </tr>
                                             <tr>
                                                 <td>Nome:</td>
-                                                <td><h:inputText id="nome" value="#{incluirCondominio.nome}" styleClass="caixadetexto" required="true" size="50" maxlength="50" /></td>
+                                                <td><h:inputText id="nome" value="#{incluirCondominio.nome}" required="true" size="50" maxlength="50" /></td>
                                                 <td><h:message for="nome" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td>qtde. Apartamento:</td>
-                                                <td><h:inputText id="qtd" value="#{incluirCondominio.qtd}" styleClass="caixadetexto" required="true" size="3" maxlength="3" > <f:convertNumber maxFractionDigits="0" minFractionDigits="0" integerOnly="true" /> <f:validateLongRange minimum="1"/> </h:inputText> </td>
+                                                <td>qtde. Apartamentos:</td>
+                                                <td><h:inputText id="qtd" value="#{incluirCondominio.qtd}" required="true" size="3" maxlength="3" > <f:convertNumber maxFractionDigits="0" minFractionDigits="0" integerOnly="true" /> <f:validateLongRange minimum="1"/> </h:inputText> </td>
                                                 <td><h:message for="qtd" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Salvar" action="#{incluirCondominio.doIncluir}" styleClass="button" /></td>
+                                                <td colspan="3"><h:commandButton value="Salvar" action="#{incluirCondominio.doIncluir}"/></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><h:outputText value="#{incluirCondominio.mensagem}" styleClass="mensagem"/></td>
