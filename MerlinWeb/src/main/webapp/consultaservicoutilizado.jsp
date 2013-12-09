@@ -58,15 +58,6 @@
                                                 <td>Ano:</td>
                                                 <td><h:selectOneMenu id="ano"  value="#{consultarServicoUtilizado.ano}"  styleClass="styled-select" required="true">
                                                         <f:selectItem itemValue="" itemLabel=""/>
-                                                        <f:selectItem itemValue="2004" itemLabel="2004"/>
-                                                        <f:selectItem itemValue="2005" itemLabel="2005"/>
-                                                        <f:selectItem itemValue="2006" itemLabel="2006"/>
-                                                        <f:selectItem itemValue="2007" itemLabel="2007"/>
-                                                        <f:selectItem itemValue="2008" itemLabel="2008"/>
-                                                        <f:selectItem itemValue="2009" itemLabel="2009"/>
-                                                        <f:selectItem itemValue="2010" itemLabel="2010"/>
-                                                        <f:selectItem itemValue="2011" itemLabel="2011"/>
-                                                        <f:selectItem itemValue="2012" itemLabel="2012"/>
                                                         <f:selectItem itemValue="2013" itemLabel="2013"/>
                                                         <f:selectItem itemValue="2014" itemLabel="2014"/>
                                                         <f:selectItem itemValue="2015" itemLabel="2015"/>
