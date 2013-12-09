@@ -1,5 +1,10 @@
 package com.merlin.util;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.CobrancaDTO;
+import com.merlin.data.dto.MensagemDTO;
+import com.merlin.data.managers.CobrancaManager;
+import com.merlin.data.managers.MensagemManager;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,25 +12,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.CobrancaDTO;
-import com.merlin.data.dto.MensagemDTO;
-import com.merlin.data.managers.CobrancaManager;
-import com.merlin.data.managers.MensagemManager;
 
 public class PrintBoleto extends HttpServlet {
 
@@ -74,7 +71,7 @@ public class PrintBoleto extends HttpServlet {
             parametros.put("detalheDataSource", detalhedatasource);
 
             byte[] bytes = JasperRunManager.runReportToPdf(relatorio, parametros, datasource);
-            FileOutputStream fo = new FileOutputStream(new File("c:\\boleto.pdf"));
+            FileOutputStream fo = new FileOutputStream(new File(System.getProperty("user.home").concat(System.getProperty("file.separator")).concat("boleto.pdf")));
             fo.write(bytes);
             fo.close();
 
