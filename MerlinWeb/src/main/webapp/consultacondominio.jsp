@@ -56,7 +56,7 @@
                                                 <td colspan="3">
                                                     <h:dataTable value="#{consultarCondominio.dados}" var="condominio"
                                                                  headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                                 rowClasses="evenRow, oddRow"  styleClass="styled-table">
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="codigo" /></f:facet>
                                                             <h:outputText value="#{condominio.codigocondominio}"/>

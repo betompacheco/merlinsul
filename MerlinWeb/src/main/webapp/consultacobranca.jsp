@@ -47,20 +47,20 @@
                                             <tr>
                                                 <td>Apartamento:</td>
                                                 <td>
-                                                    <h:selectOneMenu id="codigoApartamento" value="#{consultarCobranca.codigoApartamento}"  styleClass="selecao" required="true">
+                                                    <h:selectOneMenu id="codigoApartamento" value="#{consultarCobranca.codigoApartamento}"  styleClass="styled-select" required="true">
                                                         <f:selectItems value="#{combos.comboApartamento}" />
                                                     </h:selectOneMenu >
                                                 </td>
                                                 <td><h:message for="codigoApartamento" errorClass="erros"/></td>
                                             </tr >
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarCobranca.doConsultar}" styleClass="botao" /></td>
+                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarCobranca.doConsultar}"/></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3">
                                                     <h:dataTable value="#{consultarCobranca.dados}" var="cobranca"
                                                                  headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                                 rowClasses="evenRow, oddRow" styleClass="styled-table" >
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="Data Vencimento" /></f:facet>
                                                             <h:outputText value="#{cobranca.dataVencimento}">

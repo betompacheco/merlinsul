@@ -54,23 +54,21 @@
                                             <tr>
 
                                                 <td colspan="3">
-                                                    <h:dataTable value="#{consultarApartamento.dados}" var="apartamento"
-                                                                 headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                    <h:dataTable value="#{consultarApartamento.dados}" var="apartamento" headerClass="columnHeader" rowClasses="evenRow, oddRow"  styleClass="styled-table">
                                                         <h:column>
-                                                            <f:facet name="header"><h:outputText value="condominio" /></f:facet>
-                                                            <h:outputText value="#{apartamento.condominio.nomecondominio}"/>
-                                                        </h:column>
-                                                        <h:column>
-                                                            <f:facet name="header"><h:outputText value="codigo apto." /></f:facet>
+                                                            <f:facet name="header"><h:outputText value="Codigo apto." /></f:facet>
                                                             <h:outputText value="#{apartamento.codigoapartamento}"/>
                                                         </h:column>
                                                         <h:column>
-                                                            <f:facet name="header"><h:outputText value="apartamento" /></f:facet>
+                                                            <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
+                                                            <h:outputText value="#{apartamento.condominio.nomecondominio}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header"><h:outputText value="Apartamento" /></f:facet>
                                                             <h:outputText value="#{apartamento.numeroapartamento}"/>
                                                         </h:column>
                                                         <h:column>
-                                                            <f:facet name="header"><h:outputText value="quartos" /></f:facet>
+                                                            <f:facet name="header"><h:outputText value="Quartos" /></f:facet>
                                                             <h:outputText value="#{apartamento.qtdQuartos}"/>
                                                         </h:column>
                                                         <h:column>

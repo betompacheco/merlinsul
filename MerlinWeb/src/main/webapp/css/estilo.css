@@ -1,11 +1,11 @@
 body {
-    font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    font: 11px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
     color: #404040;
 }
 
 input, select, textarea{
     font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 input[type=text], input[type=password]{
@@ -32,6 +32,17 @@ input[type=text]:focus, input[type=password]:focus , select:focus{
     outline-color: #dceefc;
     outline-offset: 0;
 }
+.styled-table th{
+    text-align: center;
+    color: #334d55;
+    background: #E6E6E6;
+    font-style: bold;
+    padding: 10px;
+}
+
+.styled-table td{
+    background-color: #DEEBF5;
+}
 
 /* Estilos adicionais para a combo */
 .styled-select {
@@ -45,4 +56,14 @@ input[type=text]:focus, input[type=password]:focus , select:focus{
     height: 25px;
     outline:0px;
     -webkit-appearance: none;
+}
+
+.mensagem {
+    font-style: italic;
+    color: #0080C0;
+}
+
+.erros {
+    font-style: italic;
+    color: #CC0000;
 }

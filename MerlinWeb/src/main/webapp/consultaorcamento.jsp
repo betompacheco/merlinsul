@@ -45,7 +45,7 @@
                                             <tr>
                                                 <td>Condominio</td>
                                                 <td>
-                                                    <h:selectOneMenu id="codigoCondominio" value="#{consultarOrcamento.codigoCondominio}"  styleClass="selecao"  required="true">
+                                                    <h:selectOneMenu id="codigoCondominio" value="#{consultarOrcamento.codigoCondominio}"  styleClass="styled-select"  required="true">
                                                         <f:selectItems value="#{combos.comboCondominio}" />
                                                     </h:selectOneMenu >
                                                 </td>
@@ -53,7 +53,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Ano:</td>
-                                                <td><h:selectOneMenu id="ano"  value="#{consultarOrcamento.ano}"  styleClass="selecao" >
+                                                <td><h:selectOneMenu id="ano"  value="#{consultarOrcamento.ano}"  styleClass="styled-select" >
                                                         <f:selectItem itemValue="" itemLabel=""/>
                                                         <f:selectItem itemValue="2009" itemLabel="2009"/>
                                                         <f:selectItem itemValue="2010" itemLabel="2010"/>
@@ -79,7 +79,7 @@
                                             </tr>
                                             <tr>
                                                 <td>M&ecirc;s:</td>
-                                                <td><h:selectOneMenu id="mes" value="#{consultarOrcamento.mes}"  styleClass="selecao" >
+                                                <td><h:selectOneMenu id="mes" value="#{consultarOrcamento.mes}"  styleClass="styled-select" >
                                                         <f:selectItem itemValue="" itemLabel=""/>
                                                         <f:selectItem itemValue="0" itemLabel="Janeiro"/>
                                                         <f:selectItem itemValue="1" itemLabel="Fevereiro"/>
@@ -98,13 +98,13 @@
                                                 <td><h:message for="ano" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarOrcamento.doConsultar}" styleClass="botao" /></td>
+                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarOrcamento.doConsultar}"/></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3">
                                                     <h:dataTable value="#{consultarOrcamento.dados}" var="orcamento"
                                                                  headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                                 rowClasses="evenRow, oddRow" styleClass="styled-table">
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
                                                             <h:outputText value="#{orcamento.condominio.nomecondominio}"/>
@@ -126,10 +126,10 @@
 
 
                                                         <h:column>
-                                                            <h:commandButton value="Editar" action="#{consultarOrcamento.doEditar}" styleClass="botao" immediate="true"/>
+                                                            <h:commandButton value="Editar" action="#{consultarOrcamento.doEditar}" immediate="true"/>
                                                         </h:column>
                                                         <h:column>
-                                                            <h:commandButton value="Excluir" action="#{consultarOrcamento.doExcluir}" onclick="javascript: return confirm('Confirmar exclusão');" styleClass="botao" />
+                                                            <h:commandButton value="Excluir" action="#{consultarOrcamento.doExcluir}" onclick="javascript: return confirm('Confirmar exclusão');"/>
                                                         </h:column>
 
                                                     </h:dataTable>

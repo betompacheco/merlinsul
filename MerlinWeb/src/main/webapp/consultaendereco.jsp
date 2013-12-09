@@ -55,7 +55,7 @@
                                                 <td colspan="3">
                                                     <h:dataTable value="#{consultarEndereco.dados}" var="endereco"
                                                                  headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                                 rowClasses="evenRow, oddRow"  styleClass="styled-table">
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
                                                             <h:outputText value='#{endereco.apartamento.condominio.nomecondominio}'/>

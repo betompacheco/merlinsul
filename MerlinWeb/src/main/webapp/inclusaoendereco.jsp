@@ -42,7 +42,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Apartamento:</td>
-                                                <td><h:selectOneMenu id="codigoapartamento" value="#{incluirEndereco.codigoapartamento}"  styleClass="selecao" required="true">
+                                                <td><h:selectOneMenu id="codigoapartamento" value="#{incluirEndereco.codigoapartamento}"  styleClass="styled-select" required="true">
                                                         <f:selectItems value="#{combos.comboApartamento}"/>
 
                                                     </h:selectOneMenu > </td>
@@ -68,7 +68,7 @@
                                                 <td><h:message for="cidade" errorClass="erros"/></td>
                                             <tr>
                                                 <td>UF:</td>
-                                                <td><h:selectOneMenu id="uf" value="#{incluirEndereco.uf}"  styleClass="selecao" required="true">
+                                                <td><h:selectOneMenu id="uf" value="#{incluirEndereco.uf}"  styleClass="styled-select" required="true">
                                                         <f:selectItem itemValue="" itemLabel=""/>
                                                         <f:selectItem itemValue="Acre" itemLabel="Acre"/>
                                                         <f:selectItem itemValue="Alagoas" itemLabel="Alagoas"/>

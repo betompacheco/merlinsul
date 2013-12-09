@@ -51,7 +51,7 @@
                                                 <td>Condominio:</td>
                                                 <td><h:selectOneMenu id="codigoCondominio"
                                                                  value="#{incluirOrcamento.codigoCondominio}"
-                                                                 styleClass="selecao" required="true">
+                                                                 styleClass="styled-select" required="true">
                                                         <f:validateLongRange minimum="1" />
                                                         <f:selectItems value="#{combos.comboCondominio}" />
                                                     </h:selectOneMenu></td>
@@ -60,7 +60,7 @@
                                             <tr>
                                                 <td>Ano:</td>
                                                 <td><h:selectOneMenu id="ano"
-                                                                 value="#{incluirOrcamento.ano}" styleClass="selecao" required="true">
+                                                                 value="#{incluirOrcamento.ano}" styleClass="styled-select" required="true">
                                                         <f:selectItem itemValue="2009" itemLabel="2009" itemDescription="teste de descricao" />
                                                         <f:selectItem itemValue="2010" itemLabel="2010" />
                                                         <f:selectItem itemValue="2011" itemLabel="2011" />
@@ -84,7 +84,7 @@
                                             <tr>
                                                 <td>M&ecirc;s:</td>
                                                 <td><h:selectOneMenu id="mes"
-                                                                 value="#{incluirOrcamento.mes}" styleClass="selecao"
+                                                                 value="#{incluirOrcamento.mes}" styleClass="styled-select"
                                                                  required="true">
                                                         <f:selectItem itemValue="0" itemLabel="Janeiro" />
                                                         <f:selectItem itemValue="1" itemLabel="Fevereiro" />
@@ -104,7 +104,7 @@
                                             <tr>
                                                 <td>Servico:</td>
                                                 <td><h:selectOneMenu id="codigoServico"
-                                                                 value="#{incluirOrcamento.codigoServico}" styleClass="selecao"
+                                                                 value="#{incluirOrcamento.codigoServico}" styleClass="styled-select"
                                                                  onchange="">
                                                         <f:selectItem itemValue="1" itemLabel="Cota" />
                                                         <f:selectItem itemValue="2" itemLabel="Cota Parte Comum" />

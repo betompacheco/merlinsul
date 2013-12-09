@@ -69,7 +69,7 @@
                                                 <td colspan="3"><h:dataTable
                                                         value="#{consultarMensagem.dados}" var="mensagem"
                                                         headerClass="columnHeader" rowClasses="evenRow, oddRow"
-                                                        width="60%">
+                                                        width="60%" styleClass="styled-table">
                                                         <h:column>
                                                             <f:facet name="header">
                                                                 <h:outputText value="Codigo" />

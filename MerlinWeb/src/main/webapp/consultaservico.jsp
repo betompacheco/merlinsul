@@ -55,7 +55,7 @@
                                                 <td colspan="3">
                                                     <h:dataTable value="#{consultarServico.dados}" var="servico"
                                                                  headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                                 rowClasses="evenRow, oddRow" styleClass="styled-table">
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="Nome" /></f:facet>
                                                             <h:outputText value="#{servico.nomeServico}"/>

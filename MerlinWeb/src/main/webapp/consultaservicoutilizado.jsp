@@ -48,7 +48,7 @@
                                             <tr>
                                                 <td>Apartamento:</td>
                                                 <td>
-                                                    <h:selectOneMenu id="codigoApartamento" value="#{consultarServicoUtilizado.codigoApartamento}"  styleClass="selecao" required="true">
+                                                    <h:selectOneMenu id="codigoApartamento" value="#{consultarServicoUtilizado.codigoApartamento}"  styleClass="styled-select" required="true">
                                                         <f:selectItems value="#{combos.comboApartamento}" />
                                                     </h:selectOneMenu >
                                                 </td>
@@ -56,7 +56,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Ano:</td>
-                                                <td><h:selectOneMenu id="ano"  value="#{consultarServicoUtilizado.ano}"  styleClass="selecao" required="true">
+                                                <td><h:selectOneMenu id="ano"  value="#{consultarServicoUtilizado.ano}"  styleClass="styled-select" required="true">
                                                         <f:selectItem itemValue="" itemLabel=""/>
                                                         <f:selectItem itemValue="2004" itemLabel="2004"/>
                                                         <f:selectItem itemValue="2005" itemLabel="2005"/>
@@ -87,7 +87,7 @@
                                             </tr>
                                             <tr>
                                                 <td>M&ecirc;s:</td>
-                                                <td><h:selectOneMenu id="mes" value="#{consultarServicoUtilizado.mes}"  styleClass="selecao"  required="true">
+                                                <td><h:selectOneMenu id="mes" value="#{consultarServicoUtilizado.mes}"  styleClass="styled-select"  required="true">
                                                         <f:selectItem itemValue="" itemLabel=""/>
                                                         <f:selectItem itemValue="0" itemLabel="Janeiro"/>
                                                         <f:selectItem itemValue="1" itemLabel="Fevereiro"/>
@@ -106,14 +106,14 @@
                                                 <td><h:message for="mes" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarServicoUtilizado.doConsultar}" styleClass="botao" /></td>
+                                                <td colspan="3"><h:commandButton value="Consultar" action="#{consultarServicoUtilizado.doConsultar}"/></td>
                                             </tr>
                                             <tr>
 
                                                 <td colspan="3">
                                                     <h:dataTable value="#{consultarServicoUtilizado.dados}" var="servicoUtilizado"
                                                                  headerClass="columnHeader"
-                                                                 rowClasses="evenRow, oddRow"  >
+                                                                 rowClasses="evenRow, oddRow" styleClass="styled-table">
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="Nome" /></f:facet>
                                                             <h:outputText value="#{servicoUtilizado.servico.nomeServico}"/>

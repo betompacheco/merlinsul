@@ -46,7 +46,7 @@
                                             <tr>
                                                 <td class="input_formulario">Apartamento:</td>
                                                 <td>
-                                                    <h:selectOneMenu id="codigoApartamento" value="#{incluirServicoUtilizado.codigoApartamento}"  styleClass="selecao" required="true">
+                                                    <h:selectOneMenu id="codigoApartamento" value="#{incluirServicoUtilizado.codigoApartamento}" styleClass="styled-select" required="true">
                                                         <f:selectItems value="#{combos.comboApartamento}"/>
                                                     </h:selectOneMenu >
                                                 </td>
@@ -55,7 +55,7 @@
                                             <tr>
                                                 <td>Servi&ccedil;o:</td>
                                                 <td>
-                                                    <h:selectOneMenu id="codigoServico" value="#{incluirServicoUtilizado.codigoServico}"  styleClass="selecao" required="true">
+                                                    <h:selectOneMenu id="codigoServico" value="#{incluirServicoUtilizado.codigoServico}" styleClass="styled-select" required="true">
                                                         <f:selectItems value="#{combos.comboServico}"/>
                                                     </h:selectOneMenu >
                                                 </td>
@@ -63,14 +63,14 @@
                                             </tr>
                                             <tr>
                                                 <td>Data da utiliza&ccedil;&atilde;o:</td>
-                                                <td><h:inputText id="dataUtilizacao" value="#{incluirServicoUtilizado.dataUtilizacao}" styleClass="caixadetexto" required="true" size="10" maxlength="10" >
+                                                <td><h:inputText id="dataUtilizacao" value="#{incluirServicoUtilizado.dataUtilizacao}" required="true" size="10" maxlength="10" >
                                                         <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                     </h:inputText>
                                                     (dd/mm/aaaa)</td>
                                                 <td><h:message for="dataUtilizacao" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Salvar" action="#{incluirServicoUtilizado.doIncluir}" styleClass="botao" /></td>
+                                                <td colspan="3"><h:commandButton value="Salvar" action="#{incluirServicoUtilizado.doIncluir}" /></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><h:outputText value="#{incluirServicoUtilizado.mensagem}" styleClass="mensagem"/></td>
