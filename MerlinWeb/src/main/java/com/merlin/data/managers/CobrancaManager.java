@@ -1,5 +1,12 @@
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.ApartamentoDTO;
+import com.merlin.data.dto.CobrancaDTO;
+import com.merlin.data.dto.CobrancaReportDTO;
+import com.merlin.data.dto.CondominioDTO;
+import com.merlin.data.dto.DescCobranca;
+import com.merlin.util.NumberCodeGenerator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,16 +17,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.ApartamentoDTO;
-import com.merlin.data.dto.CobrancaDTO;
-import com.merlin.data.dto.CobrancaReportDTO;
-import com.merlin.data.dto.CondominioDTO;
-import com.merlin.data.dto.DescCobranca;
-import com.merlin.util.NumberCodeGenerator;
+import java.util.logging.Logger;
 
 public class CobrancaManager {
+
+    private final static Logger logger = Logger.getLogger(CobrancaManager.class.getName());
 
     public List select(int ano, int mes, int apartamento) {
         Connection con = DataBase.getConnection();

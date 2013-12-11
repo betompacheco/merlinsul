@@ -1,5 +1,9 @@
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.ServicoDTO;
+import com.merlin.data.dto.ServicoUtilizadoDTO;
+import com.merlin.data.dto.ServicoUtilizadoReportDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,13 +13,12 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.ServicoDTO;
-import com.merlin.data.dto.ServicoUtilizadoDTO;
-import com.merlin.data.dto.ServicoUtilizadoReportDTO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ServicoUtilizadoManager {
+
+    private final static Logger logger = Logger.getLogger(ServicoUtilizadoManager.class.getName());
 
     public boolean update(ServicoUtilizadoDTO pb) {
         boolean ok = true;
@@ -203,23 +206,27 @@ public class ServicoUtilizadoManager {
     }
 
     public ServicoUtilizadoDTO getNewBean() {
+        logger.log(Level.INFO, "Obtendo o novo bean");
         ServicoUtilizadoDTO bean = new ServicoUtilizadoDTO();
         Connection con = DataBase.getConnection();
         List retorno = new ArrayList();
         int codigo = 0;
         try {
-            String qry = "select max(codigoServicoutilizado) from ServicoUtilizado ";
+            String qry = "select max(codigoServicoutilizado) as codigoServicoUtilizado from ServicoUtilizado ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(qry);
             if (rs.next()) {
                 codigo = rs.getInt("codigoServicoUtilizado");
             }
+            logger.log(Level.INFO, "Obtido o id {0}", codigo);
 
         } catch (SQLException e) {
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
 

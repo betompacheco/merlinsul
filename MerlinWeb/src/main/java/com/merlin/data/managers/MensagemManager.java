@@ -1,5 +1,7 @@
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.MensagemDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,11 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.MensagemDTO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MensagemManager {
+
+    private final static Logger logger = Logger.getLogger(MensagemManager.class.getName());
 
     public boolean update(MensagemDTO pb) {
         boolean ok = true;
@@ -140,23 +143,27 @@ public class MensagemManager {
     }
 
     public MensagemDTO getNewBean() {
+        logger.log(Level.INFO, "Obtendo o novo bean");
         MensagemDTO bean = new MensagemDTO();
         Connection con = DataBase.getConnection();
         List retorno = new ArrayList();
         int codigo = 0;
         try {
-            String qry = "select max(codigomensagem) from mensagens ";
+            String qry = "select max(codigomensagem) as codigomensagem from mensagens ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(qry);
             if (rs.next()) {
                 codigo = rs.getInt("codigomensagem");
             }
+            logger.log(Level.INFO, "Obtido o id {0}", codigo);
 
         } catch (SQLException e) {
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
 

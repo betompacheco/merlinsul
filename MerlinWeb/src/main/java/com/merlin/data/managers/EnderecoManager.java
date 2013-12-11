@@ -1,5 +1,8 @@
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.ApartamentoDTO;
+import com.merlin.data.dto.EnderecoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,12 +10,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.ApartamentoDTO;
-import com.merlin.data.dto.EnderecoDTO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EnderecoManager {
+
+    private final static Logger logger = Logger.getLogger(EnderecoManager.class.getName());
 
     private boolean updateCobrancaFalse(int codigoapartamento) {
         boolean ok = true;
@@ -260,23 +263,27 @@ public class EnderecoManager {
     }
 
     public EnderecoDTO getNewBean() {
+        logger.log(Level.INFO, "Obtendo o novo bean");
         EnderecoDTO bean = new EnderecoDTO();
         Connection con = DataBase.getConnection();
         List retorno = new ArrayList();
         int codigo = 0;
         try {
-            String qry = "select max(codigoendereco) from endereco ";
+            String qry = "select max(codigoendereco) as codigoendereco from endereco ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(qry);
             if (rs.next()) {
                 codigo = rs.getInt("codigoendereco");
             }
+            logger.log(Level.INFO, "Obtido o id {0}", codigo);
 
         } catch (SQLException e) {
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
 

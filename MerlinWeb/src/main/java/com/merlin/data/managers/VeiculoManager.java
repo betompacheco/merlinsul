@@ -6,6 +6,9 @@
  */
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.VeiculoDTO;
+import com.merlin.data.dto.VeiculoReportDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,18 +16,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.VeiculoDTO;
-import com.merlin.data.dto.VeiculoReportDTO;
-
-/**
- * @author Leonardo Lopes
- *
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
- */
 public class VeiculoManager {
+
+    private final static Logger logger = Logger.getLogger(ServicoManager.class.getName());
 
     public boolean update(VeiculoDTO pb) {
         boolean ok = true;
@@ -166,23 +163,27 @@ public class VeiculoManager {
     }
 
     public VeiculoDTO getNewBean() {
+        logger.log(Level.INFO, "Obtendo o novo bean");
         VeiculoDTO bean = new VeiculoDTO();
         Connection con = DataBase.getConnection();
         List retorno = new ArrayList();
         int codigo = 0;
         try {
-            String qry = "select max(codigoVeiculo) from veiculo ";
+            String qry = "select max(codigoVeiculo) as codigoVeiculo from veiculo ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(qry);
             if (rs.next()) {
                 codigo = rs.getInt("codigoVeiculo");
             }
+            logger.log(Level.INFO, "Obtido o id {0}", codigo);
 
         } catch (SQLException e) {
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
 

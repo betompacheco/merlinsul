@@ -1,5 +1,8 @@
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.CondominioDTO;
+import com.merlin.data.dto.OrcamentoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,12 +11,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.CondominioDTO;
-import com.merlin.data.dto.OrcamentoDTO;
+import java.util.logging.Logger;
 
 public class OrcamentoManager {
+
+    private final static Logger logger = Logger.getLogger(OrcamentoManager.class.getName());
 
     public boolean update(OrcamentoDTO bean) {
         boolean ok = true;
@@ -51,8 +53,6 @@ public class OrcamentoManager {
         boolean ok = true;
         Connection con = DataBase.getConnection();
         try {
-
-
 
             String qry = "insert into Orcamento (codigoorcamento, valororcamento, mes, ano, codigocondominio, codigoservico, fundoreserva, descricao) "
                     + "values (?,?,?,?,?,?,?,?) ";
@@ -193,7 +193,7 @@ public class OrcamentoManager {
         List retorno = new ArrayList();
         int codigo = 0;
         try {
-            String qry = "select max(codigoorcamento) orcamento from orcamento ";
+            String qry = "select max(codigoorcamento) as orcamento from orcamento ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(qry);
             if (rs.next()) {

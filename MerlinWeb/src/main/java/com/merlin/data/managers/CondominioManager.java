@@ -1,5 +1,7 @@
 package com.merlin.data.managers;
 
+import com.merlin.data.DataBase;
+import com.merlin.data.dto.CondominioDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,11 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.merlin.data.DataBase;
-import com.merlin.data.dto.CondominioDTO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CondominioManager {
+
+    private final static Logger logger = Logger.getLogger(CondominioManager.class.getName());
 
     public boolean update(CondominioDTO pb) {
         boolean ok = true;
@@ -142,23 +145,27 @@ public class CondominioManager {
     }
 
     public CondominioDTO getNewBean() {
+        logger.log(Level.INFO, "Obtendo o novo bean");
         CondominioDTO bean = new CondominioDTO();
         Connection con = DataBase.getConnection();
         List retorno = new ArrayList();
         int codigo = 0;
         try {
-            String qry = "select max(codigocondominio) from condominio ";
+            String qry = "select max(codigocondominio) as codigocondominio from condominio ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(qry);
             if (rs.next()) {
                 codigo = rs.getInt("codigocondominio");
             }
+            logger.log(Level.INFO, "Obtido o id {0}", codigo);
 
         } catch (SQLException e) {
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
 
