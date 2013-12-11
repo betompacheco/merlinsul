@@ -36,10 +36,10 @@ public class IncluirMensagem {
         if (novo) {
             em.insert(mensagemDTO);
             // limpa a tela
-            mensagem = "Endere�o inserido com sucesso.";
+            mensagem = "Mensagem inserida com sucesso.";
         } else {
             em.update(mensagemDTO);
-            mensagem = "Endere�o atualizado com sucesso.";
+            mensagem = "Mensagem atualizada com sucesso.";
         }
 
     }
