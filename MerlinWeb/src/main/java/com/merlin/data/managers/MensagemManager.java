@@ -133,10 +133,12 @@ public class MensagemManager {
 
         } catch (SQLException e) {
             ok = false;
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
             }
         }
         return ok;

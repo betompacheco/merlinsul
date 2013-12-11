@@ -81,7 +81,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><h:commandButton value="Gerar"
-                                                                 action="#{gerarCobranca.doGerar}" styleClass="botao" /></td>
+                                                                 action="#{gerarCobranca.doGerar}"/></td>
                                             </tr>
                                             <c:if test="${gerarCobranca.flagConfirma}">
                                                 <tr>
@@ -93,7 +93,7 @@
                                             <c:if test="${gerarCobranca.temDados}">
                                                 <tr>
                                                     <td colspan="4">Dados Gerados:
-                                                        <h:commandButton value="Armazenar" action="#{gerarCobranca.doSalvar}" styleClass="botao" /></td>
+                                                        <h:commandButton value="Armazenar" action="#{gerarCobranca.doSalvar}"/></td>
 
                                                 </tr>
                                                 <tr>
@@ -103,7 +103,7 @@
                                                              overflow:clip;">
                                                             <h:dataTable value="#{gerarCobranca.dados}" var="cobranca"
                                                                          headerClass="columnHeader"
-                                                                         rowClasses="evenRow, oddRow"  >
+                                                                         rowClasses="evenRow, oddRow" styleClass="styled-table">
                                                                 <h:column>
                                                                     <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
                                                                     <h:outputText value="#{cobranca.apartamento.condominio.nomecondominio}"/>

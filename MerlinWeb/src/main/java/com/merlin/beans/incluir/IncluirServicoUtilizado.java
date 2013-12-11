@@ -1,9 +1,9 @@
 package com.merlin.beans.incluir;
 
-import java.util.Date;
-
 import com.merlin.data.dto.ServicoUtilizadoDTO;
 import com.merlin.data.managers.ServicoUtilizadoManager;
+import java.util.Date;
+import java.util.logging.Logger;
 
 public class IncluirServicoUtilizado {
 
@@ -13,6 +13,8 @@ public class IncluirServicoUtilizado {
     private int codigoServico;
     private Date dataUtilizacao;
     private String mensagem;
+
+    private final static Logger logger = Logger.getLogger(IncluirServicoUtilizado.class.getName());
 
     public void doIncluir() {
         ServicoUtilizadoManager sm = new ServicoUtilizadoManager();
@@ -36,13 +38,13 @@ public class IncluirServicoUtilizado {
             dataUtilizacao = null;
             codigoServico = 0;
             codigoApartamento = 0;
-            mensagem = "Servi�o inserido com sucesso.";
+            mensagem = "Serviço inserido com sucesso.";
         } else {
             sm.update(servicoUtilizado);
             // limpa a tela
 
             servicoUtilizado = null;
-            mensagem = "Servi�o atualizado com sucesso.";
+            mensagem = "Serviço atualizado com sucesso.";
         }
 
     }

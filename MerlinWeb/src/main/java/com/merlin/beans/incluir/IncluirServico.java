@@ -8,14 +8,11 @@ package com.merlin.beans.incluir;
 
 import com.merlin.data.dto.ServicoDTO;
 import com.merlin.data.managers.ServicoManager;
+import java.util.logging.Logger;
 
-/**
- * @author Leonardo Lopes
- *
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
- */
 public class IncluirServico {
+
+    private final static Logger logger = Logger.getLogger(IncluirServico.class.getName());
 
     private ServicoDTO servico;
     private int codigoServico;
