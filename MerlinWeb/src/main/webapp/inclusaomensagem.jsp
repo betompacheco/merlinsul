@@ -55,6 +55,9 @@
                                                 <td colspan="3"><h:commandButton value="Salvar" action="#{incluirMensagem.doIncluir}" styleClass="botao" />
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td colspan="3"><h:outputText styleClass="mensagem" value="#{incluirMensagem.mensagem}"/></td>
+                                            </tr>
                                         </table></h:form>
                                     </td>
                                 </tr>
