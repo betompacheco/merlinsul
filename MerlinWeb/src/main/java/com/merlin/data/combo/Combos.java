@@ -1,13 +1,5 @@
 package com.merlin.data.combo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.faces.model.SelectItem;
-
 import com.merlin.data.dto.ApartamentoDTO;
 import com.merlin.data.dto.CondominioDTO;
 import com.merlin.data.dto.MensagemDTO;
@@ -18,6 +10,12 @@ import com.merlin.data.managers.CondominioManager;
 import com.merlin.data.managers.MensagemManager;
 import com.merlin.data.managers.ProprietarioManager;
 import com.merlin.data.managers.ServicoManager;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import javax.faces.model.SelectItem;
 
 public class Combos {
 
@@ -27,7 +25,7 @@ public class Combos {
         List rcombo = new ArrayList();
         for (int i = 0; i < mensagems.size(); i++) {
             MensagemDTO mensagem = (MensagemDTO) mensagems.get(i);
-            rcombo.add(new SelectItem(mensagem.getCodigoMensagem(), mensagem.getTextoMensagem().substring(0, 60) + " ..."));
+            rcombo.add(new SelectItem(mensagem.getCodigoMensagem(), mensagem.getTextoMensagem().substring(0, Math.min(mensagem.getTextoMensagem().length(), 60)) + " ..."));
         }
         return rcombo;
     }
