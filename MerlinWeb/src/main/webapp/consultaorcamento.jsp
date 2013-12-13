@@ -120,7 +120,9 @@
 
                                                         <h:column>
                                                             <f:facet name="header"><h:outputText value="Valor" /></f:facet>
-                                                            <h:outputText value="#{orcamento.valorOrcamento}"/>
+                                                            <h:outputText value="#{orcamento.valorOrcamento}">
+                                                                <f:convertNumber pattern="#,##0.00" />
+                                                            </h:outputText>
                                                         </h:column>
 
 
