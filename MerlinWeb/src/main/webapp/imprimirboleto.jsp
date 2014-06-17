@@ -78,8 +78,7 @@
                                             </tr>
                                             <tr>
                                                 <td>M&ecirc;s:</td>
-                                                <td><h:selectOneMenu id="mes" value="#{imprimirBoleto.mes}"  styleClass="styled-select"  required="true">
-                                                        <f:selectItem itemValue="" itemLabel=""/>
+                                                <td><h:selectOneRadio id="mes" value="#{imprimirBoleto.mes}"  styleClass="styled-select"  required="true" layout="pageDirection">
                                                         <f:selectItem itemValue="0" itemLabel="Janeiro"/>
                                                         <f:selectItem itemValue="1" itemLabel="Fevereiro"/>
                                                         <f:selectItem itemValue="2" itemLabel="Março"/>
@@ -92,7 +91,7 @@
                                                         <f:selectItem itemValue="9" itemLabel="Outubro"/>
                                                         <f:selectItem itemValue="10" itemLabel="Novembro"/>
                                                         <f:selectItem itemValue="11" itemLabel="Dezembro"/>
-                                                    </h:selectOneMenu >
+                                                    </h:selectOneRadio >
                                                 </td>
                                                 <td><h:message for="mes" errorClass="erros"/></td>
                                             </tr>
