@@ -80,7 +80,7 @@
                                                 <td><h:message for="valorMulta" errorClass="erros" /></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Gerar"
+                                                <td colspan="3"><h:commandButton value="Gerar cobranças"
                                                                  action="#{gerarCobranca.doGerar}"/></td>
                                             </tr>
                                             <c:if test="${gerarCobranca.flagConfirma}">
