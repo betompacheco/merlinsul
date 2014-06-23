@@ -3,244 +3,249 @@
   "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
   "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
 <faces-config>
-	<application>
-		<message-bundle>com.merlin.custMessages</message-bundle>
-		<locale-config>
-			<default-locale>pt</default-locale>
-		</locale-config>
-	</application>
+    <application>
+        <message-bundle>com.merlin.custMessages</message-bundle>
+        <locale-config>
+            <default-locale>pt</default-locale>
+        </locale-config>
+    </application>
 
-  <managed-bean>
-    <managed-bean-name>imprimirBoleto</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ImprimirBoleto</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>  
- 
-
- <managed-bean>
-    <managed-bean-name>gerarCobranca</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.GerarCobranca</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>  
- <managed-bean>
-    <managed-bean-name>consultarCobranca</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarCobranca</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>  
-  <managed-bean>
-    <managed-bean-name>combos</managed-bean-name>
-    <managed-bean-class>com.merlin.data.combo.Combos</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>  
-
-  <managed-bean>
-    <managed-bean-name>incluirMensagem</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirMensagem</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>  
-  
-  <managed-bean>
-    <managed-bean-name>consultarMensagem</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarMensagem</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
-
-
-  <managed-bean>
-    <managed-bean-name>incluirVeiculo</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirVeiculo</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>  
-  
-  <managed-bean>
-    <managed-bean-name>consultarVeiculo</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarVeiculo</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
-
-  <managed-bean>
-    <managed-bean-name>incluirCondominio</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirCondominio</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>  
-  
-  <managed-bean>
-    <managed-bean-name>consultarCondominio</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarCondominio</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
-
-  <managed-bean>
-    <managed-bean-name>incluirApartamento</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirApartamento</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
-  
     <managed-bean>
-    <managed-bean-name>consultarApartamento</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarApartamento</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
-  
+        <managed-bean-name>imprimirBoleto</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ImprimirBoleto</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+
     <managed-bean>
-    <managed-bean-name>incluirProprietario</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirProprietario</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+        <managed-bean-name>gerarCobranca</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.GerarCobranca</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>consultarCobranca</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarCobranca</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>combos</managed-bean-name>
+        <managed-bean-class>com.merlin.data.combo.Combos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>consultarProprietario</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarProprietario</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>incluirMensagem</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirMensagem</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>incluirEndereco</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirEndereco</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>consultarMensagem</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarMensagem</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>consultarEndereco</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarEndereco</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>incluirServico</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirServico</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>incluirVeiculo</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirVeiculo</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>consultarServico</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarServico</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>consultarVeiculo</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarVeiculo</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>incluirServicoUtilizado</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirServicoUtilizado</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
-  
-  <managed-bean>
-    <managed-bean-name>consultarServicoUtilizado</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarServicoUtilizado</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
-  
-  <managed-bean>
-    <managed-bean-name>incluirOrcamento</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.incluir.IncluirOrcamento</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>incluirCondominio</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirCondominio</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>consultarOrcamento</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ConsultarOrcamento</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>consultarCondominio</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarCondominio</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>imprimirVeiculos</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ImprimirVeiculos</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
-  <managed-bean>
-    <managed-bean-name>imprimirProprietarios</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ImprimirProprietarios</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
-  <managed-bean>
-    <managed-bean-name>imprimirInadimplentes</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ImprimirInadimplentes</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>incluirApartamento</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirApartamento</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>imprimirServicosUtilizados</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ImprimirServicosUtilizados</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>consultarApartamento</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarApartamento</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 
-  <managed-bean>
-    <managed-bean-name>imprimirMovimentos</managed-bean-name>
-    <managed-bean-class>com.merlin.beans.consultar.ImprimirMovimentos</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <managed-bean>
+        <managed-bean-name>incluirProprietario</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirProprietario</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 
-     <navigation-rule>
-    	<from-view-id>/consultaveiculo.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoveiculo.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>    
-  
+    <managed-bean>
+        <managed-bean-name>consultarProprietario</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarProprietario</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>incluirEndereco</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirEndereco</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>consultarEndereco</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarEndereco</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>incluirServico</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirServico</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>consultarServico</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarServico</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>incluirServicoUtilizado</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirServicoUtilizado</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>consultarServicoUtilizado</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarServicoUtilizado</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>incluirOrcamento</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirOrcamento</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>consultarOrcamento</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ConsultarOrcamento</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>imprimirVeiculos</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ImprimirVeiculos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>imprimirProprietarios</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ImprimirProprietarios</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>imprimirInadimplentes</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ImprimirInadimplentes</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>imprimirServicosUtilizados</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ImprimirServicosUtilizados</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>imprimirMovimentos</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.consultar.ImprimirMovimentos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
     <navigation-rule>
-    	<from-view-id>/consultacondominio.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaocondominio.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultaveiculo.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoveiculo.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
-    	<from-view-id>/consultaapartamento.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoapartamento.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultacondominio.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaocondominio.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
-    	<from-view-id>/consultaproprietario.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoproprietario.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultaapartamento.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoapartamento.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
-    	<from-view-id>/consultaendereco.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoendereco.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultaproprietario.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoproprietario.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
-    	<from-view-id>/consultaservico.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoservico.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultaendereco.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoendereco.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
-    	<from-view-id>/consultaservicoutilizado.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoservicoutilizado.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultaservico.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoservico.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/consultaservicoutilizado.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoservicoutilizado.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
 
     <navigation-rule>
-    	<from-view-id>/consultaorcamento.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaoorcamento.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultaorcamento.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaoorcamento.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
-    	<from-view-id>/consultamensagem.jsp</from-view-id>
-    	<navigation-case>
-        	<from-outcome>editar</from-outcome>
-        	<to-view-id>/inclusaomensagem.jsp</to-view-id>
-    	</navigation-case>
-  	</navigation-rule>
+        <from-view-id>/consultamensagem.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>editar</from-outcome>
+            <to-view-id>/inclusaomensagem.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <validator>
+        <validator-id>yearValidator</validator-id>
+        <validator-class>com.merlin.beans.validator.YearValidator</validator-class>
+    </validator>
 </faces-config>
 
