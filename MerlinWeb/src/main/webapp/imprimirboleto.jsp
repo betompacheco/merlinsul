@@ -52,6 +52,15 @@
                                             </tr>
                                             <tr>
                                                 <td>Ano:</td>
+                                                <td>
+                                                    <h:inputText id="ano2" value="#{imprimirBoleto.ano}" size="4" maxlength="4" required="true">
+                                                        <f:validator validatorId="yearValidator" />
+                                                    </h:inputText>
+                                                </td>
+                                                <td><h:message for="ano2" errorClass="erros"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ano:</td>
                                                 <td><h:selectOneMenu id="ano"  value="#{imprimirBoleto.ano}"  styleClass="styled-select" required="true">
                                                         <f:selectItem itemValue="" itemLabel=""/>
                                                         <f:selectItem itemValue="2009" itemLabel="2009"/>
