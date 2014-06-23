@@ -116,6 +116,6 @@ public class NumberCodeGeneratorTest extends TestCase {
 
         System.out.println(ngc.getCodigoImpresso());
 
-        assertEquals("23793.37906 20000.060887 42000.014300 1 60590000076526", ngc.getCodigoImpresso());
+        assertEquals("23790.00769 36000.000061 08842.191424 7 61200000010026", ngc.getCodigoImpresso());
     }
 }
