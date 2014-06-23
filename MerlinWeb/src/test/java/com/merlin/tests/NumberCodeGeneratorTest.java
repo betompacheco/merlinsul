@@ -1,12 +1,10 @@
-package com.merlin.testes;
+package com.merlin.tests;
 
+import com.merlin.util.NumberCodeGenerator;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import junit.framework.TestCase;
-
-import com.merlin.util.NumberCodeGenerator;
 
 public class NumberCodeGeneratorTest extends TestCase {
 
@@ -17,6 +15,9 @@ public class NumberCodeGeneratorTest extends TestCase {
         assertEquals(0, ngc.calculaModulo11("0"));
     }
 
+    /**
+     * Efetua o teste do Dígito de Autoconferência (DAC)
+     */
     public void testCalculaDAC() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
         assertEquals(9, ngc.calculaDAC("239104761"));
@@ -62,10 +63,13 @@ public class NumberCodeGeneratorTest extends TestCase {
     public void testFatorDeVencimento() {
 
         NumberCodeGenerator ngc = new NumberCodeGenerator();
+        assertEquals(1000, ngc.fatorVencimento(new Date("07/03/2000")));
+        assertEquals(1002, ngc.fatorVencimento(new Date("07/05/2000")));
         assertEquals(1001, ngc.fatorVencimento(new Date("07/04/2000")));
         assertEquals(1667, ngc.fatorVencimento(new Date("05/01/2002")));
         assertEquals(3923, ngc.fatorVencimento(new Date("07/04/2008")));
         assertEquals(4758, ngc.fatorVencimento(new Date("10/17/2010")));
+        assertEquals(4789, ngc.fatorVencimento(new Date("11/17/2010")));
         assertEquals(9999, ngc.fatorVencimento(new Date("02/21/2025")));
     }
 
@@ -76,7 +80,7 @@ public class NumberCodeGeneratorTest extends TestCase {
         assertEquals(1868, ngc.dataJuliana(gc.getTime()));
     }
 
-    public void testCodigoImpresso() {
+    public void testCodigoImpressoHSBC() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
 
         ngc.setNumeroBanco(399); // default HSBC
@@ -87,8 +91,31 @@ public class NumberCodeGeneratorTest extends TestCase {
         ngc.setAgencia(1227);
         ngc.setConta(8351202);
         ngc.setCob(0); // default HSBC
-        ngc.setValor(1200);
+        ngc.setValor(1200.00);
         ngc.generate();
         assertEquals("39998.35121 02000.023917 04761.186826 4 39230000120000", ngc.getCodigoImpresso());
+    }
+
+    /**
+     * a conta do bradesco é - agencia 2785-5 conta corrente 7636-8 - condomínio
+     * do edifício Merlin sul. O banco me deu esse código 4631965 .
+     */
+    public void testCodigoImpressoBradesco() {
+        NumberCodeGenerator ngc = new NumberCodeGenerator();
+
+        ngc.setNumeroBanco(237); // default Bradesco
+        ngc.setNumeroMoeda(9); // default Bradesco
+        ngc.setVencimento(new Date("07/10/2014"));//10 de Maio de 2014
+        ngc.setProcessamento(new Date("07/10/2014"));
+        ngc.setNossoNumero("00000608842"); // nao incluir os ultimos 3 digitos
+        ngc.setAgencia(2785);
+        ngc.setConta(7636);
+        ngc.setCob(0); // default Bradesco
+        ngc.setValor(100.26);
+        ngc.generate();
+
+        System.out.println(ngc.getCodigoImpresso());
+
+        assertEquals("23793.37906 20000.060887 42000.014300 1 60590000076526", ngc.getCodigoImpresso());
     }
 }
