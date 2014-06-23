@@ -53,35 +53,9 @@
                                             <tr>
                                                 <td>Ano:</td>
                                                 <td>
-                                                    <h:inputText id="ano2" value="#{imprimirBoleto.ano}" size="4" maxlength="4" required="true">
+                                                    <h:inputText id="ano" value="#{imprimirBoleto.ano}" size="4" maxlength="4" required="true">
                                                         <f:validator validatorId="yearValidator" />
                                                     </h:inputText>
-                                                </td>
-                                                <td><h:message for="ano2" errorClass="erros"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ano:</td>
-                                                <td><h:selectOneMenu id="ano"  value="#{imprimirBoleto.ano}"  styleClass="styled-select" required="true">
-                                                        <f:selectItem itemValue="" itemLabel=""/>
-                                                        <f:selectItem itemValue="2009" itemLabel="2009"/>
-                                                        <f:selectItem itemValue="2010" itemLabel="2010"/>
-                                                        <f:selectItem itemValue="2011" itemLabel="2011"/>
-                                                        <f:selectItem itemValue="2012" itemLabel="2012"/>
-                                                        <f:selectItem itemValue="2013" itemLabel="2013"/>
-                                                        <f:selectItem itemValue="2014" itemLabel="2014"/>
-                                                        <f:selectItem itemValue="2015" itemLabel="2015"/>
-                                                        <f:selectItem itemValue="2016" itemLabel="2016"/>
-                                                        <f:selectItem itemValue="2017" itemLabel="2017"/>
-                                                        <f:selectItem itemValue="2018" itemLabel="2018"/>
-                                                        <f:selectItem itemValue="2019" itemLabel="2019"/>
-                                                        <f:selectItem itemValue="2020" itemLabel="2020"/>
-                                                        <f:selectItem itemValue="2021" itemLabel="2021"/>
-                                                        <f:selectItem itemValue="2022" itemLabel="2022"/>
-                                                        <f:selectItem itemValue="2023" itemLabel="2023"/>
-                                                        <f:selectItem itemValue="2024" itemLabel="2024"/>
-                                                        <f:selectItem itemValue="2025" itemLabel="2025"/>
-                                                    </h:selectOneMenu >
-
                                                 </td>
                                                 <td><h:message for="ano" errorClass="erros"/></td>
                                             </tr>
