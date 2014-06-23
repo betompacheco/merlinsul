@@ -87,7 +87,7 @@
                                                 <td><h:message for="mensagem" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Consultar" action="#{imprimirBoleto.doImprimir}" styleClass="botao" /></td>
+                                                <td colspan="3"><h:commandButton value="Imprimir boletos" action="#{imprimirBoleto.doImprimir}" styleClass="botao" /></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><h:outputText value="#{flagOk}"/>
