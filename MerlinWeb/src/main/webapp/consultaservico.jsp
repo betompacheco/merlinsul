@@ -61,6 +61,10 @@
                                                             <h:outputText value="#{servico.nomeServico}"/>
                                                         </h:column>
                                                         <h:column>
+                                                            <f:facet name="header"><h:outputText value="Valor" /></f:facet>
+                                                            <h:outputText value="#{servico.valorServico}"/>
+                                                        </h:column>
+                                                        <h:column>
                                                             <h:commandButton value="Editar" action="#{consultarServico.doEditar}" styleClass="botao" immediate="true"/>
                                                         </h:column>
                                                         <h:column>
