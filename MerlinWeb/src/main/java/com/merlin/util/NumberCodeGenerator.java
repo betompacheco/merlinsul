@@ -31,9 +31,9 @@ public class NumberCodeGenerator {
         codigoBarras = codigoBarras.substring(0, 4) + Integer.toString(dac) + codigoBarras.substring(4);
         codigoImpresso = digitavel(Integer.toString(dac));
         codigoImpresso = formataDigitavel(codigoImpresso);
-        logger.log(Level.FINE, "Codigo Impresso : " + codigoImpresso);
-        logger.log(Level.FINE, "Codigo de Barras : " + codigoBarras);
-        logger.log(Level.FINE, "Tamanho do Codigo de Barras : " + codigoBarras.length());
+        logger.log(Level.FINE, "Codigo Impresso : {0}", codigoImpresso);
+        logger.log(Level.FINE, "Codigo de Barras : {0}", codigoBarras);
+        logger.log(Level.FINE, "Tamanho do Codigo de Barras : {0}", codigoBarras.length());
     }
 
     private String digitavel(String DAC) {
