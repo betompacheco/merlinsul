@@ -62,7 +62,7 @@ public class PrintBoleto extends HttpServlet {
             JasperReport relatorio = JasperCompileManager.compileReport(boleto);
             JasperReport jrdetalhe = JasperCompileManager.compileReport(detalherpt);
             Map parametros = new HashMap();
-            parametros.put("logo", server + "/imagens/logohsbc.jpg");
+            parametros.put("logo", server + "/imagens/logobradesco.png");
             parametros.put("servletCod", server + "/codeservlet");
             parametros.put("agencia", "" + Config.AGENCIA);
             parametros.put("codigocedente", "" + Config.CONTA);

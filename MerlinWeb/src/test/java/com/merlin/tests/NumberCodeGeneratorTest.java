@@ -8,15 +8,25 @@ import junit.framework.TestCase;
 
 public class NumberCodeGeneratorTest extends TestCase {
 
-    public void testCalculaModulo11() {
+    public void testCalculaModulo11base9() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
-        assertEquals(9, ngc.calculaModulo11("239104761"));
-        assertEquals(1, ngc.calculaModulo11("23918868104"));
-        assertEquals(0, ngc.calculaModulo11("0"));
+        assertEquals(9, ngc.calculaModulo11base9("239104761"));
+        assertEquals(1, ngc.calculaModulo11base9("23918868104"));
+        assertEquals(0, ngc.calculaModulo11base9("0"));
     }
 
     /**
-     * Efetua o teste do Dígito de Autoconferência (DAC)
+     * Efetua o teste do Dígito de Autoconferência (DAC) do Bradesco
+     */
+    public void testCalculaDACdoBradesco() {
+        NumberCodeGenerator ngc = new NumberCodeGenerator();
+        assertEquals("P", ngc.calculaDACdoBradesco("1900000000001"));
+        assertEquals("0", ngc.calculaDACdoBradesco("1900000000006"));
+        assertEquals("8", ngc.calculaDACdoBradesco("1900000000002"));
+    }
+
+    /**
+     * Efetua o teste do Dígito de Autoconferência (DAC) do HSBC
      */
     public void testCalculaDAC() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
@@ -46,18 +56,10 @@ public class NumberCodeGeneratorTest extends TestCase {
     public void testNumberCodeGenerator() {
 
         NumberCodeGenerator ngc = new NumberCodeGenerator();
-        Long valor;
-        // Teste temporario
-        valor = new Long("1947");
-        assertEquals(valor.longValue(), ngc.comporCodigoDocumento(1, 2606046, new GregorianCalendar(2011, Calendar.NOVEMBER, 20).getTime()));
 
-        // COMPOSIÇÃO DO CÓDIGO DO DOCUMENTO COM USO DO TIPO IDENTIFICADOR “4”
-        valor = new Long("239104761941");
-        assertEquals(valor.longValue(), ngc.comporCodigoDocumento(239104761, 8351202, new GregorianCalendar(2008, Calendar.JULY, 4).getTime()));
-
-        // COMPOSIÇÃO DO CÓDIGO DO DOCUMENTO COM USO DO TIPO IDENTIFICADOR “5”
-        valor = new Long("239104761950");
-        assertEquals(valor.longValue(), ngc.comporCodigoDocumento(239104761, 8351202, null));
+        assertEquals("19/00000000001-P", ngc.comporNossoNumero(1, "19"));
+        assertEquals("19/00000000002-8", ngc.comporNossoNumero(2, "19"));
+        assertEquals("19/00000000006-0", ngc.comporNossoNumero(6, "19"));
     }
 
     public void testFatorDeVencimento() {

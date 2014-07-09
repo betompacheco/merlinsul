@@ -6,6 +6,7 @@ import com.merlin.data.dto.CobrancaDTO;
 import com.merlin.data.dto.CobrancaReportDTO;
 import com.merlin.data.dto.CondominioDTO;
 import com.merlin.data.dto.DescCobranca;
+import com.merlin.util.Config;
 import com.merlin.util.NumberCodeGenerator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -100,7 +101,7 @@ public class CobrancaManager {
 
                 // Coloca o Nosso Numero com o DAC
                 NumberCodeGenerator ncg = new NumberCodeGenerator();
-                cobranca.setCodigoDocumento(ncg.comporCodigoDocumento(cobranca.getCodigoCobranca(), 2606046, cobranca.getDataVencimento()));
+                cobranca.setCodigoDocumento(ncg.comporNossoNumero(cobranca.getCodigoCobranca(), Config.CARTEIRA));
 
                 // Coloca o número de apartamento para aparecer no boleto
                 cobranca.setNumeroApartamento(cobranca.getApartamento().getNumeroapartamento().intValue());

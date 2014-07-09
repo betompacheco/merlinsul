@@ -1,18 +1,16 @@
 package com.merlin.data.dto;
 
+import com.merlin.data.managers.EnderecoManager;
+import com.merlin.data.managers.ProprietarioManager;
+import com.merlin.util.Config;
+import com.merlin.util.NumberCodeGenerator;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
-import com.merlin.data.managers.EnderecoManager;
-import com.merlin.data.managers.ProprietarioManager;
-import com.merlin.util.Config;
-import com.merlin.util.NumberCodeGenerator;
 
 public class CobrancaDTO {
 
@@ -35,7 +33,7 @@ public class CobrancaDTO {
     private String endereco;
     private String digitavel;
     private String codigoBarras;
-    private long codigoDocumento;// Nosso Numero
+    private String codigoDocumento;// Nosso Numero
     private NumberFormat nm;
     private SimpleDateFormat df;
     private ApartamentoDTO apartamento;
@@ -350,11 +348,11 @@ public class CobrancaDTO {
         this.nomeCondominio = nomeCondominio;
     }
 
-    public long getCodigoDocumento() {
+    public String getCodigoDocumento() {
         return codigoDocumento;
     }
 
-    public void setCodigoDocumento(long codigoDocumento) {
+    public void setCodigoDocumento(String codigoDocumento) {
         this.codigoDocumento = codigoDocumento;
     }
 }

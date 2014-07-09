@@ -1,7 +1,5 @@
 package com.merlin.util;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -150,7 +148,7 @@ public class NumberCodeGenerator {
         return codigo.toString();
     }
 
-    public int calculaModulo11(String valor) {
+    public int calculaModulo11base9(String valor) {
         int[] pesos = new int[]{9, 8, 7, 6, 5, 4, 3, 2};
 
         int tmp = 0;
@@ -178,7 +176,41 @@ public class NumberCodeGenerator {
 
     }
 
-    // Calcula o Digito de Autoconferência (DAC)
+    public String calculaDACdoBradesco(String valor) {
+        int[] pesos = new int[]{2, 3, 4, 5, 6, 7};
+
+        int tmp = 0;
+        int iPeso = 0;
+
+        for (int i = valor.length() - 1; i > -1; i--) {
+            int vl = valor.charAt(i) - 48;
+            int vlbase = pesos[iPeso];
+            int tot = vl * vlbase;
+            tmp += tot;
+            iPeso++;
+            if (iPeso > 5) {
+                iPeso = 0;
+            }
+        }
+
+        int resto = tmp % 11;
+        int result = 11 - resto;
+
+        //Se o resto da divisão for “1”, desprezar a diferença entre o divisor
+        //menos o resto que será “10” e considerar o dígito como “P”.
+        if (resto == 1) {
+            return "P";
+        }
+        //Se o resto da divisão for “0”, desprezar o cálculo de subtração entre
+        //divisor e resto, e considerar o “0” como dígito.
+        if (resto == 0) {
+            result = 0;
+        }
+
+        return Integer.toString(result);
+    }
+
+    // Calcula o Digito de Autoconferência (DAC) do HSBC
     public int calculaDAC(String valor) {
         int[] pesos = new int[]{2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -274,11 +306,19 @@ public class NumberCodeGenerator {
         return Integer.parseInt(Integer.toString(dia) + Integer.toString(ano));
     }
 
+    /**
+     * Completa um valor com uma sequencia de caracteres definida
+     *
+     * @param valor O valor a ser completado
+     * @param tam O tamanho final da sequencia
+     * @param caracter o caracter a ser colocado
+     * @return
+     */
     public String complete(String valor, int tam, String caracter) {
         if (valor.length() == tam) {
             return valor;
         }
-        StringBuffer saida = new StringBuffer();
+        StringBuilder saida = new StringBuilder();
         for (int i = 0; i < tam - valor.length(); i++) {
             saida.append(caracter);
         }
@@ -289,44 +329,26 @@ public class NumberCodeGenerator {
 
     /**
      * Calcula os digitos verificadores do Nosso Numero / Codigo do Documento
-     * Para calcular com o tipo 4, o vencimento deve ser fornecido Para calcular
-     * com o tipo 5, o vencimento deve ser NULL
      *
      * @param codigoDoSacado Código do Documento
-     * @param codigoDoCedente Código do Cedente
-     * @param vencimento Data de Vencimento
+     * @param carteira A carteira utilizada pelo banco
+     *
      * @return O Nosso Numero / Codigo do Documento junto com os digitos
      * verificadores
      */
-    public long comporCodigoDocumento(long codigoDoSacado, long codigoDoCedente, Date vencimento) {
+    public String comporNossoNumero(long codigoDoSacado, String carteira) {
+        StringBuilder nossoNumeroComposto = new StringBuilder();
+        nossoNumeroComposto.append(carteira).append("/");
 
-        String codigoDocumentoParcial = "";
-        int identificador = 4;
-        long documentoCalculo = 0;
-        long dataDeVencimento = 0;
+        //Formata o nosso numero para 11 digitos
+        String nossoNumeroParcial = this.complete(Long.toString(codigoDoSacado), 11, "0");
+        nossoNumeroComposto.append(nossoNumeroParcial).append("-");
 
-        // Calculo do Primeiro Digito
-        int primeiroDigito = calculaModulo11(Long.toString(codigoDoSacado));
+        //Efetua o calculo do DAC do numero
+        nossoNumeroComposto.append(this.calculaDACdoBradesco(carteira.concat(nossoNumeroParcial)));
 
-        // Configura o Identificador
-        if (vencimento != null) {
-            Format format = new SimpleDateFormat("ddMMyy");
-            String data = format.format(vencimento);
-            dataDeVencimento = Long.parseLong(data);
-        } else {
-            identificador = 5;
-        }
-
-        // Insercao do Primeiro Digito e o Identificador
-        codigoDocumentoParcial = Long.toString(codigoDoSacado) + Integer.toString(primeiroDigito) + Integer.toString(identificador);
-        documentoCalculo = Long.parseLong(codigoDocumentoParcial);
-
-        // Calculo do Segundo Digito
-        // Se o resto da divisao for igual a 0 (zero) ou 10, o primeiro digito verificador sera igual a 0 (zero).
-        Long total = documentoCalculo + codigoDoCedente + dataDeVencimento;
-        int segundoDigito = calculaModulo11(total.toString());
-        codigoDocumentoParcial = codigoDocumentoParcial.concat(Integer.toString(segundoDigito));
-        return Long.parseLong(codigoDocumentoParcial);
+        //Retorna o nosso numero já formatado de acordo
+        return nossoNumeroComposto.toString();
     }
 
     public static void main(String[] args) {
@@ -346,8 +368,8 @@ public class NumberCodeGenerator {
         // ngc.setProcessamento(new GregorianCalendar(2008, 11, 17).getTime());
         ngc.setValor(935.61);
         ngc.setNossoNumero("000000004171"); // nao incluir os ultimos 3 digitos
-        ngc.setAgencia(1227);
-        ngc.setConta(2606046);
+        ngc.setAgencia(Config.AGENCIA);
+        ngc.setConta(Config.CONTA);
         ngc.setCob(0); // default hsbc
         ngc.generate();
         System.out.println("Codigo Impresso: " + ngc.getCodigoImpresso());
