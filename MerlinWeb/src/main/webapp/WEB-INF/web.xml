@@ -67,6 +67,10 @@
         <param-name>conta</param-name>
         <param-value>76368</param-value>
     </context-param>
+    <context-param>
+        <param-name>carteira</param-name>
+        <param-value>02</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30
