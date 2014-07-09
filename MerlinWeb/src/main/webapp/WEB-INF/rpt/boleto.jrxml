@@ -32,7 +32,7 @@
 	<field name="dataSource" class="java.lang.Object"/>
 	<field name="numeroApartamento" class="java.lang.Integer"/>
 	<field name="nomeCondominio" class="java.lang.String"/>
-	<field name="codigoDocumento" class="java.lang.Long"/>
+	<field name="codigoDocumento" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1133,19 +1133,6 @@
 				</textElement>
 				<textFieldExpression class="java.util.Date"><![CDATA[$F{dataVencimento}]]></textFieldExpression>
 			</textField>
-			<textField pattern="00000000000" isBlankWhenNull="false">
-				<reportElement key="codigoCobranca2" mode="Transparent" x="433" y="524" width="74" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{codigoDocumento}]]></textFieldExpression>
-			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
 				<reportElement key="dataemissao2" mode="Opaque" x="15" y="524" width="75" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
@@ -1395,8 +1382,11 @@
 				</textElement>
 				<text><![CDATA[N]]></text>
 			</staticText>
-			<staticText>
-				<reportElement key="staticText-13" mode="Opaque" x="410" y="524" width="23" height="11" forecolor="#000000" backcolor="#FFFFFF"/>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="codigoCobranca2" mode="Transparent" x="409" y="74" width="99" height="10" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -1406,34 +1396,8 @@
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<text><![CDATA[002 / ]]></text>
-			</staticText>
-			<textField pattern="00000000000" isBlankWhenNull="false">
-				<reportElement key="codigoCobranca2" mode="Transparent" x="432" y="73" width="74" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{codigoDocumento}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{codigoDocumento}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement key="staticText-13" mode="Opaque" x="409" y="73" width="23" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-				</textElement>
-				<text><![CDATA[002 / ]]></text>
-			</staticText>
 			<staticText>
 				<reportElement key="staticText-12" mode="Opaque" x="446" y="505" width="63" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
@@ -1473,6 +1437,21 @@
 				</textElement>
 				<text><![CDATA[OUTRO]]></text>
 			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="codigoCobranca2" mode="Transparent" x="409" y="525" width="99" height="10" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
