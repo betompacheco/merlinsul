@@ -14,7 +14,7 @@ public class NumberCodeGenerator {
     private double valor;
     private int agencia;
     private long conta;
-    private int carteira;
+    private String carteira;
     private int cob;
     private Date processamento;
     private String nossoNumero;
@@ -24,46 +24,58 @@ public class NumberCodeGenerator {
 
     public void generate() {
         codigoBarras = criarCodigoBarras();
-        // Inclui o Digito verificador do codigo de barras
         int dac = calculaDAC(codigoBarras);
+        // Inclui o Digito verificador do codigo de barras
         codigoBarras = codigoBarras.substring(0, 4) + Integer.toString(dac) + codigoBarras.substring(4);
-        codigoImpresso = digitavel(Integer.toString(dac));
-        codigoImpresso = formataDigitavel(codigoImpresso);
-        logger.log(Level.FINE, "Codigo Impresso : {0}", codigoImpresso);
-        logger.log(Level.FINE, "Codigo de Barras : {0}", codigoBarras);
-        logger.log(Level.FINE, "Tamanho do Codigo de Barras : {0}", codigoBarras.length());
+
+        //Calcula a linha digitavel
+        codigoImpresso = criaLinhaDigitavel(Integer.toString(dac), codigoBarras);
+        logger.log(Level.INFO, "Codigo Impresso : {0}", codigoImpresso);
+        codigoImpresso = formataLinhaDigitavel(codigoImpresso);
+        logger.log(Level.INFO, "Codigo Impresso Formatado: {0}", codigoImpresso);
+        logger.log(Level.INFO, "Codigo de Barras : {0}", codigoBarras);
+        logger.log(Level.INFO, "Tamanho do Codigo de Barras : {0}", codigoBarras.length());
     }
 
-    private String digitavel(String DAC) {
-        StringBuffer codigo = new StringBuffer();
-        StringBuffer tmp = new StringBuffer();
+    /**
+     * Monta a linha do boleto em formato digitavel
+     *
+     * @param DAC O digito de auto conferencia do codigo de barras
+     * @return
+     */
+    private String criaLinhaDigitavel(String DAC, String codigoBarrasSemDAC) {
+        StringBuilder codigo = new StringBuilder();
+        StringBuilder tmp = new StringBuilder();
 
-        String codigocedente = complete(Long.toString(conta), 7, "0");
-        String codigodocumento = complete(nossoNumero, 13, "0");
-
+        // Adiciona o primeiro bloco
         tmp.append(complete(Integer.toString(numeroBanco), 3, "0")); // numero do banco
         tmp.append(complete(Integer.toString(numeroMoeda), 1, "0")); // numero da moeda
-        tmp.append(codigocedente.substring(0, 5)); // primeira parte do codigo do cedente (conta)
+        tmp.append(codigoBarrasSemDAC.substring(19, 23));
         tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // digito de verificacao do primeiro bloco
-        codigo.append(tmp); // adiciona o primeiro bloco
+        codigo.append(tmp);
 
-        tmp = new StringBuffer();
-        tmp.append(codigocedente.substring(5)); // final do codigo do cedente
-        tmp.append(codigodocumento.substring(0, 8));// primeira parte do codigo do documento (nosso numero)
+        // Adiciona o segundo bloco
+        tmp = new StringBuilder();
+        tmp.append(codigoBarrasSemDAC.substring(24, 33));
         tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // digito de verificacao do primeiro bloco
-        codigo.append(tmp); // adiciona o segundo bloco
+        codigo.append(tmp);
 
-        tmp = new StringBuffer();
-        tmp.append(codigodocumento.substring(8)); // final do codigo do documento
-        tmp.append(complete(Integer.toString(dataJuliana(vencimento)), 4, "0")); // data no formato juliano
-        tmp.append("2"); // codigo do produto
+        // Adiciona o terceiro bloco
+        tmp = new StringBuilder();
+        tmp.append(codigoBarrasSemDAC.substring(34, 43));
         tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // digito de verificacao do terceiro bloco
-        codigo.append(tmp); // adiciona o terceiro bloco
+        codigo.append(tmp);
 
-        codigo.append(DAC); // digito verificador do codigo de barras, o codigo de barras tem que ser calculado antes
+        // Adiciona o quarto bloco
+        // digito verificador do codigo de barras, o codigo de barras tem que ser calculado antes
+        codigo.append(DAC);
 
-        tmp = new StringBuffer();
+        // Adiciona o quinto bloco
+        // Adiciona o fator de vencimento
+        tmp = new StringBuilder();
         tmp.append(complete(Long.toString(fatorVencimento(vencimento)), 4, "0"));
+
+        //Adiciona o valor do documento
         int valor = valorSemPonto(this.valor);
         if (valor == 0) {
             tmp.append(complete("", 10, "0"));
@@ -71,63 +83,44 @@ public class NumberCodeGenerator {
             tmp.append(complete(Integer.toString(valor), 10, "0"));
         }
 
-        codigo.append(tmp);// adiciona o quinto bloco
+        codigo.append(tmp);
 
         return codigo.toString();
     }
 
-    private String formataDigitavel(String digitavel) {
-        StringBuffer retorno = new StringBuffer();
+    private String formataLinhaDigitavel(String digitavel) {
+        StringBuilder retorno = new StringBuilder();
         retorno.append(digitavel.substring(0, 5));
         retorno.append(".");
         retorno.append(digitavel.substring(5, 10));
         retorno.append(" ");
         retorno.append(digitavel.substring(10, 15));
         retorno.append(".");
-        retorno.append(digitavel.substring(15, 21));
+        retorno.append(digitavel.substring(15, 20));
         retorno.append(" ");
-        retorno.append(digitavel.substring(21, 26));
+        retorno.append(digitavel.substring(20, 25));
         retorno.append(".");
-        retorno.append(digitavel.substring(26, 32));
+        retorno.append(digitavel.substring(25, 30));
         retorno.append(" ");
-        retorno.append(digitavel.substring(32, 33));
+        retorno.append(digitavel.substring(30, 31));
         retorno.append(" ");
-        retorno.append(digitavel.substring(33, 47));
+        retorno.append(digitavel.substring(31, 44));
         return retorno.toString();
     }
 
-    /**
-     * <pre>
-     * POSIÇÃO
-     * DE ATÉ TAMANHO CONTEÚDO
-     * 01 03  03      Código do HSBC na Câmara de Compensação, igual a 399.
-     * 04 04  01      Tipo de Moeda (9 para moeda Real ou 0 para Moeda Variável).
-     * 05 05  01      Dígito de Autoconferência (DAC).
-     * 06 09  04      Fator de Vencimento.
-     * 10 19  10      Valor do Documento.Se Moeda Variável, o valor deverá ser igual a zeros.
-     * 20 26  07      Código do Cedente
-     * 27 39  13      Número Bancário, igual ao Código do Documento, sem os dígitos verificadores e tipo identificador.
-     * 40 43  04      Data de Vencimento no Formato Juliano.
-     * 44 44  01      Código do Produto CNR, igual a 2.
-     * </pre>
-     *
-     * @return
-     */
     private String criarCodigoBarras() {
-        StringBuffer codigo = new StringBuffer();
-        StringBuffer tmp = new StringBuffer();
+        StringBuilder codigo = new StringBuilder();
+        StringBuilder tmp = new StringBuilder();
 
-        String codigocedente = complete(Long.toString(conta), 7, "0");
-        String codigodocumento = complete(nossoNumero, 13, "0");
-
-        // Numero do banco
+        // Adiciona o numero do banco
         tmp.append(complete(Integer.toString(numeroBanco), 3, "0"));
-        // Tipo de moeda
+        // Adiciona o tipo de moeda
         tmp.append(complete(Integer.toString(numeroMoeda), 1, "0"));
 
-        // Fator de Vencimento
+        // Adiciona o fator de Vencimento
         tmp.append(complete(Long.toString(fatorVencimento(vencimento)), 4, "0"));
-        // Valor do Documento
+
+        // Adiciona o valor do Documento
         int valor = valorSemPonto(this.valor);
         if (valor == 0) {
             tmp.append(complete("", 10, "0"));
@@ -135,14 +128,22 @@ public class NumberCodeGenerator {
             tmp.append(complete(Integer.toString(valor), 10, "0"));
         }
 
-        // Codigo do cedente (conta)
-        tmp.append(codigocedente);
-        // Final do codigo do documento
+        //Adiciona a agencia
+        tmp.append(this.complete(Long.toString(agencia), 4, "0"));
+
+        //Adiciona a carteira
+        tmp.append(this.complete(carteira, 2, "0"));
+
+        //Adiciona o nosso numero
+        String codigodocumento = complete(nossoNumero, 11, "0");
         tmp.append(codigodocumento);
-        // Data no formato juliano
-        tmp.append(complete(Integer.toString(dataJuliana(vencimento)), 4, "0"));
-        // codigo do produto CNR
-        tmp.append("2");
+
+        //Adiciona a conta
+        String codigocedente = complete(Long.toString(conta), 7, "0");
+        tmp.append(codigocedente);
+
+        // Preenche o restante com zeros
+        tmp.append(complete("", 1, "0"));
 
         codigo.append(tmp);
         return codigo.toString();
@@ -210,7 +211,7 @@ public class NumberCodeGenerator {
         return Integer.toString(result);
     }
 
-    // Calcula o Digito de Autoconferência (DAC) do HSBC
+    // Calcula o Digito de Autoconferência (DAC) do Bradesco
     public int calculaDAC(String valor) {
         int[] pesos = new int[]{2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -398,11 +399,11 @@ public class NumberCodeGenerator {
         this.agencia = agencia;
     }
 
-    public int getCarteira() {
+    public String getCarteira() {
         return carteira;
     }
 
-    public void setCarteira(int carteira) {
+    public void setCarteira(String carteira) {
         this.carteira = carteira;
     }
 

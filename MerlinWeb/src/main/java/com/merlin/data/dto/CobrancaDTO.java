@@ -47,7 +47,7 @@ public class CobrancaDTO {
 
         NumberCodeGenerator ncg = new NumberCodeGenerator();
         ncg.setAgencia(Config.AGENCIA);
-        ncg.setCarteira(0);
+        ncg.setCarteira(Config.CARTEIRA);
         ncg.setConta(Config.CONTA);
         ncg.setNumeroBanco(Config.BANCO);
         ncg.setNumeroMoeda(Config.MOEDA);
