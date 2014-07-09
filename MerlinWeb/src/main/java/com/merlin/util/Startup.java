@@ -3,7 +3,6 @@ package com.merlin.util;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
 import org.hsqldb.Server;
 
 public class Startup implements ServletContextListener {
@@ -16,11 +15,13 @@ public class Startup implements ServletContextListener {
         String conta = context.getInitParameter("conta");
         String banco = context.getInitParameter("banco");
         String moeda = context.getInitParameter("moeda");
+        String carteira = context.getInitParameter("carteira");
 
         Config.AGENCIA = Integer.parseInt(agencia);
         Config.CONTA = Integer.parseInt(conta);
         Config.BANCO = Integer.parseInt(banco);
         Config.MOEDA = Integer.parseInt(moeda);
+        Config.CARTEIRA = carteira;
 
         Server server = new Server();
         server.setDatabaseName(0, "banco");
