@@ -48,32 +48,30 @@ public class NumberCodeGenerator {
         StringBuilder tmp = new StringBuilder();
 
         // Adiciona o primeiro bloco
-        tmp.append(complete(Integer.toString(numeroBanco), 3, "0")); // numero do banco
-        tmp.append(complete(Integer.toString(numeroMoeda), 1, "0")); // numero da moeda
-        tmp.append(codigoBarrasSemDAC.substring(19, 23));
-        tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // digito de verificacao do primeiro bloco
+        tmp.append(complete(Integer.toString(numeroBanco), 3, "0")); // 01 a 03, Identificacao do Banco
+        tmp.append(complete(Integer.toString(numeroMoeda), 1, "0")); // 04 a 04, Código da Moeda (Real = 9)
+        tmp.append(codigoBarrasSemDAC.substring(19, 24));// Cinco primeiras posicoes do campo livre
+        tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // Digito de verificacao do primeiro bloco
         codigo.append(tmp);
 
         // Adiciona o segundo bloco
         tmp = new StringBuilder();
-        tmp.append(codigoBarrasSemDAC.substring(24, 33));
-        tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // digito de verificacao do primeiro bloco
+        tmp.append(codigoBarrasSemDAC.substring(24, 34));// Posicoes 6 a 15 do campo livre
+        tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // Digito de verificacao do segundo bloco
         codigo.append(tmp);
 
         // Adiciona o terceiro bloco
         tmp = new StringBuilder();
-        tmp.append(codigoBarrasSemDAC.substring(34, 43));
-        tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // digito de verificacao do terceiro bloco
+        tmp.append(codigoBarrasSemDAC.substring(34, 44));// Posicoes 16 a 25 do campo livre
+        tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // Digito de verificacao do terceiro bloco
         codigo.append(tmp);
 
-        // Adiciona o quarto bloco
-        // digito verificador do codigo de barras, o codigo de barras tem que ser calculado antes
+        // Adiciona o quarto bloco, que é o digito verificador do codigo de barras. O codigo de barras tem que ser calculado antes.
         codigo.append(DAC);
 
         // Adiciona o quinto bloco
-        // Adiciona o fator de vencimento
         tmp = new StringBuilder();
-        tmp.append(complete(Long.toString(fatorVencimento(vencimento)), 4, "0"));
+        tmp.append(complete(Long.toString(fatorVencimento(vencimento)), 4, "0"));// Adiciona o fator de vencimento
 
         //Adiciona o valor do documento
         int valor = valorSemPonto(this.valor);
@@ -82,7 +80,6 @@ public class NumberCodeGenerator {
         } else {
             tmp.append(complete(Integer.toString(valor), 10, "0"));
         }
-
         codigo.append(tmp);
 
         return codigo.toString();
@@ -104,7 +101,7 @@ public class NumberCodeGenerator {
         retorno.append(" ");
         retorno.append(digitavel.substring(30, 31));
         retorno.append(" ");
-        retorno.append(digitavel.substring(31, 44));
+        retorno.append(digitavel.substring(31, 47));
         return retorno.toString();
     }
 
