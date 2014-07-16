@@ -53,9 +53,6 @@
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td><h5>Links de acesso rápido</h5></td>
-                                    </tr>
-                                    <tr>
                                         <td>
                                             <a href="inclusaoorcamento.faces" class="button orange">Incluir Or&ccedil;amentos</a>
                                             <a href="inclusaocobranca.faces"class="button orange">Gerar Cobran&ccedil;as</a>

@@ -85,7 +85,7 @@
                                             <c:if test="${gerarCobranca.flagConfirma}">
                                                 <tr>
                                                     <td colspan="3">Ja existe cobrança gerada para este mês. Gerar Novamente?<h:commandButton value="Confirmar"
-                                                                     action="#{gerarCobranca.confirma}" styleClass="botao" /></td>
+                                                                     action="#{gerarCobranca.confirma}"/></td>
 
                                                 </tr>
                                             </c:if>
