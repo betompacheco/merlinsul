@@ -45,17 +45,23 @@
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
 }
 
-/* Formatacao dos botoes */
+/* Formatacao dos botoes gerais */
 input[type=submit]{
     font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
     font-size: 12px;
+    text-decoration: none;
+    text-shadow:0px 1px 0px #fff;
     color: #595959;
     font-weight: normal;
     cursor: hand;
-    height: 30px;
+    height: 35px;
+    padding: 10px 20px;
     border-right: #666666 1px solid;
     border-top: #FFFFFF 1px solid;
     border-left: #FFFFFF 1px solid;
     border-bottom: #666666 1px solid;
     background-color: #E6E6E6;
+    border-radius: 5px;
+
+
 }

@@ -31,6 +31,11 @@ input[type=text]:focus, input[type=password]:focus , select:focus{
     outline-color: #dceefc;
     outline-offset: 0;
 }
+
+.styled-table {
+    width: 100%;
+}
+
 .styled-table th{
     text-align: center;
     color: #334d55;
