@@ -50,10 +50,9 @@
                                             <td><img src="imagens/transp.gif" width="129" height="10"></td>
                                         </tr>
                                     </table>
-                                <td width="99%">&nbsp; <!-- inicio do conteudo --> <h:form
-                                        id="formTb">
-
-                                        <table border="0" width=100%>
+                                <td width="99%">&nbsp; <!-- inicio do conteudo -->
+                                    <h:form id="formTb">
+                                        <table border="0" width=80%>
                                             <tr>
                                                 <td colspan="3">
                                                     <h2>Gera&ccedil;&atilde;o de Cobran&ccedil;a</h2>
@@ -61,7 +60,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="input_formulario" width="130">Data de Vencimento:</td>
-                                                <td><h:inputText id="dataVencimento"
+                                                <td colspan="2"><h:inputText id="dataVencimento"
                                                              value="#{gerarCobranca.dataVencimento}"
                                                              styleClass="caixadetexto" required="true" size="10"
                                                              maxlength="10">
@@ -71,7 +70,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Valor da Multa:</td>
-                                                <td><h:inputText id="valorMulta" value="#{gerarCobranca.multa}"
+                                                <td colspan="2"><h:inputText id="valorMulta" value="#{gerarCobranca.multa}"
                                                              styleClass="caixadetexto" required="true" size="10"
                                                              maxlength="15">
                                                         <f:validateDoubleRange minimum="1" />
@@ -85,51 +84,44 @@
                                             </tr>
                                             <c:if test="${gerarCobranca.flagConfirma}">
                                                 <tr>
-                                                    <td colspan="4">Ja existe cobrança gerada para este mês. Gerar Novamente?<h:commandButton value="Confirmar"
+                                                    <td colspan="3">Ja existe cobrança gerada para este mês. Gerar Novamente?<h:commandButton value="Confirmar"
                                                                      action="#{gerarCobranca.confirma}" styleClass="botao" /></td>
 
                                                 </tr>
                                             </c:if>
                                             <c:if test="${gerarCobranca.temDados}">
                                                 <tr>
-                                                    <td colspan="4">Dados Gerados:
-                                                        <h:commandButton value="Armazenar" action="#{gerarCobranca.doSalvar}"/></td>
+                                                    <td colspan="3"><h:commandButton value="Armazenar cobranças" action="#{gerarCobranca.doSalvar}"/></td>
 
                                                 </tr>
                                                 <tr>
-                                                    <td colspan=3>
-                                                        <DIV id=oDiv  ALIGN=left STYLE="height:100;
-                                                             width:95%;padding:3;
-                                                             overflow:clip;">
-                                                            <h:dataTable value="#{gerarCobranca.dados}" var="cobranca"
-                                                                         headerClass="columnHeader"
-                                                                         rowClasses="evenRow, oddRow" styleClass="styled-table">
-                                                                <h:column>
-                                                                    <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
-                                                                    <h:outputText value="#{cobranca.apartamento.condominio.nomecondominio}"/>
-                                                                </h:column>
-                                                                <h:column>
-                                                                    <f:facet name="header"><h:outputText value="Apartamento" /></f:facet>
-                                                                    <h:outputText value="#{cobranca.apartamento.numeroapartamento}"/>
-                                                                </h:column>
-                                                                <h:column>
-                                                                    <f:facet name="header"><h:outputText value="Vencimento" /></f:facet>
-                                                                    <h:outputText value="#{cobranca.dataVencimento}">
-                                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                                                    </h:outputText>
-                                                                </h:column>
-                                                                <h:column>
-                                                                    <f:facet name="header"><h:outputText value="Valor" /></f:facet>
-                                                                    <h:outputText value="#{cobranca.valorCobrado}" >
-                                                                        <f:convertNumber maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/>
-                                                                    </h:outputText>
-                                                                </h:column>
-                                                            </h:dataTable>
-
-                                                        </DIV>
+                                                    <td colspan="3">
+                                                        <h:dataTable value="#{gerarCobranca.dados}" var="cobranca"
+                                                                     headerClass="columnHeader"
+                                                                     rowClasses="evenRow, oddRow" styleClass="styled-table">
+                                                            <h:column>
+                                                                <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
+                                                                <h:outputText value="#{cobranca.apartamento.condominio.nomecondominio}"/>
+                                                            </h:column>
+                                                            <h:column>
+                                                                <f:facet name="header"><h:outputText value="Apartamento" /></f:facet>
+                                                                <h:outputText value="#{cobranca.apartamento.numeroapartamento}"/>
+                                                            </h:column>
+                                                            <h:column>
+                                                                <f:facet name="header"><h:outputText value="Vencimento" /></f:facet>
+                                                                <h:outputText value="#{cobranca.dataVencimento}">
+                                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                                </h:outputText>
+                                                            </h:column>
+                                                            <h:column>
+                                                                <f:facet name="header"><h:outputText value="Valor" /></f:facet>
+                                                                <h:outputText value="#{cobranca.valorCobrado}" >
+                                                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/>
+                                                                </h:outputText>
+                                                            </h:column>
+                                                        </h:dataTable>
                                                     </td>
                                                 </tr>
-
                                             </c:if>
                                         </table>
                                     </h:form></td>

@@ -38,10 +38,7 @@
                                     <h:form>
                                         <table border="0">
                                             <tr>
-                                                <td colspan="3"><h2>Impressao de Boletos </h2></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3">Crit&eacute;rio:</td>
+                                                <td colspan="3"><h2>Impressão de Boletos </h2></td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -61,7 +58,7 @@
                                             </tr>
                                             <tr>
                                                 <td>M&ecirc;s:</td>
-                                                <td><h:selectOneRadio id="mes" value="#{imprimirBoleto.mes}"  styleClass="styled-select"  required="true" layout="pageDirection">
+                                                <td><h:selectOneRadio id="mes" value="#{imprimirBoleto.mes}" required="true" layout="pageDirection">
                                                         <f:selectItem itemValue="0" itemLabel="Janeiro"/>
                                                         <f:selectItem itemValue="1" itemLabel="Fevereiro"/>
                                                         <f:selectItem itemValue="2" itemLabel="Março"/>
@@ -107,7 +104,6 @@
                                             document.frmBoleto.submit();
                                         </script>
                                     </c:if>
-
                                 </td>
                                 </body>
                             </f:view>
