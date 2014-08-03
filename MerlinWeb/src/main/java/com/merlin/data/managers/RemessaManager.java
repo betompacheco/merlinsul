@@ -19,8 +19,19 @@ import java.util.logging.Logger;
 public class RemessaManager {
 
     private static final Logger logger = Logger.getLogger(RemessaManager.class.getName());
+
+    private int ano;
+    private int mes;
+    private boolean isForTest;
+
     private final String delimitador_registro = "\r\n";
     private final byte finalizador_arquivo = 0x1A;
+
+    public RemessaManager(int ano, int mes, boolean isForTest) {
+        this.ano = ano;
+        this.mes = mes;
+        this.isForTest = isForTest;
+    }
 
     public String montaRemessa() {
         try {
@@ -34,6 +45,16 @@ public class RemessaManager {
 //        st.setInt(2, numero);
 
             ResultSet rs = st.executeQuery();
+
+            //Verifica se existem dados de cobranca
+            if (!rs.isBeforeFirst()) {
+                return "Nao existem dados a serem colocados na remessa.";
+            }
+
+            if (isForTest) {
+                logger.log(Level.INFO, "Gerando o arquivo somente para teste, implementar...");
+            }
+
             StringBuilder sb = new StringBuilder();
             SimpleDateFormat sdf = new SimpleDateFormat();
 
@@ -123,7 +144,7 @@ public class RemessaManager {
 
             return sb.toString();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            logger.log(Level.INFO, ex.getMessage());
         }
         return "";
     }

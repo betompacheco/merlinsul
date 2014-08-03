@@ -28,7 +28,7 @@ public class RemessaDownload extends HttpServlet {
         int mes = Integer.parseInt(req.getParameter("mes"));
         boolean isForTest = Boolean.parseBoolean(req.getParameter("isForTest"));
 
-        RemessaManager rm = new RemessaManager();
+        RemessaManager rm = new RemessaManager(ano, mes, isForTest);
 
         resp.setContentType("text/plain");
         resp.setHeader("Content-Disposition", "attachment;filename=remessa.txt");
