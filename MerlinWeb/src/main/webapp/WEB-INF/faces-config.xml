@@ -15,11 +15,14 @@
         <managed-bean-class>com.merlin.beans.consultar.ImprimirBoleto</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-
-
     <managed-bean>
         <managed-bean-name>gerarCobranca</managed-bean-name>
         <managed-bean-class>com.merlin.beans.incluir.GerarCobranca</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>gerarRemessa</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.GerarRemessa</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
