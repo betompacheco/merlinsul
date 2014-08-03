@@ -75,7 +75,7 @@
                                                             <h:commandButton value="Editar" action="#{consultarApartamento.doEditar}" styleClass="botao" immediate="true"/>
                                                         </h:column>
                                                         <h:column>
-                                                            <h:commandButton styleClass="button orange" value="Excluir" action="#{consultarApartamento.doExcluir}" onclick="javascript: return confirm('Confirmar exclusão');" styleClass="botao" />
+                                                            <h:commandButton value="Excluir" action="#{consultarApartamento.doExcluir}" onclick="javascript: return confirm('Confirmar exclusão');" styleClass="botao" />
                                                         </h:column>
 
                                                     </h:dataTable>
