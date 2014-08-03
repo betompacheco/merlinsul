@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 
 public class Utilitario {
 
+    private static final Logger logger = Logger.getLogger(Utilitario.class.getName());
+
     /**
      * Completa um valor com uma sequencia de caracteres definida
      *
@@ -27,8 +29,6 @@ public class Utilitario {
         }
         saida.append(valor);
         return saida.toString();
-
     }
-    private static final Logger LOG = Logger.getLogger(Utilitario.class.getName());
 
 }
