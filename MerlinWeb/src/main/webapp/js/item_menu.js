@@ -42,7 +42,7 @@ var UnfoldsOnClick = 0;				// Level 1 unfolds onclick/ onmouseover
 var WebMasterCheck = 0;				// menu tree checking on or off 1 or 0
 var ShowArrow = 1;				// Uses arrow gifs when 1
 var KeepHilite = 1;				// Keep selected path highligthed
-var Arrws = ['images/seta.gif', 15, 6, 'tridown.gif', 10, 5, 'trileft.gif', 5, 10];	// Arrow source, width and height
+var Arrws = ['imagens/seta.png', 15, 15, 'tridown.gif', 10, 5, 'trileft.gif', 5, 10];	// Arrow source, width and height
 
 function BeforeStart() {
     return
