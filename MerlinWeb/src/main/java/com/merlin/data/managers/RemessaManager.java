@@ -28,7 +28,7 @@ public class RemessaManager {
             String qry;
             PreparedStatement st;
 
-            qry = "select * from cobranca";
+            qry = "select c.codigocobranca as codcobranca, p.nomeproprietario as nome, c.dataemissao, c.datavencimento, c.valorcobrado from proprietario as p, apartamento as a, cobranca as c where p.codigoproprietario = a.codigoproprietario and a.codigoapartamento = c.codigoapartamento order by codcobranca, nome";
             st = con.prepareStatement(qry);
 //        st.setInt(1, condominio);
 //        st.setInt(2, numero);
@@ -75,13 +75,24 @@ public class RemessaManager {
                 sb.append("237"); //Codigo do banco a ser debitado na camara de compensacao
                 sb.append("2"); //Campo de multa, 2 se condiderar multa, 0 se sem multa
                 sb.append(Utilitario.complete("2", 4, " ")); //Percentual de multa
-
+                sb.append(Utilitario.complete(rs.getString("codcobranca"), 11, "0"));//Identificacao do titulo no banco
+                //Digito de auto conferencia do numero bancario
+                //Desconto de bonificacao por dia
+                sb.append("2");//Condicao de emissao da papeleta de cobranca
+                sb.append("N");//Ident se emite boleto para debito automatico
+                sb.append(Utilitario.complete("", 10, " "));//Identifcacao da operacao do banco (Brancos)
+                sb.append(" ");//Indicador rateio credito (opcional)
+                sb.append(" ");//Enderecamento para aviso de debito automatico em conta corrente (opcional)
+                sb.append(Utilitario.complete("", 2, " "));//Branco
+                //Identificacao da ocorrencia
+                //Nunero do documento
+                sdf.applyPattern("ddMMyyyy");
+                sb.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
                 sb.append(Utilitario.complete(rs.getString("valorcobrado").replace(".", ""), 13, " ")); //Valor do titulo
                 sb.append(Utilitario.complete("", 3, "0")); //Banco encarregado da cobranca (Preencher com zeros)
                 sb.append(Utilitario.complete("", 5, " ")); //Agencia depositaria (Preencher com zeros)
                 sb.append("99"); //Especie do titulo
                 sb.append("N"); //Identificacao
-
                 sdf.applyPattern("ddMMyyyy");
                 sb.append(sdf.format(rs.getDate("dataemissao"))); //Data de emissao do titulo
                 sb.append(Utilitario.complete("", 2, " ")); //Primeira Instrucao
