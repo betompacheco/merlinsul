@@ -21,36 +21,44 @@
     <servlet>
         <servlet-name>CodeServlet</servlet-name>
         <servlet-class>com.merlin.util.CodeServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>CodeServlet</servlet-name>
         <url-pattern>/codeservlet/*</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>printboleto</servlet-name>
         <servlet-class>com.merlin.util.PrintBoleto</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <load-on-startup>3</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>printboleto</servlet-name>
         <url-pattern>/boleto.pdf</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>printreport</servlet-name>
         <servlet-class>com.merlin.util.PrintReport</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <load-on-startup>4</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>printreport</servlet-name>
         <url-pattern>/printreport</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>remessa</servlet-name>
+        <servlet-class>com.merlin.util.RemessaDownload</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>remessa</servlet-name>
+        <url-pattern>/remessaDownload</url-pattern>
+    </servlet-mapping>
 
     <listener>
         <listener-class>com.merlin.util.Startup</listener-class>
     </listener>
+
     <context-param>
         <param-name>banco</param-name>
         <param-value>237</param-value>
