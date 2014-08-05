@@ -8,6 +8,8 @@ package com.merlin.util;
 import com.merlin.data.managers.RemessaManager;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -30,14 +32,13 @@ public class RemessaDownload extends HttpServlet {
 
         RemessaManager rm = new RemessaManager(ano, mes, isForTest);
 
+        String horaDataRemessa = new SimpleDateFormat("HH_mm_ss_dd_MM_yyyy").format(new GregorianCalendar().getTime());
+
         resp.setContentType("text/plain");
-        resp.setHeader("Content-Disposition", "attachment;filename=remessa.txt");
+        resp.setHeader("Content-Disposition", "attachment;filename=remessa-".concat(horaDataRemessa).concat(".txt"));
         OutputStream os = resp.getOutputStream();
         os.write(rm.montaRemessa().getBytes());
 
-//        while ((read = is.read(bytes)) != -1) {
-//            os.write(bytes, 0, read);
-//        }
         os.flush();
         os.close();
     }
