@@ -1,5 +1,8 @@
 package com.merlin.beans.consultar;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class ImprimirBoleto {
 
     private String ano;
@@ -7,6 +10,13 @@ public class ImprimirBoleto {
     private String codigoApartamento;
     private int mensagem;
     private boolean flagOk;
+
+    public ImprimirBoleto() {
+        //configura valoes padrao na pagina
+        Calendar c = new GregorianCalendar();
+        mes = Integer.toString(c.get(Calendar.MONTH));
+        ano = Integer.toString(c.get(Calendar.YEAR));
+    }
 
     public void doImprimir() {
         flagOk = true;
