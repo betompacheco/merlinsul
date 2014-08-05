@@ -1,14 +1,12 @@
 package com.merlin.beans.incluir;
 
+import com.merlin.data.managers.CobrancaManager;
+import com.merlin.util.GeradorDeCobranca;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-
-import com.merlin.data.managers.CobrancaManager;
-import com.merlin.util.GeradorDeCobranca;
 
 public class GerarCobranca {
 
@@ -18,6 +16,12 @@ public class GerarCobranca {
     private List dadosGerados;
     private DataModel dados;
     private boolean flagConfirma;
+
+    public GerarCobranca() {
+
+        dataVencimento = new GregorianCalendar().getTime();
+        multa = 2.0;
+    }
 
     public void doGerar() {
         if (existeCobranca()) {
