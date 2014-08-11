@@ -38,19 +38,10 @@ public class NumberCodeGeneratorTest extends TestCase {
 
     public void testCalcDigitoBloco() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
-        assertEquals(3, ngc.calculaDigitoVerificadorBloco("4600000000"));
-        assertEquals(5, ngc.calculaDigitoVerificadorBloco("0000123292"));
-        assertEquals(1, ngc.calculaDigitoVerificadorBloco("399983512"));
-        assertEquals(0, ngc.calculaDigitoVerificadorBloco("0009220192"));
-        assertEquals(6, ngc.calculaDigitoVerificadorBloco("0476118682"));
-        assertEquals(7, ngc.calculaDigitoVerificadorBloco("0200002391"));
-        assertEquals(2, ngc.calculaDigitoVerificadorBloco("0010323292"));
-        assertEquals(7, ngc.calculaDigitoVerificadorBloco("11"));
-        assertEquals(4, ngc.calculaDigitoVerificadorBloco("22"));
-        assertEquals(1, ngc.calculaDigitoVerificadorBloco("33"));
-        assertEquals(8, ngc.calculaDigitoVerificadorBloco("44"));
-        assertEquals(4, ngc.calculaDigitoVerificadorBloco("55"));
-        assertEquals(1, ngc.calculaDigitoVerificadorBloco("66"));
+        //Teste baseado no documento
+        assertEquals(2, ngc.calculaDigitoVerificadorBloco("2379003102"));
+        assertEquals(3, ngc.calculaDigitoVerificadorBloco("4003177200"));
+        assertEquals(5, ngc.calculaDigitoVerificadorBloco("2800952790"));
     }
 
     public void testNumberCodeGenerator() {
@@ -63,7 +54,6 @@ public class NumberCodeGeneratorTest extends TestCase {
     }
 
     public void testFatorDeVencimento() {
-
         NumberCodeGenerator ngc = new NumberCodeGenerator();
         assertEquals(1000, ngc.fatorVencimento(new Date("07/03/2000")));
         assertEquals(1002, ngc.fatorVencimento(new Date("07/05/2000")));
@@ -83,8 +73,9 @@ public class NumberCodeGeneratorTest extends TestCase {
     }
 
     /**
-     * a conta do bradesco é - agencia 2785-5 conta corrente 7636-8 - condomínio
-     * do edifício Merlin sul. O banco me deu esse código 4631965 .
+     * a conta do bradesco é - agencia 2785-5 conta corrente 7636-8 -
+     * condomínio do edifício Merlin sul. O banco me deu esse código 4631965
+     * .
      */
     public void testCodigoImpressoBradesco() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();

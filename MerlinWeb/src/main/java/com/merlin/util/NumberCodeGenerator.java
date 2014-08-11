@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 
 public class NumberCodeGenerator {
 
+    private static final Logger logger = Logger.getLogger(NumberCodeGenerator.class.getName());
+
     private int numeroBanco;
     private int numeroMoeda = 9;
     private Date vencimento;
@@ -20,7 +22,6 @@ public class NumberCodeGenerator {
     private String nossoNumero;
     private String codigoImpresso;
     private String codigoBarras;
-    private Logger logger = Logger.getLogger("NumberCodeGenerator");
 
     public void generate() {
         codigoBarras = criarCodigoBarras();
@@ -30,11 +31,11 @@ public class NumberCodeGenerator {
 
         //Calcula a linha digitavel
         codigoImpresso = criaLinhaDigitavel(Integer.toString(dac), codigoBarras);
-        logger.log(Level.INFO, "Codigo Impresso : {0}", codigoImpresso);
+        logger.log(Level.INFO, "Codigo Impresso.................: {0}", codigoImpresso);
         codigoImpresso = formataLinhaDigitavel(codigoImpresso);
-        logger.log(Level.INFO, "Codigo Impresso Formatado: {0}", codigoImpresso);
-        logger.log(Level.INFO, "Codigo de Barras : {0}", codigoBarras);
-        logger.log(Level.INFO, "Tamanho do Codigo de Barras : {0}", codigoBarras.length());
+        logger.log(Level.INFO, "Codigo Impresso Formatado.......: {0}", codigoImpresso);
+        logger.log(Level.INFO, "Codigo de Barras................: {0}", codigoBarras);
+        logger.log(Level.INFO, "Tamanho do Codigo de Barras.....: {0}", codigoBarras.length());
     }
 
     /**
@@ -85,23 +86,31 @@ public class NumberCodeGenerator {
         return codigo.toString();
     }
 
+    /**
+     * Representa a linha digitavel formatada
+     *
+     * 23790.03102 40031.772003 28009.527905 7 10010000000000
+     *
+     * @param digitavel A linha digitavel sem formatacao
+     * @return A linha digitavel formatada
+     */
     private String formataLinhaDigitavel(String digitavel) {
-        StringBuilder retorno = new StringBuilder();
+        StringBuilder retorno = new StringBuilder(0);
         retorno.append(digitavel.substring(0, 5));
         retorno.append(".");
         retorno.append(digitavel.substring(5, 10));
         retorno.append(" ");
         retorno.append(digitavel.substring(10, 15));
         retorno.append(".");
-        retorno.append(digitavel.substring(15, 20));
+        retorno.append(digitavel.substring(15, 21));
         retorno.append(" ");
-        retorno.append(digitavel.substring(20, 25));
+        retorno.append(digitavel.substring(21, 26));
         retorno.append(".");
-        retorno.append(digitavel.substring(25, 30));
+        retorno.append(digitavel.substring(26, 32));
         retorno.append(" ");
-        retorno.append(digitavel.substring(30, 31));
+        retorno.append(digitavel.substring(32, 33));
         retorno.append(" ");
-        retorno.append(digitavel.substring(31, 47));
+        retorno.append(digitavel.substring(33, 47));
         return retorno.toString();
     }
 
@@ -326,45 +335,6 @@ public class NumberCodeGenerator {
 
         //Retorna o nosso numero já formatado de acordo
         return nossoNumeroComposto.toString();
-    }
-
-    public static void main(String[] args) {
-        NumberCodeGenerator ngc = new NumberCodeGenerator();
-        String temp = "123";
-        System.out.println(Utilitario.complete(temp, 15, "x"));
-        GregorianCalendar gc = new GregorianCalendar(2000, Calendar.JULY, 05);
-        System.out.println("Fator de vencimento = " + ngc.fatorVencimento(gc.getTime()));
-        System.out.println("Data Juliana: " + ngc.dataJuliana(gc.getTime()));
-        System.out.println("Modulo 11: " + ngc.calculaDAC("39992606014600000000304171.02092141230000093561"));
-
-        System.out.println("Teste Real\n-------------------");
-        ngc.setNumeroBanco(399); // default hsbc
-        ngc.setNumeroMoeda(9); // default hsbc
-        ngc.setVencimento(new GregorianCalendar(2009, 0, 10).getTime());
-        ngc.setProcessamento(null);
-        // ngc.setProcessamento(new GregorianCalendar(2008, 11, 17).getTime());
-        ngc.setValor(935.61);
-        ngc.setNossoNumero("000000004171"); // nao incluir os ultimos 3 digitos
-        ngc.setAgencia(Config.AGENCIA);
-        ngc.setConta(Config.CONTA);
-        ngc.setCob(0); // default hsbc
-        ngc.generate();
-        System.out.println("Codigo Impresso: " + ngc.getCodigoImpresso());
-        System.out.println("Codigo Barras:   " + ngc.getCodigoBarras());
-
-        ngc.setNumeroBanco(399); // default hsbc
-        ngc.setNumeroMoeda(9); // default hsbc
-        ngc.setVencimento(new GregorianCalendar(2004, 11, 15).getTime());
-        ngc.setProcessamento(new GregorianCalendar(2004, 11, 05).getTime());
-        ngc.setValor(0);
-        ngc.setNossoNumero("6940931037112"); // nao incluir os ultimos 3 digitos
-        ngc.setAgencia(0);
-        ngc.setConta(2201640);
-        ngc.setCob(0); // default hsbc
-        ngc.generate();
-        System.out.println("Codigo Impresso: " + ngc.getCodigoImpresso());
-        System.out.println("Codigo Barras:   " + ngc.getCodigoBarras());
-
     }
 
     public int getAgencia() {
