@@ -224,6 +224,7 @@ public class NumberCodeGenerator {
         int tmp = 0;
         int iPeso = 0;
 
+        //Os resultados das multiplicações devem ser acumulados
         for (int i = valor.length() - 1; i > -1; i--) {
             int vl = valor.charAt(i) - 48;
             int vlbase = pesos[iPeso];
@@ -235,11 +236,14 @@ public class NumberCodeGenerator {
             }
         }
 
+        //No final, o valor acumulado deverá ser dividido por 11
         int resto = tmp % 11;
+
+        //O resto da divisão deverá ser subtraído de 11
         int result = 11 - resto;
-        // Como criterio quando o resto da divisao for igual a 0 (zero), 1 (um) ou 10 (dez), o DAC adotado devera ser sempre igual a 1 (um), pois
-        // 11-0=11, 11-1=10 e 11-10=1.
-        if (resto == 0 || resto == 1 || resto == 10) {
+        //Se o resultado da subtração for igual a 0 (Zero), 1 (um) ou maior que 9 (nove) deverão assumir o dígito igual a 1 (um).
+        //Caso contrário, o resultado da subtração será o próprio dígito.
+        if (result == 0 || result == 1 || result > 9) {
             result = 1;
         }
 
