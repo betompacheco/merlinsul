@@ -247,7 +247,7 @@ public class NumberCodeGenerator {
     }
 
     public int calculaDigitoVerificadorBloco(String valor) {
-
+        logger.log(Level.INFO, "Calculando o digito verificador do bloco \"{0}\"", valor);
         int[] pesos = new int[]{2, 1};
         int tmp = 0;
         int iPeso = 0;
@@ -269,12 +269,12 @@ public class NumberCodeGenerator {
         int result = 0;
         if (tmp >= 10) {
             int multiploDeDez = tmp;
-//            resto = fator % 10;
             while ((multiploDeDez % 10) != 0) {
                 multiploDeDez++;
             }
             result = multiploDeDez - tmp;
         } else {
+            logger.log(Level.INFO, "Digito do bloco menor que dez com origem em {0} e valor igual a {1}", new Object[]{valor, tmp});
             result = tmp;
         }
         return result;
