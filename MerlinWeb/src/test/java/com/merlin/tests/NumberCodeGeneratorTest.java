@@ -43,6 +43,8 @@ public class NumberCodeGeneratorTest extends TestCase {
         //Testes gerados por valor do sistema
         assertEquals(6, ngc.calculaDigitoVerificadorBloco("237927850"));
         assertEquals(7, ngc.calculaDigitoVerificadorBloco("9000000002"));
+        assertEquals(8, ngc.calculaDigitoVerificadorBloco("6600076360"));
+        assertEquals(8, ngc.calculaDigitoVerificadorBloco("66000763608"));
         //Testes baseados no documento
         assertEquals(2, ngc.calculaDigitoVerificadorBloco("237900310"));
         assertEquals(3, ngc.calculaDigitoVerificadorBloco("4003177200"));
