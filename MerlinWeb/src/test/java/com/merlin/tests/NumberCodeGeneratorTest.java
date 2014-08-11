@@ -36,10 +36,12 @@ public class NumberCodeGeneratorTest extends TestCase {
         assertEquals(1, ngc.calculaDAC("0"));
     }
 
-    public void testCalcDigitoBloco() {
+    public void testCalculaDigitoverificadorBloco() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
+        assertEquals(6, ngc.calculaDigitoVerificadorBloco("237927850"));
+        assertEquals(7, ngc.calculaDigitoVerificadorBloco("9000000002"));
         //Teste baseado no documento
-        assertEquals(2, ngc.calculaDigitoVerificadorBloco("2379003102"));
+        assertEquals(2, ngc.calculaDigitoVerificadorBloco("237900310"));
         assertEquals(3, ngc.calculaDigitoVerificadorBloco("4003177200"));
         assertEquals(5, ngc.calculaDigitoVerificadorBloco("2800952790"));
     }

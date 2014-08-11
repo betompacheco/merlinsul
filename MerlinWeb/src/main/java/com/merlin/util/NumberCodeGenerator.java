@@ -247,7 +247,7 @@ public class NumberCodeGenerator {
     }
 
     public int calculaDigitoVerificadorBloco(String valor) {
-        int resto = 0;
+
         int[] pesos = new int[]{2, 1};
         int tmp = 0;
         int iPeso = 0;
@@ -268,14 +268,14 @@ public class NumberCodeGenerator {
         }
         int result = 0;
         if (tmp >= 10) {
-            resto = tmp % 10;
-            if (resto == 0) {
-                result = 0;
-            } else {
-                result = 10 - resto;
+            int multiploDeDez = tmp;
+//            resto = fator % 10;
+            while ((multiploDeDez % 10) != 0) {
+                multiploDeDez++;
             }
+            result = multiploDeDez - tmp;
         } else {
-            result = 10 - tmp;
+            result = tmp;
         }
         return result;
     }
