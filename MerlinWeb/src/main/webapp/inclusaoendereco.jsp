@@ -101,7 +101,7 @@
                                                 <td><h:message for="uf" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td>CEP:</td>
+                                                <td>CEP (somente números):</td>
                                                 <td><h:inputText id="cep" value="#{incluirEndereco.cep}" styleClass="caixadetexto" required="true" size="8" maxlength="8"> </h:inputText></td>
                                                 <td><h:message for="cep" errorClass="erros"/></td>
                                             </tr>
