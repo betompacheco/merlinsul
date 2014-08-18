@@ -39,6 +39,8 @@ public class NumberCodeGeneratorTest extends TestCase {
     public void testCalculaDigitoverificadorBloco() {
         NumberCodeGenerator ngc = new NumberCodeGenerator();
         //Teste do erro
+        assertEquals(9, ngc.calculaDigitoVerificadorBloco("5"));
+
         assertEquals(8, ngc.calculaDigitoVerificadorBloco("1"));
         assertEquals(7, ngc.calculaDigitoVerificadorBloco("11"));
         assertEquals(5, ngc.calculaDigitoVerificadorBloco("111"));
@@ -47,7 +49,6 @@ public class NumberCodeGeneratorTest extends TestCase {
         assertEquals(1, ngc.calculaDigitoVerificadorBloco("111111"));
         assertEquals(9, ngc.calculaDigitoVerificadorBloco("1111111"));
         assertEquals(8, ngc.calculaDigitoVerificadorBloco("11111111"));
-
         assertEquals(1, ngc.calculaDigitoVerificadorBloco("900000000"));
         //Testes gerados por valor do sistema
         assertEquals(6, ngc.calculaDigitoVerificadorBloco("237927850"));
