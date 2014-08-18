@@ -109,7 +109,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<text><![CDATA[Pagável preferencialmente na Rede Bradesco.]]></text>
+				<text><![CDATA[Pagável preferencialmente na Rede Bradesco ou Bradesco Expresso]]></text>
 			</staticText>
 			<line>
 				<reportElement key="line-2" mode="Opaque" x="-1" y="47" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
