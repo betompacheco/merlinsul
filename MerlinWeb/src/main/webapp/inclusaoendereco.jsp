@@ -102,7 +102,7 @@
                                             </tr>
                                             <tr>
                                                 <td>CEP:</td>
-                                                <td><h:inputText id="cep" value="#{incluirEndereco.cep}" styleClass="caixadetexto" required="true" size="9" maxlength="9" > </h:inputText></td>
+                                                <td><h:inputText id="cep" value="#{incluirEndereco.cep}" styleClass="caixadetexto" required="true" size="8" maxlength="8"> </h:inputText></td>
                                                 <td><h:message for="cep" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
