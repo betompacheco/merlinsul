@@ -47,7 +47,7 @@
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td>&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em <b>16/07/2014.</b></td>
+                                        <td>&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em <b>18/08/2014.</b></td>
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
