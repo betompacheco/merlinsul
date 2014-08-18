@@ -250,6 +250,12 @@ public class NumberCodeGenerator {
         return result;
     }
 
+    /**
+     * Calcula o digito verificador de cada bloco da linha digitavel
+     *
+     * @param valor O bloco a ser calculado
+     * @return O digito verificador
+     */
     public int calculaDigitoVerificadorBloco(String valor) {
         logger.log(Level.INFO, "Calculando o digito verificador do bloco \"{0}\"", valor);
         int[] pesos = new int[]{2, 1};
