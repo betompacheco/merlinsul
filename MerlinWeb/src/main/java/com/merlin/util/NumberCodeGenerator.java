@@ -277,16 +277,13 @@ public class NumberCodeGenerator {
             }
         }
         int result = 0;
-        if (tmp >= 10) {
-            int multiploDeDez = tmp;
-            while ((multiploDeDez % 10) != 0) {
-                multiploDeDez++;
-            }
-            result = multiploDeDez - tmp;
-        } else {
-            logger.log(Level.INFO, "Digito do bloco menor que dez com origem em {0} e valor igual a {1}", new Object[]{valor, tmp});
-            result = tmp;
+
+        int multiploDeDez = tmp;
+        while ((multiploDeDez % 10) != 0) {
+            multiploDeDez++;
         }
+        result = multiploDeDez - tmp;
+
         return result;
     }
 
