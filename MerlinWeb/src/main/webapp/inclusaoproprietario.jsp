@@ -43,7 +43,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Nome:</td>
-                                                <td><h:inputText id="nomeproprietario" value="#{incluirProprietario.nomeproprietario}" styleClass="caixadetexto" required="true" size="50" maxlength="50" /></td>
+                                                <td><h:inputText id="nomeproprietario" value="#{incluirProprietario.nomeproprietario}" styleClass="caixadetexto" required="true" size="40" maxlength="40" /></td>
                                                 <td><h:message for="nomeproprietario" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
