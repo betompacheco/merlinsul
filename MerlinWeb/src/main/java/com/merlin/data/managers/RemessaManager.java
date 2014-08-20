@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -131,6 +132,7 @@ public class RemessaManager {
                 sb.append(Utilitario.complete(String.format(Locale.ENGLISH, "%.2f", rs.getDouble("valormulta")), 4, " ")); //Percentual de multa
                 sb.append(Utilitario.complete(rs.getString("codigocobranca"), 11, "0"));//Identificacao do titulo no banco
 
+                //Gera o DAC de cada um dos "nosso numero"
                 NumberCodeGenerator ncg = new NumberCodeGenerator();
                 sb.append((String) ncg.comporNossoNumero(rs.getLong("codigocobranca"), "09").subSequence(15, 16));//Digito de auto conferencia do numero bancario
 
@@ -143,6 +145,7 @@ public class RemessaManager {
                 sb.append(Utilitario.complete("", 2, " "));//Branco
                 sb.append(Utilitario.complete("", 2, " "));//Identificacao da ocorrencia
                 sb.append(Utilitario.complete("", 10, " "));//Nunero do documento
+
                 sdf.applyPattern(datePattern);
                 sb.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
                 sb.append(Utilitario.complete(rs.getString("valorcobrado"), 13, " ")); //Valor do titulo
@@ -155,8 +158,14 @@ public class RemessaManager {
                 sb.append(Utilitario.complete("", 2, "0")); //Primeira Instrucao
                 sb.append(Utilitario.complete("", 2, "0")); //Primeira Instrucao
                 sb.append(Utilitario.complete("", 13, " ")); //Valor a ser cobrado por dias de atraso
-                sb.append(Utilitario.complete("??????", 6, " ")); //Data limite para concessao do desconto
-                sb.append(Utilitario.complete("", 13, " ")); //Valor do desconto
+
+                //Calcula a data do desconto com 10 dias antes da data de vencimento
+                Calendar cal = new GregorianCalendar();
+                cal.setTime(rs.getDate("datavencimento"));
+                cal.add(Calendar.DAY_OF_MONTH, -10);
+
+                sb.append(Utilitario.complete(sdf.format(cal.getTime()), 6, " ")); //Data limite para concessao do desconto
+                sb.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2), 13, " ")); //Valor do desconto
                 sb.append(Utilitario.complete("", 13, " ")); //Valor do IOF
                 sb.append(Utilitario.complete("", 13, " ")); //Valor do abatimento a ser concedido ou cancelado
                 sb.append("99"); //Identificacao do tipo de inscricao do pagador
