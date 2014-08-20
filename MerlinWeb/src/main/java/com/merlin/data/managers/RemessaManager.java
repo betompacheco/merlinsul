@@ -52,13 +52,6 @@ public class RemessaManager {
             if (rs.next()) {
                 numeroSequencialRemessa = rs.getInt("numeroremessa");
             }
-            //Incrementa o indice e atualiza a tabela
-            numeroSequencialRemessa++;
-            qry = "update  remessa set numeroremessa=?, dataemissao=?";
-            st = con.prepareStatement(qry);
-            st.setInt(1, numeroSequencialRemessa);
-            st.setDate(2, new java.sql.Date(new GregorianCalendar().getTimeInMillis()));
-            st.executeUpdate();
 
             //Consulta as cobrancas
             qry = "select c.*, p.*, e.* from proprietario as p, apartamento as a, cobranca as c, endereco as e where p.codigoproprietario = a.codigoproprietario and a.codigoapartamento = c.codigoapartamento and a.codigoapartamento = e.codigoapartamento order by codigocobranca, nomeproprietario";
@@ -167,6 +160,14 @@ public class RemessaManager {
             sequencialRegistro++;
             sb.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0"));//Número sequencial do registro de um em um
 //            sb.append(finalizador_arquivo);
+
+            //Incrementa o indice e atualiza a tabela
+            numeroSequencialRemessa++;
+            qry = "update  remessa set numeroremessa=?, dataemissao=?";
+            st = con.prepareStatement(qry);
+            st.setInt(1, numeroSequencialRemessa);
+            st.setDate(2, new java.sql.Date(new GregorianCalendar().getTimeInMillis()));
+            st.executeUpdate();
 
             return sb.toString();
         } catch (SQLException ex) {
