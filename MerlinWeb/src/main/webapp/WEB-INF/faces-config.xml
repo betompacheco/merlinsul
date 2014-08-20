@@ -183,7 +183,7 @@
         <managed-bean-class>com.merlin.beans.consultar.ImprimirMovimentos</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-    
+
     <navigation-rule>
         <from-view-id>/consultaveiculo.jsp</from-view-id>
         <navigation-case>
