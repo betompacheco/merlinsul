@@ -6,15 +6,19 @@
 package com.merlin.data.managers;
 
 import com.merlin.data.DataBase;
+import com.merlin.data.dto.RemessaDTO;
 import com.merlin.util.NumberCodeGenerator;
 import com.merlin.util.Utilitario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +35,12 @@ public class RemessaManager {
     private final String delimitador_registro = "\r\n";
     private final byte finalizador_arquivo = 0x1A;
 
+    public RemessaManager() {
+        this.ano = 0;
+        this.mes = 0;
+        this.isForTest = false;
+    }
+
     public RemessaManager(int ano, int mes, boolean isForTest) {
         this.ano = ano;
         this.mes = mes;
@@ -46,7 +56,7 @@ public class RemessaManager {
 
             //Obtem o indice
             int numeroSequencialRemessa = 0;
-            qry = "select numeroremessa from remessa";
+            qry = "SELECT numeroremessa FROM remessa";
             Statement sta = con.createStatement();
             rs = sta.executeQuery(qry);
             if (rs.next()) {
@@ -54,8 +64,10 @@ public class RemessaManager {
             }
 
             //Consulta as cobrancas
-            qry = "select c.*, p.*, e.* from proprietario as p, apartamento as a, cobranca as c, endereco as e where p.codigoproprietario = a.codigoproprietario and a.codigoapartamento = c.codigoapartamento and a.codigoapartamento = e.codigoapartamento order by codigocobranca, nomeproprietario";
+            qry = "SELECT c.*, p.*, e.* FROM proprietario AS p, apartamento AS a, cobranca AS c, endereco AS e WHERE p.codigoproprietario = a.codigoproprietario AND a.codigoapartamento = c.codigoapartamento AND a.codigoapartamento = e.codigoapartamento ORDER BY codigocobranca, nomeproprietario";
             st = con.prepareStatement(qry);
+//            st.setDate(1, null);
+//            st.setDate(2, null);
             rs = st.executeQuery();
 
             //Verifica se existem dados de cobranca
@@ -174,5 +186,85 @@ public class RemessaManager {
             logger.log(Level.INFO, ex.getMessage());
         }
         return "";
+    }
+
+    public boolean update(RemessaDTO remessa) {
+        boolean ok = true;
+        Connection con = DataBase.getConnection();
+        try {
+            String qry = "update remessa set numeroremessa=?, dataemissao=? where codigoremessa=? ";
+            PreparedStatement st = con.prepareStatement(qry);
+            st.setInt(1, remessa.getNumeroRemessa());
+            st.setDate(2, (Date) remessa.getDataEmissao());
+            st.setInt(3, remessa.getCodigoRemessa());
+
+            int retorno = st.executeUpdate();
+            if (retorno < 1) {
+                ok = false;
+            }
+
+        } catch (SQLException e) {
+            ok = false;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+            }
+        }
+        return ok;
+    }
+
+    public List<RemessaDTO> select(Object filtro) {
+        Connection con = DataBase.getConnection();
+        List<RemessaDTO> retorno = new ArrayList<RemessaDTO>();
+        String qry;
+        PreparedStatement st;
+        try {
+            if (filtro instanceof String) {
+                qry = "select * from remessa where numeroremessa like ? order by numeroremessa";
+                st = con.prepareStatement(qry);
+                st.setString(1, filtro + "%");
+            } else if (filtro instanceof Integer) {
+                qry = "select * from remessa where codigoremessa = ?  order by numeroremessa";
+                st = con.prepareStatement(qry);
+                st.setInt(1, ((Integer) filtro));
+            } else {
+                return null;
+            }
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                RemessaDTO remessa = new RemessaDTO();
+                remessa.setCodigoRemessa(rs.getInt("codigoremessa"));
+                remessa.setNumeroRemessa(rs.getInt("numeroremessa"));
+                remessa.setDataEmissao(rs.getDate("dataemissao"));
+                retorno.add(remessa);
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.INFO, e.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                logger.log(Level.INFO, e.getMessage());
+            }
+        }
+        return retorno;
+    }
+
+    public RemessaDTO select(int filtro) {
+        List<RemessaDTO> lista = select(new Integer(filtro));
+        if (lista.size() > 0) {
+            return lista.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public RemessaDTO getNewBean() {
+        RemessaDTO remessa = new RemessaDTO();
+        remessa.setCodigoRemessa(1);
+        return remessa;
     }
 }

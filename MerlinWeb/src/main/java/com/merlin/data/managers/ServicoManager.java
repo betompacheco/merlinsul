@@ -18,16 +18,16 @@ public class ServicoManager {
 
     private final static Logger logger = Logger.getLogger(ServicoManager.class.getName());
 
-    public boolean update(ServicoDTO pb) {
+    public boolean update(ServicoDTO servico) {
         boolean ok = true;
         Connection con = DataBase.getConnection();
         try {
             String qry = "update servico set " + "nomeservico=?, " + "valorservico=?, " + "tiposervico=? " + "where codigoservico=? ";
             PreparedStatement st = con.prepareStatement(qry);
-            st.setString(1, pb.getNomeServico());
-            st.setDouble(2, pb.getValorServico());
-            st.setString(3, pb.getTipoServico());
-            st.setInt(4, pb.getCodigoServico().intValue());
+            st.setString(1, servico.getNomeServico());
+            st.setDouble(2, servico.getValorServico());
+            st.setString(3, servico.getTipoServico());
+            st.setInt(4, servico.getCodigoServico().intValue());
 
             int retorno = st.executeUpdate();
             if (retorno < 1) {
