@@ -49,9 +49,9 @@
                                                 <td><h:message for="numeroRemessa" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td>Data e hora da emissão (somente leitura):</td>
-                                                <td><h:inputText id="dataEmissao" value="#{incluirRemessa.dataEmissao}" required="true" size="18" readonly="true" >
-                                                        <f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss"/>
+                                                <td>Data da última emissão (somente leitura):</td>
+                                                <td><h:inputText id="dataEmissao" value="#{incluirRemessa.dataEmissao}" required="true" size="10" readonly="true" >
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                     </h:inputText>
                                                 </td>
                                                 <td><h:message for="dataEmissao" errorClass="erros"/></td>
