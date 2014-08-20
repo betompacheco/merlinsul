@@ -314,9 +314,7 @@ public class CobrancaManager {
             }
             st.setInt(10, cobranca.getCodigoMensagen());
             st.setInt(11, cobranca.getCodigoApartamento());
-
             st.setInt(12, cobranca.getCodigoCobranca());
-
             st.executeUpdate();
 
         } catch (SQLException e) {
