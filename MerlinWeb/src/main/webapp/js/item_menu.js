@@ -100,4 +100,4 @@ Menu5_2 = new Array("Incluir Mensagem", "inclusaomensagem.faces", "", 0, 25, 180
 Menu5_3 = new Array("Incluir Serviço", "inclusaoservico.faces", "", 0, 25, 180);
 
 Menu6 = new Array("Manutenção", "#", "", 1, 25, 125);
-Menu6_1 = new Array("Alterar Sequencial da Remessa", "atualizaSequencialRemessa.faces", "", 0, 25, 180);
+Menu6_1 = new Array("Alterar Sequencial da Remessa", "atualizasequencialremessa.faces", "", 0, 25, 200);
