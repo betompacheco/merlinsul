@@ -25,6 +25,9 @@
 }
 
 .orange {
+    font-size: 12px;
+    width: 100px;
+    height: 30px;
     color: #fef4e9;
     border: solid 1px #da7c0c;
     background: #f78d1d;
