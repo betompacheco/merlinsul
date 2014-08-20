@@ -76,11 +76,6 @@
                                                 <td><h:message for="mes" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td>&nbsp;</td>
-                                                <td><h:selectBooleanCheckbox id="remember" value="#{gerarRemessa.isForTest}"/>&nbsp;Gerar arquivo somente para teste?</td>
-                                                <td>&nbsp;</td>
-                                            </tr>
-                                            <tr>
                                                 <td colspan="3"><h:commandButton value="Gerar Remessa" action="#{gerarRemessa.doGerar}" styleClass="botao" /></td>
                                             </tr>
                                         </table>
@@ -89,7 +84,6 @@
                                         <form name="frameRemessa" action="remessaDownload" method="post" target="_blank">
                                             <input type="hidden" name="ano" value='<h:outputText value="#{gerarRemessa.ano}"/>'>
                                             <input type="hidden" name="mes" value='<h:outputText value="#{gerarRemessa.mes}"/>'>
-                                            <input type="hidden" name="isForTest" value='<h:outputText value="#{gerarRemessa.isForTest}"/>'>
                                         </form>
                                         <script>
                                             document.frameRemessa.submit();

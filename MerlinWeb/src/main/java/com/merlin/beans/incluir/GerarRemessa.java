@@ -10,7 +10,6 @@ public class GerarRemessa {
 
     private String mes;
     private String ano;
-    private boolean isForTest;
     private boolean flagOk = false;
 
     public GerarRemessa() {
@@ -50,20 +49,6 @@ public class GerarRemessa {
      */
     public void setAno(String ano) {
         this.ano = ano;
-    }
-
-    /**
-     * @return the isForTest
-     */
-    public boolean isIsForTest() {
-        return isForTest;
-    }
-
-    /**
-     * @param isForTest the isForTest to set
-     */
-    public void setIsForTest(boolean isForTest) {
-        this.isForTest = isForTest;
     }
 
     public boolean isFlagOk() {

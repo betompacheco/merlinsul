@@ -31,7 +31,6 @@ public class RemessaManager {
 
     private final int ano;
     private final int mes;
-    private final boolean isForTest;
 
     private final String datePattern = "ddMMyy";
     private final String delimitador_registro = "\r\n";
@@ -40,13 +39,11 @@ public class RemessaManager {
     public RemessaManager() {
         this.ano = 0;
         this.mes = 0;
-        this.isForTest = false;
     }
 
     public RemessaManager(int ano, int mes, boolean isForTest) {
         this.ano = ano;
         this.mes = mes;
-        this.isForTest = isForTest;
     }
 
     public String montaRemessa() {
@@ -82,10 +79,6 @@ public class RemessaManager {
             //Verifica se existem dados de cobranca
             if (!rs.isBeforeFirst()) {
                 return "Nao existem dados a serem colocados na remessa.";
-            }
-
-            if (isForTest) {
-                logger.log(Level.INFO, "Gerando o arquivo somente para teste, implementar...");
             }
 
             StringBuilder sb = new StringBuilder();
