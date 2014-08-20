@@ -35,31 +35,42 @@
                                 <!-- inicio do conteudo -->
                                 <table border="0">
                                     <tr>
-                                        <td><h2>Bem Vindo</h2></td>
+                                        <td colspan="2"><h2>Bem Vindo</h2></td>
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;</td>
+                                        <td colspan="2">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td>Bem vindo ao sistema de controle do Condom&iacute;nio MERLIN SUL.</td>
+                                        <td colspan="2">Bem vindo ao sistema de controle do Condom&iacute;nio MERLIN SUL.</td>
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;</td>
+                                        <td colspan="2">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td>&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em <b>20/08/2014.</b></td>
+                                        <td colspan="2">&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em <b>20/08/2014.</b></td>
                                     </tr>
                                     <tr>
-                                        <td>&nbsp;</td>
+                                        <td colspan="2">&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <a href="inclusaoorcamento.faces" class="button orange">Incluir Or&ccedil;amentos</a>
+                                        </td>
+
+                                        <td>
                                             <a href="inclusaocobranca.faces"class="button orange">Gerar Cobran&ccedil;as</a>
-                                            <a href="imprimirboleto.faces" class="button orange">Emitir Boletos Banc&aacute;rios</a>
                                         </td>
                                     </tr>
-                                </table>
+                                    <tr>
+                                        <td>
+                                            <a href="imprimirboleto.faces" class="button orange">Emitir Boletos Banc&aacute;rios</a>
+                                        </td>
+
+                                        <td><a href="inclusaoremessa.faces" class="button orange">Emitir Arquivo Remessa</a></td>
+                                    </tr>
                             </td>
-                            </body>
-                            </html>
+                        </tr>
+                    </table>
+                </td>
+                </body>
+                </html>
