@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -40,14 +41,29 @@ public class RemessaManager {
         try {
             Connection con = DataBase.getConnection();
             String qry;
-            PreparedStatement st;
+            PreparedStatement st = null;
+            ResultSet rs = null;
 
+            //Obtem o indice
+            int numeroSequencialRemessa = 0;
+            qry = "select numeroremessa from remessa";
+            Statement sta = con.createStatement();
+            rs = sta.executeQuery(qry);
+            if (rs.next()) {
+                numeroSequencialRemessa = rs.getInt("numeroremessa");
+            }
+            //Incrementa o indice e atualiza a tabela
+            numeroSequencialRemessa++;
+            qry = "update  remessa set numeroremessa=?, dataemissao=?";
+            st = con.prepareStatement(qry);
+            st.setInt(1, numeroSequencialRemessa);
+            st.setDate(2, new java.sql.Date(new GregorianCalendar().getTimeInMillis()));
+            st.executeUpdate();
+
+            //Consulta as cobrancas
             qry = "select c.*, p.*, e.* from proprietario as p, apartamento as a, cobranca as c, endereco as e where p.codigoproprietario = a.codigoproprietario and a.codigoapartamento = c.codigoapartamento and a.codigoapartamento = e.codigoapartamento order by codigocobranca, nomeproprietario";
             st = con.prepareStatement(qry);
-//        st.setInt(1, condominio);
-//        st.setInt(2, numero);
-
-            ResultSet rs = st.executeQuery();
+            rs = st.executeQuery();
 
             //Verifica se existem dados de cobranca
             if (!rs.isBeforeFirst()) {
@@ -80,7 +96,7 @@ public class RemessaManager {
 
             sb.append(Utilitario.complete("", 8, " "));//Branco
             sb.append("MX"); //Identificacao do sistema
-            sb.append(Utilitario.complete("1", 7, "0"));//Numero sequencial da remessa //TODO Implementar sequencial
+            sb.append(Utilitario.complete(Integer.toString(numeroSequencialRemessa), 7, "0"));//Numero sequencial da remessa
             sb.append(Utilitario.complete("", 277, " "));//Branco
             sb.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0"));//Número sequencial do registro de um em um
             sb.append(delimitador_registro);
