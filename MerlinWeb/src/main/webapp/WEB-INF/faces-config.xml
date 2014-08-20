@@ -15,21 +15,25 @@
         <managed-bean-class>com.merlin.beans.consultar.ImprimirBoleto</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>gerarCobranca</managed-bean-name>
         <managed-bean-class>com.merlin.beans.incluir.GerarCobranca</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>gerarRemessa</managed-bean-name>
         <managed-bean-class>com.merlin.beans.incluir.GerarRemessa</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>consultarCobranca</managed-bean-name>
         <managed-bean-class>com.merlin.beans.consultar.ConsultarCobranca</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>combos</managed-bean-name>
         <managed-bean-class>com.merlin.data.combo.Combos</managed-bean-class>
@@ -47,7 +51,6 @@
         <managed-bean-class>com.merlin.beans.consultar.ConsultarMensagem</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-
 
     <managed-bean>
         <managed-bean-name>incluirVeiculo</managed-bean-name>
@@ -126,8 +129,8 @@
         <managed-bean-class>com.merlin.beans.incluir.IncluirServicoUtilizado</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-
     <managed-bean>
+
         <managed-bean-name>consultarServicoUtilizado</managed-bean-name>
         <managed-bean-class>com.merlin.beans.consultar.ConsultarServicoUtilizado</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
@@ -146,15 +149,23 @@
     </managed-bean>
 
     <managed-bean>
+        <managed-bean-name>incluirRemessa</managed-bean-name>
+        <managed-bean-class>com.merlin.beans.incluir.IncluirRemessa</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
         <managed-bean-name>imprimirVeiculos</managed-bean-name>
         <managed-bean-class>com.merlin.beans.consultar.ImprimirVeiculos</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>imprimirProprietarios</managed-bean-name>
         <managed-bean-class>com.merlin.beans.consultar.ImprimirProprietarios</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
     <managed-bean>
         <managed-bean-name>imprimirInadimplentes</managed-bean-name>
         <managed-bean-class>com.merlin.beans.consultar.ImprimirInadimplentes</managed-bean-class>
@@ -172,7 +183,7 @@
         <managed-bean-class>com.merlin.beans.consultar.ImprimirMovimentos</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-
+    
     <navigation-rule>
         <from-view-id>/consultaveiculo.jsp</from-view-id>
         <navigation-case>
@@ -228,7 +239,6 @@
             <to-view-id>/inclusaoservicoutilizado.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
-
 
     <navigation-rule>
         <from-view-id>/consultaorcamento.jsp</from-view-id>
