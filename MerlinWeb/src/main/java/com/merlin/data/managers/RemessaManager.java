@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
@@ -64,10 +65,17 @@ public class RemessaManager {
             }
 
             //Consulta as cobrancas
-            qry = "SELECT c.*, p.*, e.* FROM proprietario AS p, apartamento AS a, cobranca AS c, endereco AS e WHERE p.codigoproprietario = a.codigoproprietario AND a.codigoapartamento = c.codigoapartamento AND a.codigoapartamento = e.codigoapartamento ORDER BY codigocobranca, nomeproprietario";
+            qry = "SELECT c.*, p.*, e.* FROM proprietario AS p, apartamento AS a, cobranca AS c, endereco AS e WHERE p.codigoproprietario = a.codigoproprietario AND a.codigoapartamento = c.codigoapartamento AND a.codigoapartamento = e.codigoapartamento AND c.datavencimento BETWEEN ? AND ? ORDER BY codigocobranca, nomeproprietario";
             st = con.prepareStatement(qry);
-//            st.setDate(1, null);
-//            st.setDate(2, null);
+
+            Calendar c = Calendar.getInstance();
+            c.set(Calendar.YEAR, ano);
+            c.set(Calendar.MONTH, mes);
+            int diaInicioMes = c.getActualMinimum(Calendar.DAY_OF_MONTH);
+            int diaFinalMes = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+            st.setDate(1, new Date(new GregorianCalendar(ano, mes, diaInicioMes).getTimeInMillis()));
+            st.setDate(2, new Date(new GregorianCalendar(ano, mes, diaFinalMes).getTimeInMillis()));
             rs = st.executeQuery();
 
             //Verifica se existem dados de cobranca
@@ -178,7 +186,7 @@ public class RemessaManager {
             qry = "update  remessa set numeroremessa=?, dataemissao=?";
             st = con.prepareStatement(qry);
             st.setInt(1, numeroSequencialRemessa);
-            st.setDate(2, new java.sql.Date(new GregorianCalendar().getTimeInMillis()));
+            st.setDate(2, new Date(new GregorianCalendar().getTimeInMillis()));
             st.executeUpdate();
 
             return sb.toString();
