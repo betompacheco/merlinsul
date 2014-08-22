@@ -32,10 +32,10 @@ public class RemessaDownload extends HttpServlet {
 
         RemessaManager rm = new RemessaManager(ano, mes, isForTest);
 
-        String horaDataRemessa = new SimpleDateFormat("HH_mm_ss_dd_MM_yyyy").format(new GregorianCalendar().getTime());
+        String horaDataRemessa = new SimpleDateFormat("ddMM").format(new GregorianCalendar().getTime());
 
         resp.setContentType("text/plain");
-        resp.setHeader("Content-Disposition", "attachment;filename=remessa-".concat(horaDataRemessa).concat(".txt"));
+        resp.setHeader("Content-Disposition", "attachment;filename=CB".concat(horaDataRemessa).concat("MS.REM"));
         OutputStream os = resp.getOutputStream();
         os.write(rm.montaRemessa().getBytes());
 
