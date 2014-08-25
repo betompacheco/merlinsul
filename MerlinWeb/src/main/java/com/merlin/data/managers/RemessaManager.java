@@ -188,7 +188,7 @@ public class RemessaManager {
             sequencialRegistro++;
             linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0"));//Número sequencial do registro de um em um
             //Finalizador de arquivo, no final do trailler, (1A)
-            linha.append(FINALIZADOR_ARQUIVO);
+//            linha.append(FINALIZADOR_ARQUIVO);
 
             //Incrementa o indice e atualiza a tabela
             numeroSequencialRemessa++;
