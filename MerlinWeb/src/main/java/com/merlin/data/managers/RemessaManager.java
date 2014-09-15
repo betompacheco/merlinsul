@@ -145,7 +145,7 @@ public class RemessaManager {
 
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
-                linha.append(Utilitario.complete(rs.getString("valorcobrado"), 13, " ", Direcao.ESQUERDA)); //Valor do titulo
+                linha.append(Utilitario.complete(rs.getString("valorcobrado").replace(".", ""), 13, " ", Direcao.DIREITA)); //Valor do titulo
                 linha.append(Utilitario.complete("", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
                 linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Agencia depositaria (Preencher com zeros)
                 linha.append("99"); //Especie do titulo
@@ -162,7 +162,7 @@ public class RemessaManager {
                 cal.add(Calendar.DAY_OF_MONTH, -10);
 
                 linha.append(Utilitario.complete(sdf.format(cal.getTime()), 6, " ", Direcao.ESQUERDA)); //Data limite para concessao do desconto
-                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2), 13, " ", Direcao.ESQUERDA)); //Valor do desconto
+                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2), 13, " ", Direcao.DIREITA)); //Valor do desconto
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do IOF
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do abatimento a ser concedido ou cancelado
                 linha.append("99"); //Identificacao do tipo de inscricao do pagador
