@@ -1,5 +1,6 @@
 package com.merlin.util;
 
+import com.merlin.util.Utilitario.Direcao;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -49,8 +50,8 @@ public class NumberCodeGenerator {
         StringBuilder tmp = new StringBuilder();
 
         // Adiciona o primeiro bloco
-        tmp.append(Utilitario.complete(Integer.toString(numeroBanco), 3, "0")); // 01 a 03, Identificacao do Banco
-        tmp.append(Utilitario.complete(Integer.toString(numeroMoeda), 1, "0")); // 04 a 04, Código da Moeda (Real = 9)
+        tmp.append(Utilitario.complete(Integer.toString(numeroBanco), 3, "0", Direcao.DIREITA)); // 01 a 03, Identificacao do Banco
+        tmp.append(Utilitario.complete(Integer.toString(numeroMoeda), 1, "0", Direcao.DIREITA)); // 04 a 04, Codigo da Moeda (Real = 9)
         tmp.append(codigoBarrasSemDAC.substring(19, 24));// Cinco primeiras posicoes do campo livre
         tmp.append(calculaDigitoVerificadorBloco(tmp.toString())); // Digito de verificacao do primeiro bloco
         codigo.append(tmp);
@@ -72,14 +73,14 @@ public class NumberCodeGenerator {
 
         // Adiciona o quinto bloco
         tmp = new StringBuilder();
-        tmp.append(Utilitario.complete(Long.toString(fatorVencimento(vencimento)), 4, "0"));// Adiciona o fator de vencimento
+        tmp.append(Utilitario.complete(Long.toString(fatorVencimento(vencimento)), 4, "0", Direcao.DIREITA));// Adiciona o fator de vencimento
 
         //Adiciona o valor do documento
         int valor = valorSemPonto(this.valor);
         if (valor == 0) {
-            tmp.append(Utilitario.complete("", 10, "0"));
+            tmp.append(Utilitario.complete("", 10, "0", Direcao.DIREITA));
         } else {
-            tmp.append(Utilitario.complete(Integer.toString(valor), 10, "0"));
+            tmp.append(Utilitario.complete(Integer.toString(valor), 10, "0", Direcao.DIREITA));
         }
         codigo.append(tmp);
 
@@ -119,37 +120,37 @@ public class NumberCodeGenerator {
         StringBuilder tmp = new StringBuilder();
 
         // Adiciona o numero do banco
-        tmp.append(Utilitario.complete(Integer.toString(numeroBanco), 3, "0"));
+        tmp.append(Utilitario.complete(Integer.toString(numeroBanco), 3, "0", Direcao.DIREITA));
         // Adiciona o tipo de moeda
-        tmp.append(Utilitario.complete(Integer.toString(numeroMoeda), 1, "0"));
+        tmp.append(Utilitario.complete(Integer.toString(numeroMoeda), 1, "0", Direcao.DIREITA));
 
         // Adiciona o fator de Vencimento
-        tmp.append(Utilitario.complete(Long.toString(fatorVencimento(vencimento)), 4, "0"));
+        tmp.append(Utilitario.complete(Long.toString(fatorVencimento(vencimento)), 4, "0", Direcao.DIREITA));
 
         // Adiciona o valor do Documento
         int valor = valorSemPonto(this.valor);
         if (valor == 0) {
-            tmp.append(Utilitario.complete("", 10, "0"));
+            tmp.append(Utilitario.complete("", 10, "0", Direcao.DIREITA));
         } else {
-            tmp.append(Utilitario.complete(Integer.toString(valor), 10, "0"));
+            tmp.append(Utilitario.complete(Integer.toString(valor), 10, "0", Direcao.DIREITA));
         }
 
         //Adiciona a agencia
-        tmp.append(Utilitario.complete(Long.toString(agencia), 4, "0"));
+        tmp.append(Utilitario.complete(Long.toString(agencia), 4, "0", Direcao.DIREITA));
 
         //Adiciona a carteira
-        tmp.append(Utilitario.complete(carteira, 2, "0"));
+        tmp.append(Utilitario.complete(carteira, 2, "0", Direcao.DIREITA));
 
         //Adiciona o nosso numero
-        String codigodocumento = Utilitario.complete(nossoNumero, 11, "0");
+        String codigodocumento = Utilitario.complete(nossoNumero, 11, "0", Direcao.DIREITA);
         tmp.append(codigodocumento);
 
         //Adiciona a conta
-        String codigocedente = Utilitario.complete(Long.toString(conta), 7, "0");
+        String codigocedente = Utilitario.complete(Long.toString(conta), 7, "0", Direcao.DIREITA);
         tmp.append(codigocedente);
 
         // Preenche o restante com zeros
-        tmp.append(Utilitario.complete("", 1, "0"));
+        tmp.append(Utilitario.complete("", 1, "0", Direcao.DIREITA));
 
         codigo.append(tmp);
         return codigo.toString();
@@ -334,7 +335,7 @@ public class NumberCodeGenerator {
         nossoNumeroComposto.append(carteira).append("/");
 
         //Formata o nosso numero para 11 digitos
-        String nossoNumeroParcial = Utilitario.complete(Long.toString(codigoDoSacado), 11, "0");
+        String nossoNumeroParcial = Utilitario.complete(Long.toString(codigoDoSacado), 11, "0", Direcao.DIREITA);
         nossoNumeroComposto.append(nossoNumeroParcial).append("-");
 
         //Efetua o calculo do DAC do numero

@@ -9,6 +9,7 @@ import com.merlin.data.DataBase;
 import com.merlin.data.dto.RemessaDTO;
 import com.merlin.util.NumberCodeGenerator;
 import com.merlin.util.Utilitario;
+import com.merlin.util.Utilitario.Direcao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -34,8 +35,6 @@ public class RemessaManager {
 
     private final String datePattern = "ddMMyy";
     private final String DELIMITADOR_REGISTRO = "\r\n";
-    private final byte[] EOL_REGISTRY = {0x0D, 0x0A};
-    private final byte FINALIZADOR_ARQUIVO = 0x1A;
 
     public RemessaManager() {
         this.ano = 0;
@@ -93,20 +92,20 @@ public class RemessaManager {
             linha.append("1");//Identificador do arquivo remessa
             linha.append("REMESSA");//Literal Remessa
             linha.append("01");//Codigo de servico
-            linha.append(Utilitario.complete("COBRANCA", 15, " "));//Literal Serviço
-            linha.append(Utilitario.complete("4631965", 20, "0"));//Codigo da empresa
-            linha.append(Utilitario.complete("CONDOMINIO ED MERLIN SUL", 30, " "));//Nome da empresa
+            linha.append(Utilitario.complete("COBRANCA", 15, " ", Direcao.ESQUERDA));//Literal Serviço
+            linha.append(Utilitario.complete("4631965", 20, "0", Direcao.ESQUERDA));//Codigo da empresa
+            linha.append(Utilitario.complete("CONDOMINIO ED MERLIN SUL", 30, " ", Direcao.ESQUERDA));//Nome da empresa
             linha.append("237"); //Numero do Bradesco na camara de compensacao
-            linha.append(Utilitario.complete("Bradesco", 15, " "));//Nome do banco por extenso
+            linha.append(Utilitario.complete("BRADESCO", 15, " ", Direcao.ESQUERDA));//Nome do banco por extenso
 
             sdf.applyPattern(datePattern);
             linha.append(sdf.format(new GregorianCalendar().getTime()));//Data da Gravacao do arquivo
 
-            linha.append(Utilitario.complete("", 8, " "));//Branco
+            linha.append(Utilitario.complete("", 8, " ", Direcao.ESQUERDA));//Branco
             linha.append("MX"); //Identificacao do sistema
-            linha.append(Utilitario.complete(Integer.toString(numeroSequencialRemessa), 7, "0"));//Numero sequencial da remessa
-            linha.append(Utilitario.complete("", 277, " "));//Branco
-            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0"));//Número sequencial do registro de um em um
+            linha.append(Utilitario.complete(Integer.toString(numeroSequencialRemessa), 7, "0", Direcao.ESQUERDA));//Numero sequencial da remessa
+            linha.append(Utilitario.complete("", 277, " ", Direcao.ESQUERDA));//Branco
+            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.ESQUERDA));//Número sequencial do registro de um em um
 
             //Registro no final de cada registro, (ODOA)
             linha.append(DELIMITADOR_REGISTRO);
@@ -118,65 +117,65 @@ public class RemessaManager {
 
             while (rs.next()) {
                 linha.append("1");//Identificacao do registro
-                linha.append(Utilitario.complete("", 5, " ")); //Agencia de debito (Opcional)
-                linha.append(Utilitario.complete("", 1, " ")); //Digito da agencia de debito (Opcional)
-                linha.append(Utilitario.complete("", 5, " ")); //Razao da conta corrente (Opcional)
-                linha.append(Utilitario.complete("", 7, " ")); //Conta corrente (Opcional)
-                linha.append(Utilitario.complete("", 1, " ")); //Digito da conta corrente (Opcional)
-                linha.append(Utilitario.complete("009278576368", 17, " ")); //Identificacao da empresa beneficiaria no banco
-                linha.append(Utilitario.complete("", 25, " ")); //Numero de controle do participante (Uso da empresa)
+                linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Agencia de debito (Opcional)
+                linha.append(Utilitario.complete("", 1, "0", Direcao.ESQUERDA)); //Digito da agencia de debito (Opcional)
+                linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Razao da conta corrente (Opcional)
+                linha.append(Utilitario.complete("", 7, "0", Direcao.ESQUERDA)); //Conta corrente (Opcional)
+                linha.append(Utilitario.complete("", 1, "0", Direcao.ESQUERDA)); //Digito da conta corrente (Opcional)
+                linha.append(Utilitario.complete("0090278500076368", 17, " ", Direcao.ESQUERDA)); //Identificacao da empresa beneficiaria no banco
+                linha.append(Utilitario.complete("", 25, " ", Direcao.ESQUERDA)); //Numero de controle do participante (Uso da empresa)
                 linha.append("000"); //Codigo do banco a ser debitado na camara de compensacao
                 linha.append("2"); //Campo de multa, 2 se condiderar multa, 0 se sem multa
-                linha.append(Utilitario.complete(String.format(Locale.ENGLISH, "%.2f", rs.getDouble("valormulta")), 4, " ")); //Percentual de multa
-                linha.append(Utilitario.complete(rs.getString("codigocobranca"), 11, "0"));//Identificacao do titulo no banco
+                linha.append(Utilitario.complete(String.format(Locale.ENGLISH, "%02d", rs.getInt("valormulta")), 4, "0", Direcao.ESQUERDA)); //Percentual de multa
+                linha.append(Utilitario.complete(rs.getString("codigocobranca"), 11, "0", Direcao.ESQUERDA));//Identificacao do titulo no banco
 
                 //Gera o DAC de cada um dos "nosso numero"
                 NumberCodeGenerator ncg = new NumberCodeGenerator();
                 linha.append((String) ncg.comporNossoNumero(rs.getLong("codigocobranca"), "09").subSequence(15, 16));//Digito de auto conferencia do numero bancario
 
-                linha.append(Utilitario.complete("", 10, " "));//Desconto de bonificacao por dia
+                linha.append(Utilitario.complete("", 10, "0", Direcao.ESQUERDA));//Desconto de bonificacao por dia
                 linha.append("2");//Condicao de emissao da papeleta de cobranca
                 linha.append("N");//Ident se emite boleto para debito automatico
-                linha.append(Utilitario.complete("", 10, " "));//Identifcacao da operacao do banco (Brancos)
+                linha.append(Utilitario.complete("", 10, " ", Direcao.ESQUERDA));//Identifcacao da operacao do banco (Brancos)
                 linha.append(" ");//Indicador rateio credito (opcional)
                 linha.append(" ");//Enderecamento para aviso de debito automatico em conta corrente (opcional)
-                linha.append(Utilitario.complete("", 2, " "));//Branco
-                linha.append(Utilitario.complete("", 2, " "));//Identificacao da ocorrencia
-                linha.append(Utilitario.complete("", 10, " "));//Nunero do documento
+                linha.append(Utilitario.complete("", 2, " ", Direcao.ESQUERDA));//Branco
+                linha.append(Utilitario.complete("01", 2, " ", Direcao.ESQUERDA));//Identificacao da ocorrencia
+                linha.append(Utilitario.complete("", 10, " ", Direcao.ESQUERDA));//Nunero do documento
 
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
-                linha.append(Utilitario.complete(rs.getString("valorcobrado"), 13, " ")); //Valor do titulo
-                linha.append(Utilitario.complete("", 3, "0")); //Banco encarregado da cobranca (Preencher com zeros)
-                linha.append(Utilitario.complete("", 5, " ")); //Agencia depositaria (Preencher com zeros)
+                linha.append(Utilitario.complete(rs.getString("valorcobrado"), 13, " ", Direcao.ESQUERDA)); //Valor do titulo
+                linha.append(Utilitario.complete("", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
+                linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Agencia depositaria (Preencher com zeros)
                 linha.append("99"); //Especie do titulo
                 linha.append("N"); //Identificacao
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("dataemissao"))); //Data de emissao do titulo
-                linha.append(Utilitario.complete("", 2, "0")); //Primeira Instrucao
-                linha.append(Utilitario.complete("", 2, "0")); //Primeira Instrucao
-                linha.append(Utilitario.complete("", 13, " ")); //Valor a ser cobrado por dias de atraso
+                linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
+                linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
+                linha.append(Utilitario.complete("", 13, " ", Direcao.ESQUERDA)); //Valor a ser cobrado por dias de atraso
 
                 //Calcula a data do desconto com 10 dias antes da data de vencimento
                 Calendar cal = new GregorianCalendar();
                 cal.setTime(rs.getDate("datavencimento"));
                 cal.add(Calendar.DAY_OF_MONTH, -10);
 
-                linha.append(Utilitario.complete(sdf.format(cal.getTime()), 6, " ")); //Data limite para concessao do desconto
-                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2), 13, " ")); //Valor do desconto
-                linha.append(Utilitario.complete("", 13, " ")); //Valor do IOF
-                linha.append(Utilitario.complete("", 13, " ")); //Valor do abatimento a ser concedido ou cancelado
+                linha.append(Utilitario.complete(sdf.format(cal.getTime()), 6, " ", Direcao.ESQUERDA)); //Data limite para concessao do desconto
+                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2), 13, " ", Direcao.ESQUERDA)); //Valor do desconto
+                linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do IOF
+                linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do abatimento a ser concedido ou cancelado
                 linha.append("99"); //Identificacao do tipo de inscricao do pagador
-                linha.append(Utilitario.complete("", 14, " ")); //Numero de inscricao do pagador
-                linha.append(Utilitario.complete(rs.getString("nomeproprietario"), 40, " ")); //Nome do pagador
-                linha.append(Utilitario.complete(rs.getString("logradouro"), 40, " ")); //Endereco completo
-                linha.append(Utilitario.complete("", 12, " ")); //1ª Mensagem
-                linha.append(Utilitario.complete(rs.getString("cep").substring(0, 5), 5, " ")); //CEP
-                linha.append(Utilitario.complete(rs.getString("cep").substring(5, 8), 3, " ")); //Sufixo do CEP
-                linha.append(Utilitario.complete("", 60, " ")); //Sacador/Avalista ou 2ª Mensagem
+                linha.append(Utilitario.complete("", 14, "0", Direcao.ESQUERDA)); //Numero de inscricao do pagador
+                linha.append(Utilitario.complete(rs.getString("nomeproprietario"), 40, " ", Direcao.ESQUERDA)); //Nome do pagador
+                linha.append(Utilitario.complete(rs.getString("logradouro"), 40, " ", Direcao.ESQUERDA)); //Endereco completo
+                linha.append(Utilitario.complete("", 12, " ", Direcao.ESQUERDA)); //1ª Mensagem
+                linha.append(Utilitario.complete(rs.getString("cep").substring(0, 5), 5, " ", Direcao.ESQUERDA)); //CEP
+                linha.append(Utilitario.complete(rs.getString("cep").substring(5, 8), 3, " ", Direcao.ESQUERDA)); //Sufixo do CEP
+                linha.append(Utilitario.complete("", 60, " ", Direcao.ESQUERDA)); //Sacador/Avalista ou 2ª Mensagem
 
                 sequencialRegistro++;
-                linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0"));//Número sequencial do registro de um em um
+                linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.ESQUERDA));//Número sequencial do registro de um em um
                 //Registro no final de cada registro, (ODOA)
                 linha.append(DELIMITADOR_REGISTRO);
             }
@@ -184,9 +183,9 @@ public class RemessaManager {
             //Escreve o registro trailler
             logger.log(Level.INFO, "Escrevendo o trailler.");
             linha.append("9");
-            linha.append(Utilitario.complete("", 393, " "));
+            linha.append(Utilitario.complete("", 393, " ", Direcao.ESQUERDA));
             sequencialRegistro++;
-            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0"));//Número sequencial do registro de um em um
+            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.ESQUERDA));//Número sequencial do registro de um em um
             //Finalizador de arquivo, no final do trailler, (1A)
 //            linha.append(FINALIZADOR_ARQUIVO);
 

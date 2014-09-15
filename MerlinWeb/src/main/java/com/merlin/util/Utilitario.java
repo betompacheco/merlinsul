@@ -17,9 +17,10 @@ public class Utilitario {
      * @param valor O valor a ser completado
      * @param tam O tamanho final da sequencia
      * @param caracter o caracter a ser colocado
-     * @return
+     * @param dir Informa se o valor deve ficar alinhado à direita ou esquerda
+     * @return A sequencia completa
      */
-    public static String complete(String valor, int tam, String caracter) {
+    public static String complete(String valor, int tam, String caracter, Direcao dir) {
         if (valor.length() == tam) {
             return valor;
         }
@@ -27,8 +28,27 @@ public class Utilitario {
         for (int i = 0; i < tam - valor.length(); i++) {
             saida.append(caracter);
         }
-        saida.append(valor);
-        return saida.toString();
+//        saida.append(valor);
+
+        switch (dir) {
+            case ESQUERDA:
+                return valor.concat(saida.toString());
+            case DIREITA:
+                return saida.toString().concat(valor);
+            default:
+                return saida.toString().concat(valor);
+        }
+
+        //        return saida.toString();
     }
+
+    private Utilitario() {
+
+    }
+
+    public enum Direcao {
+
+        ESQUERDA, DIREITA
+    };
 
 }
