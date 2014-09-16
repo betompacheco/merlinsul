@@ -103,9 +103,9 @@ public class RemessaManager {
 
             linha.append(Utilitario.complete("", 8, " ", Direcao.ESQUERDA));//Branco
             linha.append("MX"); //Identificacao do sistema
-            linha.append(Utilitario.complete(Integer.toString(numeroSequencialRemessa), 7, "0", Direcao.ESQUERDA));//Numero sequencial da remessa
+            linha.append(Utilitario.complete(Integer.toString(numeroSequencialRemessa), 7, "0", Direcao.DIREITA));//Numero sequencial da remessa
             linha.append(Utilitario.complete("", 277, " ", Direcao.ESQUERDA));//Branco
-            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.ESQUERDA));//Número sequencial do registro de um em um
+            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.DIREITA));//Número sequencial do registro de um em um
 
             //Registro no final de cada registro, (ODOA)
             linha.append(DELIMITADOR_REGISTRO);
@@ -141,7 +141,7 @@ public class RemessaManager {
                 linha.append(" ");//Enderecamento para aviso de debito automatico em conta corrente (opcional)
                 linha.append(Utilitario.complete("", 2, " ", Direcao.ESQUERDA));//Branco
                 linha.append(Utilitario.complete("01", 2, " ", Direcao.ESQUERDA));//Identificacao da ocorrencia
-                linha.append(Utilitario.complete("", 10, " ", Direcao.ESQUERDA));//Nunero do documento
+                linha.append(Utilitario.complete("", 10, " ", Direcao.ESQUERDA));//Numero do documento
 
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
@@ -175,7 +175,7 @@ public class RemessaManager {
                 linha.append(Utilitario.complete("", 60, " ", Direcao.ESQUERDA)); //Sacador/Avalista ou 2ª Mensagem
 
                 sequencialRegistro++;
-                linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.ESQUERDA));//Número sequencial do registro de um em um
+                linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.DIREITA));//Número sequencial do registro de um em um
                 //Registro no final de cada registro, (ODOA)
                 linha.append(DELIMITADOR_REGISTRO);
             }
@@ -185,9 +185,7 @@ public class RemessaManager {
             linha.append("9");
             linha.append(Utilitario.complete("", 393, " ", Direcao.ESQUERDA));
             sequencialRegistro++;
-            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.ESQUERDA));//Número sequencial do registro de um em um
-            //Finalizador de arquivo, no final do trailler, (1A)
-//            linha.append(FINALIZADOR_ARQUIVO);
+            linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.DIREITA));//Número sequencial do registro de um em um
 
             //Incrementa o indice e atualiza a tabela
             numeroSequencialRemessa++;
