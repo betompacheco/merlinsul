@@ -94,7 +94,7 @@ public class RemessaManager {
             linha.append("01");//Codigo de servico
             linha.append(Utilitario.complete("COBRANCA", 15, " ", Direcao.ESQUERDA));//Literal Serviço
             linha.append(Utilitario.complete("4631965", 20, "0", Direcao.ESQUERDA));//Codigo da empresa
-            linha.append(Utilitario.complete("CONDOMINIO ED MERLIN SUL", 30, " ", Direcao.ESQUERDA));//Nome da empresa
+            linha.append(Utilitario.complete("CONDOMINIO EDIFICIO MERLIN SUL", 30, " ", Direcao.ESQUERDA));//Nome da empresa
             linha.append("237"); //Numero do Bradesco na camara de compensacao
             linha.append(Utilitario.complete("BRADESCO", 15, " ", Direcao.ESQUERDA));//Nome do banco por extenso
 
@@ -154,7 +154,7 @@ public class RemessaManager {
                 linha.append(sdf.format(rs.getDate("dataemissao"))); //Data de emissao do titulo
                 linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
                 linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
-                linha.append(Utilitario.complete("", 13, " ", Direcao.ESQUERDA)); //Valor a ser cobrado por dias de atraso
+                linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor a ser cobrado por dias de atraso
 
                 //Calcula a data do desconto com 10 dias antes da data de vencimento
                 Calendar cal = new GregorianCalendar();
@@ -162,7 +162,7 @@ public class RemessaManager {
                 cal.add(Calendar.DAY_OF_MONTH, -10);
 
                 linha.append(Utilitario.complete(sdf.format(cal.getTime()), 6, " ", Direcao.ESQUERDA)); //Data limite para concessao do desconto
-                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2), 13, " ", Direcao.DIREITA)); //Valor do desconto
+                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2).replace(",", ""), 13, "0", Direcao.DIREITA)); //Valor do desconto
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do IOF
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do abatimento a ser concedido ou cancelado
                 linha.append("99"); //Identificacao do tipo de inscricao do pagador
