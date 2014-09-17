@@ -5,6 +5,7 @@
  */
 package com.merlin.util;
 
+import java.text.Normalizer;
 import java.util.logging.Logger;
 
 public class Utilitario {
@@ -40,6 +41,13 @@ public class Utilitario {
         }
 
         //        return saida.toString();
+    }
+
+    public static String removeAcentos(String str) {
+        str = Normalizer.normalize(str, Normalizer.Form.NFD);
+        str = str.replaceAll("[^\\p{ASCII}]", "");
+        return str;
+
     }
 
     private Utilitario() {

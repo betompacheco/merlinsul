@@ -167,8 +167,8 @@ public class RemessaManager {
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do abatimento a ser concedido ou cancelado
                 linha.append("99"); //Identificacao do tipo de inscricao do pagador
                 linha.append(Utilitario.complete("", 14, "0", Direcao.ESQUERDA)); //Numero de inscricao do pagador
-                linha.append(Utilitario.complete(rs.getString("nomeproprietario"), 40, " ", Direcao.ESQUERDA)); //Nome do pagador
-                linha.append(Utilitario.complete(rs.getString("logradouro"), 40, " ", Direcao.ESQUERDA)); //Endereco completo
+                linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("nomeproprietario")), 40, " ", Direcao.ESQUERDA)); //Nome do pagador
+                linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("logradouro")), 40, " ", Direcao.ESQUERDA)); //Endereco completo
                 linha.append(Utilitario.complete("", 12, " ", Direcao.ESQUERDA)); //1ª Mensagem
                 linha.append(Utilitario.complete(rs.getString("cep").substring(0, 5), 5, " ", Direcao.ESQUERDA)); //CEP
                 linha.append(Utilitario.complete(rs.getString("cep").substring(5, 8), 3, " ", Direcao.ESQUERDA)); //Sufixo do CEP
