@@ -93,7 +93,7 @@ public class RemessaManager {
             linha.append("REMESSA");//Literal Remessa
             linha.append("01");//Codigo de servico
             linha.append(Utilitario.complete("COBRANCA", 15, " ", Direcao.ESQUERDA));//Literal Serviço
-            linha.append(Utilitario.complete("4631965", 20, "0", Direcao.ESQUERDA));//Codigo da empresa
+            linha.append(Utilitario.complete("4631965", 20, "0", Direcao.DIREITA));//Codigo da empresa
             linha.append(Utilitario.complete("CONDOMINIO EDIFICIO MERLIN SUL", 30, " ", Direcao.ESQUERDA));//Nome da empresa
             linha.append("237"); //Numero do Bradesco na camara de compensacao
             linha.append(Utilitario.complete("BRADESCO", 15, " ", Direcao.ESQUERDA));//Nome do banco por extenso
