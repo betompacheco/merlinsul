@@ -122,7 +122,14 @@ public class RemessaManager {
                 linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Razao da conta corrente (Opcional)
                 linha.append(Utilitario.complete("", 7, "0", Direcao.ESQUERDA)); //Conta corrente (Opcional)
                 linha.append(Utilitario.complete("", 1, "0", Direcao.ESQUERDA)); //Digito da conta corrente (Opcional)
-                linha.append(Utilitario.complete("0090278500076368", 17, " ", Direcao.ESQUERDA)); //Identificacao da empresa beneficiaria no banco
+
+                //Identificações da Empresa Beneficiária no Banco
+                linha.append("0"); //21 a 21 - Zero
+                linha.append("009"); //22 a 24 - códigos da carteira
+                linha.append("02785"); //25 a 29 - códigos da Agência Beneficiários, sem o dígito
+                linha.append("0007636"); //30 a 36 - Contas Corrente
+                linha.append("8"); //37 a 37 - dígitos da Conta
+
                 linha.append(Utilitario.complete("", 25, " ", Direcao.ESQUERDA)); //Numero de controle do participante (Uso da empresa)
                 linha.append("000"); //Codigo do banco a ser debitado na camara de compensacao
                 linha.append("2"); //Campo de multa, 2 se condiderar multa, 0 se sem multa
