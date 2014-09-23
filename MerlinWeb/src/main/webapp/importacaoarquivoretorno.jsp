@@ -1,5 +1,6 @@
-<%@ taglib uri="WEB-INF/html_basic.tld" prefix="h" %>
-<%@ taglib uri="WEB-INF/jsf_core.tld" prefix="f" %>
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib uri="http://myfaces.apache.org/tomahawk" prefix="x"%>
 <%@ page contentType="text/html; charset=iso-8859-1" language="java" errorPage="error.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -44,13 +45,14 @@
                                             </tr>
                                             <tr>
                                                 <td>Apartamento:</td>
-                                                <td><h:selectOneMenu id="codigoApartamento" value="#{incluirVeiculo.codigoApartamento}"   styleClass="styled-select" required="true">
-                                                        <f:selectItems value="#{combos.comboApartamento}" />
-                                                    </h:selectOneMenu ></td>
-                                                <td><h:message for="codigoApartamento" errorClass="erros"/></td>
+                                                <td><x:inputFileUpload id="file" required="false" size="80" style="botao"/></td>
+                                                <td><h:message for="file" errorClass="erros"/></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Salvar" action="#{incluirVeiculo.doIncluir}" styleClass="botao" /></td>
+                                                <td><x:inputCalendar renderAsPopup="true"/> </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"><h:commandButton value="Importar" action="#{incluirVeiculo.doIncluir}" styleClass="botao" /></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><h:outputText styleClass="mensagem" value="#{incluirVeiculo.mensagem}"/></td>
