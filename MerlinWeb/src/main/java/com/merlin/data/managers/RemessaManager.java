@@ -134,7 +134,7 @@ public class RemessaManager {
                 linha.append("000"); //Codigo do banco a ser debitado na camara de compensacao
                 linha.append("2"); //Campo de multa, 2 se condiderar multa, 0 se sem multa
                 linha.append(Utilitario.complete(String.format(Locale.ENGLISH, "%02d", rs.getInt("valormulta")), 4, "0", Direcao.ESQUERDA)); //Percentual de multa
-                linha.append(Utilitario.complete(rs.getString("codigocobranca"), 11, "0", Direcao.ESQUERDA));//Identificacao do titulo no banco
+                linha.append(Utilitario.complete(rs.getString("codigocobranca"), 11, "0", Direcao.DIREITA));//Identificacao do titulo no banco
 
                 //Gera o DAC de cada um dos "nosso numero"
                 NumberCodeGenerator ncg = new NumberCodeGenerator();
