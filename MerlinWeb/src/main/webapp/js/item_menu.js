@@ -64,7 +64,7 @@ function AfterCloseAll() {
 
 Menu1 = new Array("Página Inicial", "menu.faces", "", 0, 25, 125);
 
-Menu2 = new Array("Tarefas", "#", "", 8, 25, 125);
+Menu2 = new Array("Tarefas", "#", "", 9, 25, 125);
 Menu2_1 = new Array("Incluir Condomínio", "inclusaocondominio.faces", "", 0, 25, 180);
 Menu2_2 = new Array("Incluir Apartamento", "inclusaoapartamento.faces", "", 0, 25, 180);
 Menu2_3 = new Array("Incluir Proprietário", "inclusaoproprietario.faces", "", 0, 25, 180);
@@ -73,6 +73,7 @@ Menu2_5 = new Array("Incluir Veículo", "inclusaoveiculo.faces", "", 0, 25, 180);
 Menu2_6 = new Array("Incluir Serviço Utilizado", "inclusaoservicoutilizado.faces", "", 0, 25, 180);
 Menu2_7 = new Array("Gerar Cobrança", "inclusaocobranca.faces", "", 0, 25, 180);
 Menu2_8 = new Array("Gerar Remessa", "inclusaoremessa.faces", "", 0, 25, 180);
+Menu2_9 = new Array("Importar Arquivo Retorno", "importacaoarquivoretorno.faces", "", 0, 25, 180);
 
 Menu3 = new Array("Consultas", "#", "", 10, 25, 125);
 Menu3_1 = new Array("Consultar Condomínio", "consultacondominio.faces", "", 0, 25, 180);
