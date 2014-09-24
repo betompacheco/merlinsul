@@ -148,12 +148,12 @@ public class RemessaManager {
                 linha.append(" ");//Enderecamento para aviso de debito automatico em conta corrente (opcional)
                 linha.append(Utilitario.complete("", 2, " ", Direcao.ESQUERDA));//Branco
                 linha.append(Utilitario.complete("01", 2, " ", Direcao.ESQUERDA));//Identificacao da ocorrencia
-                linha.append(Utilitario.complete("", 10, " ", Direcao.ESQUERDA));//Numero do documento
+                linha.append(Utilitario.complete(rs.getString("codigocobranca"), 10, "0", Direcao.DIREITA));//Numero do documento
 
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
-                linha.append(Utilitario.complete(rs.getString("valorcobrado").replace(".", ""), 13, " ", Direcao.DIREITA)); //Valor do titulo
-                linha.append(Utilitario.complete("", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
+                linha.append(Utilitario.complete(rs.getString("valorcobrado").replace(".", ""), 13, "0", Direcao.DIREITA)); //Valor do titulo
+                linha.append(Utilitario.complete("237", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
                 linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Agencia depositaria (Preencher com zeros)
                 linha.append("99"); //Especie do titulo
                 linha.append("N"); //Identificacao
