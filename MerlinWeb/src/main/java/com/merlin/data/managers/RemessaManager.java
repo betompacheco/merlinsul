@@ -153,7 +153,7 @@ public class RemessaManager {
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
                 linha.append(Utilitario.complete(rs.getString("valorcobrado").replace(".", ""), 13, "0", Direcao.DIREITA)); //Valor do titulo
-                linha.append(Utilitario.complete("237", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
+                linha.append(Utilitario.complete("000", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
                 linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Agencia depositaria (Preencher com zeros)
                 linha.append("99"); //Especie do titulo
                 linha.append("N"); //Identificacao
@@ -161,21 +161,30 @@ public class RemessaManager {
                 linha.append(sdf.format(rs.getDate("dataemissao"))); //Data de emissao do titulo
                 linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
                 linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
-                linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor a ser cobrado por dias de atraso
+
+                //TODO Colocar calculo dos dias de atraso
+                double valorCobrado = rs.getDouble("valorcobrado");
+                int valorMulta = rs.getInt("valormulta");
+                Calendar myCal = new GregorianCalendar();
+                myCal.setTime(rs.getDate("datavencimento"));
+                int diasNoMes = myCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+                String valorDiasDeAtraso = new DecimalFormat("0.##").format(valorCobrado * valorMulta / 100 / diasNoMes).replace(",", "");
+                linha.append(Utilitario.complete(valorDiasDeAtraso, 13, "0", Direcao.DIREITA)); //Valor a ser cobrado por dias de atraso
 
                 //Calcula a data do desconto com 10 dias antes da data de vencimento
-                Calendar cal = new GregorianCalendar();
-                cal.setTime(rs.getDate("datavencimento"));
-                cal.add(Calendar.DAY_OF_MONTH, -10);
+                Calendar myCal2 = new GregorianCalendar();
+                myCal2.setTime(rs.getDate("datavencimento"));
+                myCal2.add(Calendar.DAY_OF_MONTH, -10);
 
-                linha.append(Utilitario.complete(sdf.format(cal.getTime()), 6, " ", Direcao.ESQUERDA)); //Data limite para concessao do desconto
+                linha.append(Utilitario.complete(sdf.format(myCal2.getTime()), 6, " ", Direcao.ESQUERDA)); //Data limite para concessao do desconto
                 linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2).replace(",", ""), 13, "0", Direcao.DIREITA)); //Valor do desconto
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do IOF
                 linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); //Valor do abatimento a ser concedido ou cancelado
                 linha.append("99"); //Identificacao do tipo de inscricao do pagador
                 linha.append(Utilitario.complete("", 14, "0", Direcao.ESQUERDA)); //Numero de inscricao do pagador
-                linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("nomeproprietario")), 40, " ", Direcao.ESQUERDA)); //Nome do pagador
-                linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("logradouro")), 40, " ", Direcao.ESQUERDA)); //Endereco completo
+                linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("nomeproprietario")).toUpperCase(), 40, " ", Direcao.ESQUERDA)); //Nome do pagador
+                linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("logradouro")).toUpperCase(), 40, " ", Direcao.ESQUERDA)); //Endereco completo
                 linha.append(Utilitario.complete("", 12, " ", Direcao.ESQUERDA)); //1ª Mensagem
                 linha.append(Utilitario.complete(rs.getString("cep").substring(0, 5), 5, " ", Direcao.ESQUERDA)); //CEP
                 linha.append(Utilitario.complete(rs.getString("cep").substring(5, 8), 3, " ", Direcao.ESQUERDA)); //Sufixo do CEP
@@ -193,6 +202,7 @@ public class RemessaManager {
             linha.append(Utilitario.complete("", 393, " ", Direcao.ESQUERDA));
             sequencialRegistro++;
             linha.append(Utilitario.complete(Integer.toString(sequencialRegistro), 6, "0", Direcao.DIREITA));//Número sequencial do registro de um em um
+//            linha.append((byte) 0x1A);
 
             //Incrementa o indice e atualiza a tabela
             numeroSequencialRemessa++;
