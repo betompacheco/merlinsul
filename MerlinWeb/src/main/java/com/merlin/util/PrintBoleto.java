@@ -31,25 +31,25 @@ public class PrintBoleto extends HttpServlet {
         String mes = request.getParameter("mes");
         String mensagem = request.getParameter("mensagem");
         String apartamento = request.getParameter("apartamento");
-        CobrancaManager cm = new CobrancaManager();
-        MensagemManager mm = new MensagemManager();
+        CobrancaManager cobrancaManager = new CobrancaManager();
+        MensagemManager mensagemManager = new MensagemManager();
         int a = Integer.parseInt(ano);
         int m = Integer.parseInt(mes);
-        int ms = Integer.parseInt(mensagem);
+        int msg = Integer.parseInt(mensagem);
         int ap = -1;
         try {
             ap = Integer.parseInt(apartamento);
         } catch (NumberFormatException e) {
         }
-        List lista = cm.select(a, m, ap);
+        List cobrancas = cobrancaManager.select(a, m, ap);
 
         List detalhe = new ArrayList();
-        for (int i = 0; i < lista.size(); i++) {
-            detalhe.addAll(((CobrancaDTO) lista.get(i)).getDescricao());
+        for (int i = 0; i < cobrancas.size(); i++) {
+            detalhe.addAll(((CobrancaDTO) cobrancas.get(i)).getDescricao());
         }
 
-        MensagemDTO mensagemDTO = mm.select(ms);
-        JRBeanCollectionDataSource datasource = new JRBeanCollectionDataSource(lista);
+        MensagemDTO mensagemDTO = mensagemManager.select(msg);
+        JRBeanCollectionDataSource datasource = new JRBeanCollectionDataSource(cobrancas);
         JRBeanCollectionDataSource detalhedatasource = new JRBeanCollectionDataSource(detalhe);
         ServletContext context = this.getServletConfig().getServletContext();
 
