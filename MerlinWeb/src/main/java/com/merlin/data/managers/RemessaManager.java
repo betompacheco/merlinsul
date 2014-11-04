@@ -162,15 +162,8 @@ public class RemessaManager {
                 linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
                 linha.append(Utilitario.complete("", 2, "0", Direcao.ESQUERDA)); //Primeira Instrucao
 
-                //TODO Colocar calculo dos dias de atraso
-                double valorCobrado = rs.getDouble("valorcobrado");
-                int valorMulta = rs.getInt("valormulta");
-                Calendar myCal = new GregorianCalendar();
-                myCal.setTime(rs.getDate("datavencimento"));
-                int diasNoMes = myCal.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-                String valorDiasDeAtraso = new DecimalFormat("0.##").format(valorCobrado * valorMulta / 100 / diasNoMes).replace(",", "");
-                linha.append(Utilitario.complete(valorDiasDeAtraso, 13, "0", Direcao.DIREITA)); //Valor a ser cobrado por dias de atraso
+                //Inclui a mora diaria por atraso
+                linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valormulta")).replace(",", ""), 13, "0", Direcao.DIREITA)); //Valor a ser cobrado por dias de atraso
 
                 //Calcula a data do desconto com 10 dias antes da data de vencimento
                 Calendar myCal2 = new GregorianCalendar();
