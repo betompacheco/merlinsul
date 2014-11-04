@@ -39,7 +39,7 @@ public class PrintBoleto extends HttpServlet {
         int ap = -1;
         try {
             ap = Integer.parseInt(apartamento);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
         }
         List lista = cm.select(a, m, ap);
 
