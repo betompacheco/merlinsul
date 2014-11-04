@@ -44,10 +44,10 @@
                                 <td width="1%" valign="top">
                                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td><img src="imagens/top3.gif" width="164" height="42"></td>
+                                            <td><img src="imagens/top3.gif" width="164" height="42" alt=""></td>
                                         </tr>
                                         <tr>
-                                            <td><img src="imagens/transp.gif" width="129" height="10"></td>
+                                            <td><img src="imagens/transp.gif" width="129" height="10" alt=""></td>
                                         </tr>
                                     </table>
                                 <td width="99%">&nbsp; <!-- inicio do conteudo -->
@@ -62,7 +62,7 @@
                                                 <td class="input_formulario" width="130">Data de Vencimento:</td>
                                                 <td colspan="2"><h:inputText id="dataVencimento"
                                                              value="#{gerarCobranca.dataVencimento}"
-                                                             styleClass="caixadetexto" required="true" size="10"
+                                                             styleClass="caixadetexto" required="true" size="8"
                                                              maxlength="10">
                                                         <f:convertDateTime pattern="dd/MM/yyyy" />
                                                     </h:inputText></td>
@@ -71,21 +71,18 @@
                                             <tr>
                                                 <td>Valor da Multa:</td>
                                                 <td colspan="2"><h:inputText id="valorMulta" value="#{gerarCobranca.multa}"
-                                                             styleClass="caixadetexto" required="true" size="10"
-                                                             maxlength="15">
+                                                             styleClass="caixadetexto" required="true" size="2" maxlength="6">
                                                         <f:validateDoubleRange minimum="1" />
 
                                                     </h:inputText></td>
                                                 <td><h:message for="valorMulta" errorClass="erros" /></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"><h:commandButton value="Gerar cobranças"
-                                                                 action="#{gerarCobranca.doGerar}"/></td>
+                                                <td colspan="3"><h:commandButton value="Gerar cobranças" action="#{gerarCobranca.doGerar}"/></td>
                                             </tr>
                                             <c:if test="${gerarCobranca.flagConfirma}">
                                                 <tr>
-                                                    <td colspan="3">Ja existe cobrança gerada para este mês. Gerar Novamente?<h:commandButton value="Confirmar"
-                                                                     action="#{gerarCobranca.confirma}"/></td>
+                                                    <td colspan="3">Ja existe cobrança gerada para este mês. Gerar Novamente?&emsp;&emsp;<h:commandButton value="Confirmar" action="#{gerarCobranca.confirma}"/></td>
 
                                                 </tr>
                                             </c:if>
@@ -96,9 +93,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3">
-                                                        <h:dataTable value="#{gerarCobranca.dados}" var="cobranca"
-                                                                     headerClass="columnHeader"
-                                                                     rowClasses="evenRow, oddRow" styleClass="styled-table">
+                                                        <h:dataTable value="#{gerarCobranca.dados}" var="cobranca" headerClass="columnHeader" rowClasses="evenRow, oddRow" styleClass="styled-table">
                                                             <h:column>
                                                                 <f:facet name="header"><h:outputText value="Condominio" /></f:facet>
                                                                 <h:outputText value="#{cobranca.apartamento.condominio.nomecondominio}"/>
@@ -116,7 +111,13 @@
                                                             <h:column>
                                                                 <f:facet name="header"><h:outputText value="Valor" /></f:facet>
                                                                 <h:outputText value="#{cobranca.valorCobrado}" >
-                                                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/>
+                                                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2" groupingUsed="true" type="currency" currencyCode="BRL"/>
+                                                                </h:outputText>
+                                                            </h:column>
+                                                            <h:column>
+                                                                <f:facet name="header"><h:outputText value="Multa" /></f:facet>
+                                                                <h:outputText value="#{cobranca.valorMulta}">
+                                                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2" groupingUsed="true" type="currency" currencyCode="BRL"/>
                                                                 </h:outputText>
                                                             </h:column>
                                                         </h:dataTable>
