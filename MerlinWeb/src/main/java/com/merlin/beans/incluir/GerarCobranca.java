@@ -37,14 +37,12 @@ public class GerarCobranca {
     }
 
     private void _gerar() {
-        GeradorDeCobranca gerador = new GeradorDeCobranca();
-
-        gerador.setDataVencimento(dataVencimento);
-        gerador.setMulta(multa.doubleValue());
-        gerador.gerarCobrancas();
-        dadosGerados = gerador.getCobranca();
+        GeradorDeCobranca geradorDeCobranca = new GeradorDeCobranca();
+        geradorDeCobranca.setDataVencimento(dataVencimento);
+        geradorDeCobranca.setMulta(multa.doubleValue());
+        geradorDeCobranca.gerarCobrancas();
+        dadosGerados = geradorDeCobranca.getCobranca();
         dados = new ListDataModel(dadosGerados);
-
     }
 
     private boolean existeCobranca() {
