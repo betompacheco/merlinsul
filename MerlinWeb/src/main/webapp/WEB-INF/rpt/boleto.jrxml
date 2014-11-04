@@ -1234,10 +1234,9 @@
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Até " + $F{dataVencimentoMenos10} + " R$ " + $F{valorCobradoMenos10} + "\n" +
-"de " + $F{dataVencimentoMenos9} + " até " + $F{dataVencimentoTexto} + " R$ " + $F{valorCobradoTexto} + "\n" +
-"após o vencimento: multa de " + $F{multaTexto} + "%\n" + 
-"Após o dia " + $F{dataVencimentoTexto} + " cobrar R$ 0.24 de mora por dia de atraso \n" +
+				<textFieldExpression class="java.lang.String"><![CDATA["Até " + $F{dataVencimentoMenos10} + " cobrar R$ " + $F{valorCobradoMenos10} + "\n" +
+"\nDe " + $F{dataVencimentoMenos9} + " até " + $F{dataVencimentoTexto} + " cobrar R$ " + $F{valorCobradoTexto} + "\n" +
+"\nApós o dia " + $F{dataVencimentoTexto} + " cobrar R$ " + $F{multaTexto} + " de mora por dia de atraso\n" + 
 "\nNão Receber após " + $F{dataVencimentoMaisMes} + "\nO pagamento deste não quita débitos anteriores."]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
@@ -1309,10 +1308,9 @@
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Até " + $F{dataVencimentoMenos10} + " R$ " + $F{valorCobradoMenos10} + "\n" +
-"de " + $F{dataVencimentoMenos9} + " até " + $F{dataVencimentoTexto} + " R$ " + $F{valorCobradoTexto} + "\n" +
-"após o vencimento: multa de " + $F{multaTexto} + "%\n" + 
-"Após o dia " + $F{dataVencimentoTexto} + " cobrar R$ 0.24 de mora por dia de atraso \n" +
+				<textFieldExpression class="java.lang.String"><![CDATA["Até " + $F{dataVencimentoMenos10} + " cobrar R$ " + $F{valorCobradoMenos10} + "\n" +
+"\nDe " + $F{dataVencimentoMenos9} + " até " + $F{dataVencimentoTexto} + " cobrar R$ " + $F{valorCobradoTexto} + "\n" +
+"\nApós o dia " + $F{dataVencimentoTexto} + " cobrar R$ " + $F{multaTexto} + " de mora por dia de atraso\n" + 
 "\nNão Receber após " + $F{dataVencimentoMaisMes} + "\nO pagamento deste não quita débitos anteriores."]]></textFieldExpression>
 			</textField>
 			<subreport isUsingCache="true">
