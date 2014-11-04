@@ -1,14 +1,5 @@
 package com.merlin.util;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import com.merlin.data.dto.ApartamentoDTO;
 import com.merlin.data.dto.CobrancaDTO;
 import com.merlin.data.dto.CondominioDTO;
@@ -19,6 +10,15 @@ import com.merlin.data.managers.ApartamentoManager;
 import com.merlin.data.managers.CondominioManager;
 import com.merlin.data.managers.OrcamentoManager;
 import com.merlin.data.managers.ServicoUtilizadoManager;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GeradorDeCobranca {
 
@@ -30,10 +30,10 @@ public class GeradorDeCobranca {
     public void gerarCobrancas() {
 
         String[] cotas = new String[]{"Cota", "Cota parte Comum"};
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTime(dataVencimento);
-        int ano = gc.get(GregorianCalendar.YEAR);
-        int mes = gc.get(GregorianCalendar.MONTH);
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(dataVencimento);
+        int ano = calendar.get(GregorianCalendar.YEAR);
+        int mes = calendar.get(GregorianCalendar.MONTH);
         CondominioManager cm = new CondominioManager();
         ApartamentoManager am = new ApartamentoManager();
         OrcamentoManager om = new OrcamentoManager();
@@ -69,14 +69,12 @@ public class GeradorDeCobranca {
                     double valorPorQuarto = orcamento.getValorOrcamento().doubleValue() / totQuartos;
                     double valorOrcamento = (valorPorQuarto * apartamento.getQtdQuartos().intValue());
                     valor += valorOrcamento;
-                    logger.log(Level.FINE, "Valor 1 : " + valor);
+                    logger.log(Level.FINE, "Valor 1 : {0}", valor);
 
                     desc = new DescCobranca();
                     codigoDescCobranca++;
                     desc.setCodigoDescCobranca(codigoDescCobranca);
-                    // Comentado por humberto
-                    desc.setDescricao((new StringBuilder(String.valueOf(orcamento.getDescricaoServico()))).append(" ")
-                            .append(apartamento.getQtdQuartos()).append(" quartos").toString());
+                    desc.setDescricao((new StringBuilder(String.valueOf(orcamento.getDescricaoServico()))).append(" ").append(apartamento.getQtdQuartos()).append(" quartos").toString());
 
                     desc.setValor(valorOrcamento);
                     listaDesc.add(desc);
@@ -89,7 +87,7 @@ public class GeradorDeCobranca {
 
                         desc.setValor(vlReserva);
                         valor += vlReserva;
-                        logger.log(Level.FINE, "Valor 2 : " + valor);
+                        logger.log(Level.FINE, "Valor 2 : {0}", valor);
                         listaDesc.add(desc);
                     }
                 }
@@ -108,13 +106,18 @@ public class GeradorDeCobranca {
                 CobrancaDTO cob = new CobrancaDTO();
                 cob.setApartamento(apartamento);
                 cob.setDescricao(listaDesc);
-                cob.setValorMulta(multa);
+
+                //Efetua o calculo do valor da multa por dia, baseado no percentual fornecido
+                int diasNoMes = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+                double valorMultaPorDia = valor * multa / 100 / diasNoMes;
+                cob.setValorMulta(valorMultaPorDia);
+
                 cob.setCodigoApartamento(apartamento.getCodigoapartamento().intValue());
                 cob.setDataVencimento(dataVencimento);
                 cob.setDataEmissao(new Date());
                 valor = ((double) ((int) (valor * 100))) / 100d;
                 cob.setValorCobrado(valor);
-                logger.log(Level.FINE, "Valor total : " + valor);
+                logger.log(Level.FINE, "Valor total : {0}", valor);
                 cobranca.add(cob);
             }
         }

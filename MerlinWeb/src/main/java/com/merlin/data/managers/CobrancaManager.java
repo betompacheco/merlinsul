@@ -24,6 +24,13 @@ public class CobrancaManager {
 
     private final static Logger logger = Logger.getLogger(CobrancaManager.class.getName());
 
+    /**
+     *
+     * @param ano
+     * @param mes
+     * @param apartamento
+     * @return A lista de cobrancas
+     */
     public List select(int ano, int mes, int apartamento) {
         Connection con = DataBase.getConnection();
         List retorno = new ArrayList();
@@ -97,15 +104,15 @@ public class CobrancaManager {
                         break;
                     }
                 }
-                cobranca.calc(); // calcula o Codigo de barras
+                cobranca.calc(); //Calcula o Codigo de barras
 
-                // Coloca o Nosso Numero com o DAC
+                //Coloca o Nosso Numero com o DAC
                 NumberCodeGenerator ncg = new NumberCodeGenerator();
                 cobranca.setCodigoDocumento(ncg.comporNossoNumero(cobranca.getCodigoCobranca(), Config.CARTEIRA));
 
-                // Coloca o número de apartamento para aparecer no boleto
+                // Coloca o numero de apartamento que deve aparecer no boleto
                 cobranca.setNumeroApartamento(cobranca.getApartamento().getNumeroapartamento().intValue());
-                // Coloca o nome do Condominio para aparecer no boleto
+                // Coloca o nome do Condominio que deve aparecer no boleto
                 cobranca.setNomeCondominio(cobranca.getApartamento().getCondominio().getNomecondominio().toString());
 
                 cobranca.setDescricao(getDescCobranca(con, cobranca.getCodigoCobranca()));
