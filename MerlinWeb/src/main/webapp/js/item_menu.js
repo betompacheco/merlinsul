@@ -1,5 +1,5 @@
 
-var NoOffFirstLineMenus = 6;			// Number of first level items
+var NoOffFirstLineMenus = 7;			// Number of first level items
 var LowBgColor = '#98BBD2';			// Background color when mouse is not over
 var LowSubBgColor = '#98BBD2';			// Background color when mouse is not over on subs
 var HighBgColor = '#236BA7';			// Background color when mouse is over
@@ -64,41 +64,43 @@ function AfterCloseAll() {
 
 Menu1 = new Array("Página Inicial", "menu.faces", "", 0, 25, 125);
 
-Menu2 = new Array("Tarefas", "#", "", 9, 25, 125);
+Menu2 = new Array("Inclusões", "#", "", 6, 25, 125);
 Menu2_1 = new Array("Incluir Condomínio", "inclusaocondominio.faces", "", 0, 25, 180);
 Menu2_2 = new Array("Incluir Apartamento", "inclusaoapartamento.faces", "", 0, 25, 180);
 Menu2_3 = new Array("Incluir Proprietário", "inclusaoproprietario.faces", "", 0, 25, 180);
 Menu2_4 = new Array("Incluir Endereço", "inclusaoendereco.faces", "", 0, 25, 180);
 Menu2_5 = new Array("Incluir Veículo", "inclusaoveiculo.faces", "", 0, 25, 180);
 Menu2_6 = new Array("Incluir Serviço Utilizado", "inclusaoservicoutilizado.faces", "", 0, 25, 180);
-Menu2_7 = new Array("Gerar Cobrança", "inclusaocobranca.faces", "", 0, 25, 180);
-Menu2_8 = new Array("Gerar Remessa", "inclusaoremessa.faces", "", 0, 25, 180);
-Menu2_9 = new Array("Importar Arquivo Retorno", "importacaoarquivoretorno.faces", "", 0, 25, 180);
 
-Menu3 = new Array("Consultas", "#", "", 10, 25, 125);
-Menu3_1 = new Array("Consultar Condomínio", "consultacondominio.faces", "", 0, 25, 180);
-Menu3_2 = new Array("Consultar Apartamento", "consultaapartamento.faces", "", 0, 25, 180);
-Menu3_3 = new Array("Consultar Proprietário", "consultaproprietario.faces", "", 0, 25, 180);
-Menu3_4 = new Array("Consultar Endereço", "consultaendereco.faces", "", 0, 25, 180);
-Menu3_5 = new Array("Consultar Veículo", "consultaveiculo.faces", "", 0, 25, 180);
-Menu3_6 = new Array("Consultar Cobrança", "consultacobranca.faces", "", 0, 25, 180);
-Menu3_7 = new Array("Consultar Orçamento", "consultaorcamento.faces", "", 0, 25, 180);
-Menu3_8 = new Array("Consultar Mensagem", "consultamensagem.faces", "", 0, 25, 180);
-Menu3_9 = new Array("Consultar Serviço", "consultaservico.faces", "", 0, 25, 180);
-Menu3_10 = new Array("Consultar Serviço Utilizado", "consultaservicoutilizado.faces", "", 0, 25, 180);
+Menu3 = new Array("Tarefas", "#", "", 3, 25, 125);
+Menu3_1 = new Array("Gerar Cobrança", "inclusaocobranca.faces", "", 0, 25, 180);
+Menu3_2 = new Array("Gerar arquivo Remessa", "inclusaoremessa.faces", "", 0, 25, 180);
+Menu3_3 = new Array("Importar arquivo Retorno", "importacaoarquivoretorno.faces", "", 0, 25, 180);
 
-Menu4 = new Array("Relatorios", "#", "", 6, 25, 125);
-Menu4_1 = new Array("Emitir Boleto Bancário", "imprimirboleto.faces", "", 0, 25, 180);
-Menu4_2 = new Array("Emitir Veículos", "imprimirveiculos.faces", "", 0, 25, 180);
-Menu4_3 = new Array("Emitir Inadimplentes", "imprimirinadimplentes.faces", "", 0, 25, 180);
-Menu4_4 = new Array("Emitir Serviços Utilizados", "imprimirservicosutilizados.faces", "", 0, 25, 180);
-Menu4_5 = new Array("Emitir Proprietários", "imprimirproprietarios.faces", "", 0, 25, 180);
-Menu4_6 = new Array("Emitir Histórico de Movimento", "imprimirmovimentos.faces", "", 0, 25, 180);
+Menu4 = new Array("Consultas", "#", "", 10, 25, 125);
+Menu4_1 = new Array("Consultar Condomínio", "consultacondominio.faces", "", 0, 25, 180);
+Menu4_2 = new Array("Consultar Apartamento", "consultaapartamento.faces", "", 0, 25, 180);
+Menu4_3 = new Array("Consultar Proprietário", "consultaproprietario.faces", "", 0, 25, 180);
+Menu4_4 = new Array("Consultar Endereço", "consultaendereco.faces", "", 0, 25, 180);
+Menu4_5 = new Array("Consultar Veículo", "consultaveiculo.faces", "", 0, 25, 180);
+Menu4_6 = new Array("Consultar Cobrança", "consultacobranca.faces", "", 0, 25, 180);
+Menu4_7 = new Array("Consultar Orçamento", "consultaorcamento.faces", "", 0, 25, 180);
+Menu4_8 = new Array("Consultar Mensagem", "consultamensagem.faces", "", 0, 25, 180);
+Menu4_9 = new Array("Consultar Serviço", "consultaservico.faces", "", 0, 25, 180);
+Menu4_10 = new Array("Consultar Serviço Utilizado", "consultaservicoutilizado.faces", "", 0, 25, 180);
 
-Menu5 = new Array("Parametrização", "#", "", 3, 25, 125);
-Menu5_1 = new Array("Incluir Orçamento", "inclusaoorcamento.faces", "", 0, 25, 180);
-Menu5_2 = new Array("Incluir Mensagem", "inclusaomensagem.faces", "", 0, 25, 180);
-Menu5_3 = new Array("Incluir Serviço", "inclusaoservico.faces", "", 0, 25, 180);
+Menu5 = new Array("Relatorios", "#", "", 6, 25, 125);
+Menu5_1 = new Array("Emitir Boleto Bancário", "imprimirboleto.faces", "", 0, 25, 180);
+Menu5_2 = new Array("Emitir Veículos", "imprimirveiculos.faces", "", 0, 25, 180);
+Menu5_3 = new Array("Emitir Inadimplentes", "imprimirinadimplentes.faces", "", 0, 25, 180);
+Menu5_4 = new Array("Emitir Serviços Utilizados", "imprimirservicosutilizados.faces", "", 0, 25, 180);
+Menu5_5 = new Array("Emitir Proprietários", "imprimirproprietarios.faces", "", 0, 25, 180);
+Menu5_6 = new Array("Emitir Histórico de Movimento", "imprimirmovimentos.faces", "", 0, 25, 180);
 
-Menu6 = new Array("Manutenção", "#", "", 1, 25, 125);
-Menu6_1 = new Array("Alterar Sequencial da Remessa", "atualizasequencialremessa.faces", "", 0, 25, 200);
+Menu6 = new Array("Parametrização", "#", "", 3, 25, 125);
+Menu6_1 = new Array("Incluir Orçamento", "inclusaoorcamento.faces", "", 0, 25, 180);
+Menu6_2 = new Array("Incluir Mensagem", "inclusaomensagem.faces", "", 0, 25, 180);
+Menu6_3 = new Array("Incluir Serviço", "inclusaoservico.faces", "", 0, 25, 180);
+
+Menu7 = new Array("Manutenção", "#", "", 1, 25, 125);
+Menu7_1 = new Array("Alterar Sequencial da Remessa", "atualizasequencialremessa.faces", "", 0, 25, 200);
