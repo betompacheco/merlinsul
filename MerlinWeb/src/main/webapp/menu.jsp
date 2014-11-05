@@ -47,7 +47,7 @@
                                         <td colspan="2">&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em <b>20/08/2014.</b></td>
+                                        <td colspan="2">&Uacute;ltima atualiza&ccedil;&atilde;o efetuada em <b>05/10/2014.</b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">&nbsp;</td>
