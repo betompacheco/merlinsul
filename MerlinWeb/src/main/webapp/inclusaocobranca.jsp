@@ -62,7 +62,7 @@
                                                 <td class="input_formulario" width="130">Data de Vencimento:</td>
                                                 <td colspan="2"><h:inputText id="dataVencimento"
                                                              value="#{gerarCobranca.dataVencimento}"
-                                                             styleClass="caixadetexto" required="true" size="8"
+                                                             styleClass="caixadetexto" required="true" size="10"
                                                              maxlength="10">
                                                         <f:convertDateTime pattern="dd/MM/yyyy" />
                                                     </h:inputText></td>
@@ -71,7 +71,7 @@
                                             <tr>
                                                 <td>Valor da Multa:</td>
                                                 <td colspan="2"><h:inputText id="valorMulta" value="#{gerarCobranca.multa}"
-                                                             styleClass="caixadetexto" required="true" size="2" maxlength="6">
+                                                             styleClass="caixadetexto" required="true" size="5" maxlength="6">
                                                         <f:validateDoubleRange minimum="1" />
 
                                                     </h:inputText></td>
