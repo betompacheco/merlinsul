@@ -152,7 +152,13 @@ public class RemessaManager {
 
                 sdf.applyPattern(datePattern);
                 linha.append(sdf.format(rs.getDate("datavencimento"))); //Data de vencimento do titulo
-                linha.append(Utilitario.complete(rs.getString("valorcobrado").replace(".", ""), 13, "0", Direcao.DIREITA)); //Valor do titulo
+
+                //Valor do titulo
+                DecimalFormat format = new DecimalFormat();
+                format.setMaximumFractionDigits(2);
+                format.setMinimumFractionDigits(2);
+                linha.append(Utilitario.complete(format.format(rs.getDouble("valorcobrado")).replace(".", "").replace(",", ""), 13, "0", Direcao.DIREITA));
+
                 linha.append(Utilitario.complete("000", 3, "0", Direcao.ESQUERDA)); //Banco encarregado da cobranca (Preencher com zeros)
                 linha.append(Utilitario.complete("", 5, "0", Direcao.ESQUERDA)); //Agencia depositaria (Preencher com zeros)
                 linha.append("99"); //Especie do titulo
