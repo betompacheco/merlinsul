@@ -424,12 +424,12 @@
         <init-param>
             <param-name>uploadMaxFileSize</param-name>
             <param-value>20m</param-value>
-            <description>Set the size limit for uploaded files.
+            <!--            <description>Set the size limit for uploaded files.
                 Format: 10 - 10 bytes
                 10k - 10 KB
                 10m - 10 MB
                 1g - 1 GB
-            </description>
+            </description>-->
         </init-param>
     </filter>
 
