@@ -20,7 +20,8 @@
 	<field name="codigoCobranca" class="java.lang.Integer"/>
 	<field name="digitavel" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
-	<field name="sacado" class="java.lang.String"/>
+	<field name="nomeSacado" class="java.lang.String"/>
+	<field name="cpfCnpjSacado" class="java.lang.String"/>
 	<field name="multaTexto" class="java.lang.String"/>
 	<field name="dataVencimentoMaisMes" class="java.lang.String"/>
 	<field name="dataVencimentoMenos9" class="java.lang.String"/>
@@ -1250,7 +1251,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{sacado} + " - " + $F{nomeCondominio}+ " - Apto." + $F{numeroApartamento}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomeSacado} + $F{cpfCnpjSacado} +" - " + $F{nomeCondominio}+ " - Apto." + $F{numeroApartamento}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField-3" mode="Opaque" x="32" y="399" width="473" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -1276,7 +1277,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 					<font fontName="Arial" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{sacado} + " - " + $F{nomeCondominio}+ " - Apto." + $F{numeroApartamento}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomeSacado} + " - " + $F{nomeCondominio}+ " - Apto." + $F{numeroApartamento}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField-3" mode="Opaque" x="29" y="672" width="376" height="19" forecolor="#000000" backcolor="#FFFFFF"/>

@@ -1,358 +1,380 @@
 package com.merlin.data.dto;
 
-import com.merlin.data.managers.EnderecoManager;
-import com.merlin.data.managers.ProprietarioManager;
-import com.merlin.util.Config;
-import com.merlin.util.NumberCodeGenerator;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import com.merlin.data.managers.EnderecoManager;
+import com.merlin.data.managers.ProprietarioManager;
+import com.merlin.util.Config;
+import com.merlin.util.NumberCodeGenerator;
+
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 public class CobrancaDTO {
 
-    private int codigoCobranca;
-    private Date dataEmissao;
-    private Date dataVencimento;
-    private double valorDocumento;
-    private double valorDesconto;
-    private double valorMulta;
-    private double valorCobrado;
-    private double valorPago;
-    private boolean baixa;
-    private Date dataPagamento;
-    private int codigoMensagen = 1;
-    private int codigoApartamento;
-    private List descricao;
-    private int numeroApartamento;
-    private String nomeCondominio;
-    private String sacado;
-    private String endereco;
-    private String digitavel;
-    private String codigoBarras;
-    private String codigoDocumento;// Nosso Numero
-    private NumberFormat nm;
-    private SimpleDateFormat df;
-    private ApartamentoDTO apartamento;
+	private int codigoCobranca;
+	private Date dataEmissao;
+	private Date dataVencimento;
+	private double valorDocumento;
+	private double valorDesconto;
+	private double valorMulta;
+	private double valorCobrado;
+	private double valorPago;
+	private boolean baixa;
+	private Date dataPagamento;
+	private int codigoMensagen = 1;
+	private int codigoApartamento;
+	private List descricao;
+	private int numeroApartamento;
+	private String nomeCondominio;
+	private String nomeSacado;
+	private String cpfCnpjSacado;
+	private String endereco;
+	private String digitavel;
+	private String codigoBarras;
+	private String codigoDocumento;// Nosso Numero
+	private NumberFormat nm;
+	private SimpleDateFormat df;
+	private ApartamentoDTO apartamento;
 
-    public void calc() {
-        nm = NumberFormat.getNumberInstance();
-        nm.setGroupingUsed(true);
-        nm.setMaximumFractionDigits(2);
-        nm.setMinimumFractionDigits(2);
-        df = new SimpleDateFormat("dd/MM/yyyy");
+	public void calc() {
+		nm = NumberFormat.getNumberInstance();
+		nm.setGroupingUsed(true);
+		nm.setMaximumFractionDigits(2);
+		nm.setMinimumFractionDigits(2);
+		df = new SimpleDateFormat("dd/MM/yyyy");
 
-        NumberCodeGenerator ncg = new NumberCodeGenerator();
-        ncg.setAgencia(Config.AGENCIA);
-        ncg.setCarteira(Config.CARTEIRA);
-        ncg.setConta(Config.CONTA);
-        ncg.setNumeroBanco(Config.BANCO);
-        ncg.setNumeroMoeda(Config.MOEDA);
-        ncg.setProcessamento(new Date());
-        ncg.setValor(getValorCobrado());
-        ncg.setVencimento(getDataVencimento());
-        ncg.setNossoNumero(Integer.toString(getCodigoCobranca()));
-        ncg.generate();
+		NumberCodeGenerator ncg = new NumberCodeGenerator();
+		ncg.setAgencia(Config.AGENCIA);
+		ncg.setCarteira(Config.CARTEIRA);
+		ncg.setConta(Config.CONTA);
+		ncg.setNumeroBanco(Config.BANCO);
+		ncg.setNumeroMoeda(Config.MOEDA);
+		ncg.setProcessamento(new Date());
+		ncg.setValor(getValorCobrado());
+		ncg.setVencimento(getDataVencimento());
+		ncg.setNossoNumero(Integer.toString(getCodigoCobranca()));
+		ncg.generate();
 
-        digitavel = ncg.getCodigoImpresso();
-        codigoBarras = ncg.getCodigoBarras();
+		digitavel = ncg.getCodigoImpresso();
+		codigoBarras = ncg.getCodigoBarras();
 
-        ProprietarioManager pm = new ProprietarioManager();
-        EnderecoManager em = new EnderecoManager();
-        ProprietarioDTO proprietario = pm.select(apartamento.getCodigoproprietario().intValue());
-        EnderecoDTO enderecoDTO = em.selectApartamento(apartamento.getCodigoapartamento());
-        if (proprietario != null) {
-            sacado = proprietario.getNomeproprietario();
-        }
-        if (enderecoDTO != null) {
-            endereco = enderecoDTO.getLogradouro() + "\n";
-            endereco += "CEP: " + enderecoDTO.getCep() + " " + enderecoDTO.getBairro() + " " + enderecoDTO.getCidade() + " " + enderecoDTO.getUf();
-        }
+		ProprietarioManager pm = new ProprietarioManager();
+		EnderecoManager em = new EnderecoManager();
+		ProprietarioDTO proprietario = pm.select(apartamento.getCodigoproprietario().intValue());
+		EnderecoDTO enderecoDTO = em.selectApartamento(apartamento.getCodigoapartamento());
+		if (proprietario != null) {
+			nomeSacado = proprietario.getNomeproprietario();
+			cpfCnpjSacado = proprietario.getCpf();
+		}
 
-    }
+		if (enderecoDTO != null) {
+			endereco = enderecoDTO.getLogradouro() + "\n";
+			endereco += "CEP: " + enderecoDTO.getCep() + " " + enderecoDTO.getBairro() + " " + enderecoDTO.getCidade()
+					+ " " + enderecoDTO.getUf();
+		}
+	}
 
-    /**
-     * @return Returns the baixa.
-     */
-    public boolean isBaixa() {
-        return baixa;
-    }
+	public ApartamentoDTO getApartamento() {
+		return apartamento;
+	}
 
-    /**
-     * @param baixa The baixa to set.
-     */
-    public void setBaixa(boolean baixa) {
-        this.baixa = baixa;
-    }
+	/**
+	 * @return Returns the codigoApartamento.
+	 */
+	public int getCodigoApartamento() {
+		return codigoApartamento;
+	}
 
-    /**
-     * @return Returns the codigoApartamento.
-     */
-    public int getCodigoApartamento() {
-        return codigoApartamento;
-    }
+	/**
+	 * @return Returns the codigoBarras.
+	 */
+	public String getCodigoBarras() {
+		return codigoBarras;
+	}
 
-    /**
-     * @param codigoApartamento The codigoApartamento to set.
-     */
-    public void setCodigoApartamento(int codigoApartamento) {
-        this.codigoApartamento = codigoApartamento;
-    }
+	/**
+	 * @return Returns the codigoCobranca.
+	 */
+	public int getCodigoCobranca() {
+		return codigoCobranca;
+	}
 
-    /**
-     * @return Returns the codigoCobranca.
-     */
-    public int getCodigoCobranca() {
-        return codigoCobranca;
-    }
+	public String getCodigoDocumento() {
+		return codigoDocumento;
+	}
 
-    /**
-     * @param codigoCobranca The codigoCobranca to set.
-     */
-    public void setCodigoCobranca(int codigoCobranca) {
-        this.codigoCobranca = codigoCobranca;
-    }
+	/**
+	 * @return Returns the codigoMensagen.
+	 */
+	public int getCodigoMensagen() {
+		return codigoMensagen;
+	}
 
-    /**
-     * @return Returns the codigoMensagen.
-     */
-    public int getCodigoMensagen() {
-        return codigoMensagen;
-    }
+	public String getCpfCnpjSacado() {
+		return cpfCnpjSacado;
+	}
 
-    /**
-     * @param codigoMensagen The codigoMensagen to set.
-     */
-    public void setCodigoMensagen(int codigoMensagen) {
-        this.codigoMensagen = codigoMensagen;
-    }
+	/**
+	 * @return Returns the dataEmissao.
+	 */
+	public Date getDataEmissao() {
+		return dataEmissao;
+	}
 
-    /**
-     * @return Returns the dataEmissao.
-     */
-    public Date getDataEmissao() {
-        return dataEmissao;
-    }
+	/**
+	 * @return Returns the dataPagamento.
+	 */
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
 
-    /**
-     * @param dataEmissao The dataEmissao to set.
-     */
-    public void setDataEmissao(Date dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
+	public JRBeanCollectionDataSource getDataSource() {
+		return new JRBeanCollectionDataSource(descricao);
+	}
 
-    /**
-     * @return Returns the dataPagamento.
-     */
-    public Date getDataPagamento() {
-        return dataPagamento;
-    }
+	/**
+	 * @return Returns the dataVencimento.
+	 */
+	public Date getDataVencimento() {
+		return dataVencimento;
+	}
 
-    /**
-     * @param dataPagamento The dataPagamento to set.
-     */
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
+	public String getDataVencimentoMaisMes() {
+		GregorianCalendar gc = new GregorianCalendar();
+		gc.setTime(dataVencimento);
+		gc.add(GregorianCalendar.MONTH, +1);
+		return df.format(gc.getTime());
+	}
 
-    /**
-     * @return Returns the valorCobrado.
-     */
-    public double getValorCobrado() {
-        return valorCobrado;
-    }
+	public String getDataVencimentoMenos10() {
+		GregorianCalendar gc = new GregorianCalendar();
+		gc.setTime(dataVencimento);
+		gc.add(GregorianCalendar.DATE, -10);
+		return df.format(gc.getTime());
+	}
 
-    /**
-     * @param valorCobrado The valorCobrado to set.
-     */
-    public void setValorCobrado(double valorCobrado) {
-        this.valorCobrado = valorCobrado;
-    }
+	public String getDataVencimentoMenos9() {
+		GregorianCalendar gc = new GregorianCalendar();
+		gc.setTime(dataVencimento);
+		gc.add(GregorianCalendar.DATE, -9);
+		return df.format(gc.getTime());
+	}
 
-    /**
-     * @return Returns the valorDesconto.
-     */
-    public double getValorDesconto() {
-        return valorDesconto;
-    }
+	public String getDataVencimentoTexto() {
+		return df.format(dataVencimento);
+	}
 
-    /**
-     * @param valorDesconto The valorDesconto to set.
-     */
-    public void setValorDesconto(double valorDesconto) {
-        this.valorDesconto = valorDesconto;
-    }
+	/**
+	 * @return Returns the descricao.
+	 */
+	public List getDescricao() {
+		return descricao;
+	}
 
-    /**
-     * @return Returns the valorDocumento.
-     */
-    public double getValorDocumento() {
-        return valorDocumento;
-    }
+	/**
+	 * @return Returns the digitavel.
+	 */
+	public String getDigitavel() {
+		return digitavel;
+	}
 
-    /**
-     * @param valorDocumento The valorDocumento to set.
-     */
-    public void setValorDocumento(double valorDocumento) {
-        this.valorDocumento = valorDocumento;
-    }
+	public String getEndereco() {
+		return endereco;
+	}
 
-    /**
-     * @return Returns the valorMulta.
-     */
-    public double getValorMulta() {
-        return valorMulta;
-    }
+	public String getMultaTexto() {
+		return nm.format(valorMulta);
+	}
 
-    /**
-     * @param valorMulta The valorMulta to set.
-     */
-    public void setValorMulta(double valorMulta) {
-        this.valorMulta = valorMulta;
-    }
+	public String getNomeCondominio() {
+		return nomeCondominio;
+	}
 
-    /**
-     * @return Returns the valorPago.
-     */
-    public double getValorPago() {
-        return valorPago;
-    }
+	public String getNomeSacado() {
+		return nomeSacado;
+	}
 
-    /**
-     * @param valorPago The valorPago to set.
-     */
-    public void setValorPago(double valorPago) {
-        this.valorPago = valorPago;
-    }
+	public String getNossoNumero() {
+		DecimalFormat dc = new DecimalFormat("000000000000");
+		return dc.format(codigoCobranca);
+	}
 
-    /**
-     * @return Returns the dataVencimento.
-     */
-    public Date getDataVencimento() {
-        return dataVencimento;
-    }
+	public int getNumeroApartamento() {
+		return numeroApartamento;
+	}
 
-    /**
-     * @param dataVencimento The dataVencimento to set.
-     */
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
+	/**
+	 * @return Returns the valorCobrado.
+	 */
+	public double getValorCobrado() {
+		return valorCobrado;
+	}
 
-    /**
-     * @return Returns the descricao.
-     */
-    public List getDescricao() {
-        return descricao;
-    }
+	public String getValorCobradoMenos10() {
+		return nm.format(valorCobrado * (1 - 0.2));
+	}
 
-    /**
-     * @param descricao The descricao to set.
-     */
-    public void setDescricao(List descricao) {
-        this.descricao = descricao;
-    }
+	public String getValorCobradoTexto() {
+		return nm.format(valorCobrado);
+	}
 
-    /**
-     * @return Returns the codigoBarras.
-     */
-    public String getCodigoBarras() {
-        return codigoBarras;
-    }
+	/**
+	 * @return Returns the valorDesconto.
+	 */
+	public double getValorDesconto() {
+		return valorDesconto;
+	}
 
-    /**
-     * @return Returns the digitavel.
-     */
-    public String getDigitavel() {
-        return digitavel;
-    }
+	/**
+	 * @return Returns the valorDocumento.
+	 */
+	public double getValorDocumento() {
+		return valorDocumento;
+	}
 
-    public ApartamentoDTO getApartamento() {
-        return apartamento;
-    }
+	/**
+	 * @return Returns the valorMulta.
+	 */
+	public double getValorMulta() {
+		return valorMulta;
+	}
 
-    public void setApartamento(ApartamentoDTO apartamento) {
-        this.apartamento = apartamento;
-    }
+	/**
+	 * @return Returns the valorPago.
+	 */
+	public double getValorPago() {
+		return valorPago;
+	}
 
-    public String getValorCobradoTexto() {
-        return nm.format(valorCobrado);
-    }
+	/**
+	 * @return Returns the baixa.
+	 */
+	public boolean isBaixa() {
+		return baixa;
+	}
 
-    public String getValorCobradoMenos10() {
-        return nm.format(valorCobrado * (1 - 0.2));
-    }
+	public void setApartamento(ApartamentoDTO apartamento) {
+		this.apartamento = apartamento;
+	}
 
-    public String getDataVencimentoTexto() {
-        return df.format(dataVencimento);
-    }
+	/**
+	 * @param baixa
+	 *            The baixa to set.
+	 */
+	public void setBaixa(boolean baixa) {
+		this.baixa = baixa;
+	}
 
-    public String getDataVencimentoMenos9() {
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTime(dataVencimento);
-        gc.add(GregorianCalendar.DATE, -9);
-        return df.format(gc.getTime());
-    }
+	/**
+	 * @param codigoApartamento
+	 *            The codigoApartamento to set.
+	 */
+	public void setCodigoApartamento(int codigoApartamento) {
+		this.codigoApartamento = codigoApartamento;
+	}
 
-    public String getDataVencimentoMenos10() {
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTime(dataVencimento);
-        gc.add(GregorianCalendar.DATE, -10);
-        return df.format(gc.getTime());
-    }
+	/**
+	 * @param codigoCobranca
+	 *            The codigoCobranca to set.
+	 */
+	public void setCodigoCobranca(int codigoCobranca) {
+		this.codigoCobranca = codigoCobranca;
+	}
 
-    public String getDataVencimentoMaisMes() {
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTime(dataVencimento);
-        gc.add(GregorianCalendar.MONTH, +1);
-        return df.format(gc.getTime());
-    }
+	public void setCodigoDocumento(String codigoDocumento) {
+		this.codigoDocumento = codigoDocumento;
+	}
 
-    public String getMultaTexto() {
-        return nm.format(valorMulta);
-    }
+	/**
+	 * @param codigoMensagen
+	 *            The codigoMensagen to set.
+	 */
+	public void setCodigoMensagen(int codigoMensagen) {
+		this.codigoMensagen = codigoMensagen;
+	}
 
-    public String getSacado() {
-        return sacado;
-    }
+	/**
+	 * @param dataEmissao
+	 *            The dataEmissao to set.
+	 */
+	public void setDataEmissao(Date dataEmissao) {
+		this.dataEmissao = dataEmissao;
+	}
 
-    public String getEndereco() {
-        return endereco;
-    }
+	/**
+	 * @param dataPagamento
+	 *            The dataPagamento to set.
+	 */
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}
 
-    public String getNossoNumero() {
-        DecimalFormat dc = new DecimalFormat("000000000000");
-        return dc.format(codigoCobranca);
-    }
+	/**
+	 * @param dataVencimento
+	 *            The dataVencimento to set.
+	 */
+	public void setDataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
 
-    public JRBeanCollectionDataSource getDataSource() {
-        return new JRBeanCollectionDataSource(descricao);
-    }
+	/**
+	 * @param descricao
+	 *            The descricao to set.
+	 */
+	public void setDescricao(List descricao) {
+		this.descricao = descricao;
+	}
 
-    public int getNumeroApartamento() {
-        return numeroApartamento;
-    }
+	public void setNomeCondominio(String nomeCondominio) {
+		this.nomeCondominio = nomeCondominio;
+	}
 
-    public void setNumeroApartamento(int numeroApartamento) {
-        this.numeroApartamento = numeroApartamento;
-    }
+	public void setNumeroApartamento(int numeroApartamento) {
+		this.numeroApartamento = numeroApartamento;
+	}
 
-    public String getNomeCondominio() {
-        return nomeCondominio;
-    }
+	/**
+	 * @param valorCobrado
+	 *            The valorCobrado to set.
+	 */
+	public void setValorCobrado(double valorCobrado) {
+		this.valorCobrado = valorCobrado;
+	}
 
-    public void setNomeCondominio(String nomeCondominio) {
-        this.nomeCondominio = nomeCondominio;
-    }
+	/**
+	 * @param valorDesconto
+	 *            The valorDesconto to set.
+	 */
+	public void setValorDesconto(double valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
 
-    public String getCodigoDocumento() {
-        return codigoDocumento;
-    }
+	/**
+	 * @param valorDocumento
+	 *            The valorDocumento to set.
+	 */
+	public void setValorDocumento(double valorDocumento) {
+		this.valorDocumento = valorDocumento;
+	}
 
-    public void setCodigoDocumento(String codigoDocumento) {
-        this.codigoDocumento = codigoDocumento;
-    }
+	/**
+	 * @param valorMulta
+	 *            The valorMulta to set.
+	 */
+	public void setValorMulta(double valorMulta) {
+		this.valorMulta = valorMulta;
+	}
+
+	/**
+	 * @param valorPago
+	 *            The valorPago to set.
+	 */
+	public void setValorPago(double valorPago) {
+		this.valorPago = valorPago;
+	}
 }

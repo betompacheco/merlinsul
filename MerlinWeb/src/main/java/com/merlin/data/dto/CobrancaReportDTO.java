@@ -4,112 +4,121 @@ import java.util.Date;
 
 public class CobrancaReportDTO {
 
-    private Date dataEmissao;
-    private Date dataVencimento;
-    private double valorDocumento;
-    private double valorDesconto;
-    private double valorMulta;
-    private double valorCobrado;
-    private double valorPago;
-    private boolean baixa;
-    private Date dataPagamento;
-    private String numeroApartamento;
-    private String nomeCondominio;
-    private String nomeProprietario;
+	private Date dataEmissao;
+	private Date dataVencimento;
+	private double valorDocumento;
+	private double valorDesconto;
+	private double valorMulta;
+	private double valorCobrado;
+	private double valorPago;
+	private boolean baixa;
+	private Date dataPagamento;
+	private String numeroApartamento;
+	private String nomeCondominio;
+	private String nomeProprietario;
+	private String cpfCnpjProprietario;
 
-    public boolean isBaixa() {
-        return baixa;
-    }
+	public String getCpfCnpjProprietario() {
+		return cpfCnpjProprietario;
+	}
 
-    public void setBaixa(boolean baixa) {
-        this.baixa = baixa;
-    }
+	public Date getDataEmissao() {
+		return dataEmissao;
+	}
 
-    public Date getDataEmissao() {
-        return dataEmissao;
-    }
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
 
-    public void setDataEmissao(Date dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
+	public Date getDataVencimento() {
+		return dataVencimento;
+	}
 
-    public Date getDataPagamento() {
-        return dataPagamento;
-    }
+	public String getNomeCondominio() {
+		return nomeCondominio;
+	}
 
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
+	public String getNomeProprietario() {
+		return nomeProprietario;
+	}
 
-    public Date getDataVencimento() {
-        return dataVencimento;
-    }
+	public String getNumeroApartamento() {
+		return numeroApartamento;
+	}
 
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
+	public double getValorCobrado() {
+		return valorCobrado;
+	}
 
-    public String getNomeCondominio() {
-        return nomeCondominio;
-    }
+	public double getValorDesconto() {
+		return valorDesconto;
+	}
 
-    public void setNomeCondominio(String nomeCondominio) {
-        this.nomeCondominio = nomeCondominio;
-    }
+	public double getValorDocumento() {
+		return valorDocumento;
+	}
 
-    public String getNomeProprietario() {
-        return nomeProprietario;
-    }
+	public double getValorMulta() {
+		return valorMulta;
+	}
 
-    public void setNomeProprietario(String nomeProprietario) {
-        this.nomeProprietario = nomeProprietario;
-    }
+	public double getValorPago() {
+		return valorPago;
+	}
 
-    public String getNumeroApartamento() {
-        return numeroApartamento;
-    }
+	public boolean isBaixa() {
+		return baixa;
+	}
 
-    public void setNumeroApartamento(String numeroApartamento) {
-        this.numeroApartamento = numeroApartamento;
-    }
+	public void setBaixa(boolean baixa) {
+		this.baixa = baixa;
+	}
 
-    public double getValorCobrado() {
-        return valorCobrado;
-    }
+	public void setCpfCnpjProprietario(String cpfCnpjProprietario) {
+		this.cpfCnpjProprietario = cpfCnpjProprietario;
+	}
 
-    public void setValorCobrado(double valorCobrado) {
-        this.valorCobrado = valorCobrado;
-    }
+	public void setDataEmissao(Date dataEmissao) {
+		this.dataEmissao = dataEmissao;
+	}
 
-    public double getValorDesconto() {
-        return valorDesconto;
-    }
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}
 
-    public void setValorDesconto(double valorDesconto) {
-        this.valorDesconto = valorDesconto;
-    }
+	public void setDataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
 
-    public double getValorDocumento() {
-        return valorDocumento;
-    }
+	public void setNomeCondominio(String nomeCondominio) {
+		this.nomeCondominio = nomeCondominio;
+	}
 
-    public void setValorDocumento(double valorDocumento) {
-        this.valorDocumento = valorDocumento;
-    }
+	public void setNomeProprietario(String nomeProprietario) {
+		this.nomeProprietario = nomeProprietario;
+	}
 
-    public double getValorMulta() {
-        return valorMulta;
-    }
+	public void setNumeroApartamento(String numeroApartamento) {
+		this.numeroApartamento = numeroApartamento;
+	}
 
-    public void setValorMulta(double valorMulta) {
-        this.valorMulta = valorMulta;
-    }
+	public void setValorCobrado(double valorCobrado) {
+		this.valorCobrado = valorCobrado;
+	}
 
-    public double getValorPago() {
-        return valorPago;
-    }
+	public void setValorDesconto(double valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
 
-    public void setValorPago(double valorPago) {
-        this.valorPago = valorPago;
-    }
+	public void setValorDocumento(double valorDocumento) {
+		this.valorDocumento = valorDocumento;
+	}
+
+	public void setValorMulta(double valorMulta) {
+		this.valorMulta = valorMulta;
+	}
+
+	public void setValorPago(double valorPago) {
+		this.valorPago = valorPago;
+	}
 }

@@ -73,6 +73,12 @@
 														<h:outputText value="#{proprietario.nomeproprietario}" />
 													</h:column>
 													<h:column>
+														<f:facet name="header">
+															<h:outputText value="CPF / CNPJ" />
+														</f:facet>
+														<h:outputText value="#{proprietario.cpf}" />
+													</h:column>
+													<h:column>
 														<h:commandButton value="Editar"
 															action="#{consultarProprietario.doEditar}"
 															styleClass="botao" immediate="true" />

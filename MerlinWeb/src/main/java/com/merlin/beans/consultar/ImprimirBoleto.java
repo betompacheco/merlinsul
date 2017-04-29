@@ -5,60 +5,60 @@ import java.util.GregorianCalendar;
 
 public class ImprimirBoleto {
 
-    private String ano;
-    private String mes;
-    private String codigoApartamento;
-    private int mensagem;
-    private boolean flagOk;
+	private String ano;
+	private String mes;
+	private String codigoApartamento;
+	private int mensagem;
+	private boolean flagOk;
 
-    public ImprimirBoleto() {
-        //configura valoes padrao na pagina
-        Calendar c = new GregorianCalendar();
-        mes = Integer.toString(c.get(Calendar.MONTH));
-        ano = Integer.toString(c.get(Calendar.YEAR));
-    }
+	public ImprimirBoleto() {
+		// configura valoes padrao na pagina
+		Calendar c = new GregorianCalendar();
+		mes = Integer.toString(c.get(Calendar.MONTH));
+		ano = Integer.toString(c.get(Calendar.YEAR));
+	}
 
-    public void doImprimir() {
-        flagOk = true;
-    }
+	public void doImprimir() {
+		flagOk = true;
+	}
 
-    public String getCodigoApartamento() {
-        return codigoApartamento;
-    }
+	public String getAno() {
+		return ano;
+	}
 
-    public void setCodigoApartamento(String codigoApartamento) {
-        this.codigoApartamento = codigoApartamento;
-    }
+	public String getCodigoApartamento() {
+		return codigoApartamento;
+	}
 
-    public boolean isFlagOk() {
-        return flagOk;
-    }
+	public int getMensagem() {
+		return mensagem;
+	}
 
-    public void setFlagOk(boolean flagOk) {
-        this.flagOk = flagOk;
-    }
+	public String getMes() {
+		return mes;
+	}
 
-    public String getAno() {
-        return ano;
-    }
+	public boolean isFlagOk() {
+		return flagOk;
+	}
 
-    public void setAno(String ano) {
-        this.ano = ano;
-    }
+	public void setAno(String ano) {
+		this.ano = ano;
+	}
 
-    public String getMes() {
-        return mes;
-    }
+	public void setCodigoApartamento(String codigoApartamento) {
+		this.codigoApartamento = codigoApartamento;
+	}
 
-    public void setMes(String mes) {
-        this.mes = mes;
-    }
+	public void setFlagOk(boolean flagOk) {
+		this.flagOk = flagOk;
+	}
 
-    public int getMensagem() {
-        return mensagem;
-    }
+	public void setMensagem(int mensagem) {
+		this.mensagem = mensagem;
+	}
 
-    public void setMensagem(int mensagem) {
-        this.mensagem = mensagem;
-    }
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
 }
