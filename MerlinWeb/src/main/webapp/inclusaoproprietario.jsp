@@ -69,7 +69,7 @@
 											<td>Identidade:</td>
 											<td><h:inputText id="identidade"
 													value="#{incluirProprietario.identidade}"
-													styleClass="caixadetexto" required="true" size="10"
+													styleClass="caixadetexto" required="true" size="16"
 													maxlength="10" /></td>
 											<td><h:message for="identidade" errorClass="erros" /></td>
 										</tr>
@@ -85,7 +85,7 @@
 											<td>Profiss&atilde;o:</td>
 											<td><h:inputText id="profissao"
 													value="#{incluirProprietario.profissao}"
-													styleClass="caixadetexto" required="true" size="25"
+													styleClass="caixadetexto" required="true" size="30"
 													maxlength="25" /></td>
 											<td><h:message for="profissao" errorClass="erros" /></td>
 										</tr>
