@@ -70,13 +70,12 @@ public class CobrancaDTO {
 		EnderecoDTO enderecoDTO = em.selectApartamento(apartamento.getCodigoapartamento());
 		if (proprietario != null) {
 			nomeSacado = proprietario.getNomeproprietario().toUpperCase();
-			cpfCnpjSacado = Utilitario.formataCpfCnpj(proprietario.getCpf());
+			cpfCnpjSacado = Utilitario.formataCpfCnpj(proprietario.getCpfCnpj());
 		}
 
 		if (enderecoDTO != null) {
 			endereco = enderecoDTO.getLogradouro() + "\n";
-			endereco += "CEP: " + enderecoDTO.getCep() + " " + enderecoDTO.getBairro() + " " + enderecoDTO.getCidade()
-					+ " " + enderecoDTO.getUf();
+			endereco += "CEP: " + enderecoDTO.getCep() + " " + enderecoDTO.getBairro() + " " + enderecoDTO.getCidade() + " " + enderecoDTO.getUf();
 		}
 	}
 

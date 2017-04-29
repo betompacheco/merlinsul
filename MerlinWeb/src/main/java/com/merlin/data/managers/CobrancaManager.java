@@ -114,10 +114,8 @@ public class CobrancaManager {
 				codigodesccobranca = rs.getInt("tot");
 			}
 
-			qry = "insert into cobranca (" + "codigocobranca, " + "dataemissao, " + "datavencimento, "
-					+ "valordocumento, " + "valordesconto, " + "valormulta, " + "valorcobrado, " + "valorpago, "
-					+ "baixa, " + "datapagamento, " + "codigomensagem, " + "codigoapartamento) "
-					+ "values (?,?,?,?,?,?,?,?,?,?,?,?) ";
+			qry = "insert into cobranca (" + "codigocobranca, " + "dataemissao, " + "datavencimento, " + "valordocumento, " + "valordesconto, " + "valormulta, " + "valorcobrado, " + "valorpago, " + "baixa, " + "datapagamento, "
+					+ "codigomensagem, " + "codigoapartamento) " + "values (?,?,?,?,?,?,?,?,?,?,?,?) ";
 			st = con.prepareStatement(qry);
 			qry = "insert into desccobranca (codigodesccobranca, codigocobranca, descricao, valor) values (?,?,?,?) ";
 			st2 = con.prepareStatement(qry);
@@ -322,9 +320,7 @@ public class CobrancaManager {
 		PreparedStatement st;
 		List parametros = new ArrayList();
 		try {
-			qry = "select c.nomecondominio, p.nomeproprietario, a.numeroapartamento, co.* "
-					+ " from cobranca co, condominio c, proprietario p, apartamento a where "
-					+ " co.codigoapartamento = a.codigoapartamento and "
+			qry = "select c.nomecondominio, p.nomeproprietario, a.numeroapartamento, co.* " + " from cobranca co, condominio c, proprietario p, apartamento a where " + " co.codigoapartamento = a.codigoapartamento and "
 					+ " a.codigoproprietario = p.codigoproprietario and " + " a.codigocondominio = c.codigocondominio ";
 			if (ano > -1 && mes > -1) {
 				qry += " and datavencimento between ? and ?  ";
@@ -408,9 +404,7 @@ public class CobrancaManager {
 		PreparedStatement st;
 		List parametros = new ArrayList();
 		try {
-			qry = "select c.nomecondominio, p.nomeproprietario, p.cpf,a.numeroapartamento, co.* "
-					+ " from cobranca co, condominio c, proprietario p, apartamento a where "
-					+ " co.codigoapartamento = a.codigoapartamento and "
+			qry = "select c.nomecondominio, p.nomeproprietario, p.cpf,a.numeroapartamento, co.* " + " from cobranca co, condominio c, proprietario p, apartamento a where " + " co.codigoapartamento = a.codigoapartamento and "
 					+ " a.codigoproprietario = p.codigoproprietario and " + " a.codigocondominio = c.codigocondominio ";
 			if (ano > -1 && mes > -1) {
 				qry += " and datavencimento between ? and ?  ";
@@ -439,7 +433,7 @@ public class CobrancaManager {
 				CobrancaReportDTO cob = new CobrancaReportDTO();
 				cob.setNomeCondominio(rs.getString("nomecondominio"));
 				cob.setNomeProprietario(rs.getString("nomeproprietario"));
-				cob.setCpfCnpjProprietario(rs.getString("cpf"));
+				cob.setCpfCnpjProprietario(rs.getString("cpfCnpj"));
 				cob.setNumeroApartamento(rs.getString("numeroApartamento"));
 				cob.setDataEmissao(rs.getDate("dataemissao"));
 				cob.setDataVencimento(rs.getDate("datavencimento"));
@@ -473,9 +467,8 @@ public class CobrancaManager {
 		PreparedStatement st;
 		PreparedStatement st2;
 		try {
-			qry = "update  cobranca set " + "dataemissao=?, " + "datavencimento=?, " + "valordocumento=?, "
-					+ "valordesconto=?, " + "valormulta=?, " + "valorcobrado=?, " + "valorpago=?, " + "baixa=?, "
-					+ "datapagamento=?, " + "codigomensagem=?, " + "codigoapartamento=? " + " where codigocobranca=?";
+			qry = "update  cobranca set " + "dataemissao=?, " + "datavencimento=?, " + "valordocumento=?, " + "valordesconto=?, " + "valormulta=?, " + "valorcobrado=?, " + "valorpago=?, " + "baixa=?, " + "datapagamento=?, "
+					+ "codigomensagem=?, " + "codigoapartamento=? " + " where codigocobranca=?";
 			st = con.prepareStatement(qry);
 			st.setDate(1, new java.sql.Date(cobranca.getDataEmissao().getTime()));
 			st.setDate(2, new java.sql.Date(cobranca.getDataVencimento().getTime()));

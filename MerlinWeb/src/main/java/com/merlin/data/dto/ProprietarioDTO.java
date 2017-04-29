@@ -2,94 +2,94 @@ package com.merlin.data.dto;
 
 public class ProprietarioDTO {
 
-    private Integer codigoproprietario;
-    private String nomeproprietario;
-    private String sexo;
-    private String identidade;
-    private String cpf;
-    private String profissao;
-    private String filiacao;
-    private String telResidencial;
-    private String telComercial;
-    private String telCelular;
+	private Integer codigoproprietario;
+	private String nomeproprietario;
+	private String sexo;
+	private String identidade;
+	private String cpfCnpj;
+	private String profissao;
+	private String filiacao;
+	private String telResidencial;
+	private String telComercial;
+	private String telCelular;
 
-    public Integer getCodigoproprietario() {
-        return codigoproprietario;
-    }
+	public Integer getCodigoproprietario() {
+		return codigoproprietario;
+	}
 
-    public void setCodigoproprietario(Integer codigoproprietario) {
-        this.codigoproprietario = codigoproprietario;
-    }
+	public String getCpfCnpj() {
+		return cpfCnpj;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public String getFiliacao() {
+		return filiacao;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	public String getIdentidade() {
+		return identidade;
+	}
 
-    public String getFiliacao() {
-        return filiacao;
-    }
+	public String getNomeproprietario() {
+		return nomeproprietario;
+	}
 
-    public void setFiliacao(String filiacao) {
-        this.filiacao = filiacao;
-    }
+	public String getProfissao() {
+		return profissao;
+	}
 
-    public String getIdentidade() {
-        return identidade;
-    }
+	public String getSexo() {
+		return sexo;
+	}
 
-    public void setIdentidade(String identidade) {
-        this.identidade = identidade;
-    }
+	public String getTelCelular() {
+		return telCelular;
+	}
 
-    public String getNomeproprietario() {
-        return nomeproprietario;
-    }
+	public String getTelComercial() {
+		return telComercial;
+	}
 
-    public void setNomeproprietario(String nomeproprietario) {
-        this.nomeproprietario = nomeproprietario;
-    }
+	public String getTelResidencial() {
+		return telResidencial;
+	}
 
-    public String getProfissao() {
-        return profissao;
-    }
+	public void setCodigoproprietario(Integer codigoproprietario) {
+		this.codigoproprietario = codigoproprietario;
+	}
 
-    public void setProfissao(String profissao) {
-        this.profissao = profissao;
-    }
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
+	}
 
-    public String getSexo() {
-        return sexo;
-    }
+	public void setFiliacao(String filiacao) {
+		this.filiacao = filiacao;
+	}
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
+	public void setIdentidade(String identidade) {
+		this.identidade = identidade;
+	}
 
-    public String getTelCelular() {
-        return telCelular;
-    }
+	public void setNomeproprietario(String nomeproprietario) {
+		this.nomeproprietario = nomeproprietario;
+	}
 
-    public void setTelCelular(String telCelular) {
-        this.telCelular = telCelular;
-    }
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
 
-    public String getTelComercial() {
-        return telComercial;
-    }
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
-    public void setTelComercial(String telComercial) {
-        this.telComercial = telComercial;
-    }
+	public void setTelCelular(String telCelular) {
+		this.telCelular = telCelular;
+	}
 
-    public String getTelResidencial() {
-        return telResidencial;
-    }
+	public void setTelComercial(String telComercial) {
+		this.telComercial = telComercial;
+	}
 
-    public void setTelResidencial(String telResidencial) {
-        this.telResidencial = telResidencial;
-    }
+	public void setTelResidencial(String telResidencial) {
+		this.telResidencial = telResidencial;
+	}
 }

@@ -10,7 +10,7 @@ public class IncluirProprietario {
 	private String nomeproprietario;
 	private String sexo;
 	private String identidade;
-	private String cpf;
+	private String cpfCnpj;
 	private String profissao;
 	private String filiacao;
 	private String telResidencial;
@@ -30,7 +30,7 @@ public class IncluirProprietario {
 		proprietario.setNomeproprietario(nomeproprietario);
 		proprietario.setSexo(sexo);
 		proprietario.setIdentidade(identidade);
-		proprietario.setCpf(cpf);
+		proprietario.setCpfCnpj(cpfCnpj);
 		proprietario.setProfissao(profissao);
 		proprietario.setFiliacao(filiacao);
 		proprietario.setTelResidencial(telResidencial);
@@ -53,8 +53,8 @@ public class IncluirProprietario {
 		return codigoproprietario;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getCpfCnpj() {
+		return cpfCnpj;
 	}
 
 	public String getFiliacao() {
@@ -101,8 +101,8 @@ public class IncluirProprietario {
 		this.codigoproprietario = codigoproprietario;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 
 	public void setFiliacao(String filiacao) {
@@ -131,7 +131,7 @@ public class IncluirProprietario {
 		this.nomeproprietario = proprietario.getNomeproprietario();
 		this.sexo = proprietario.getSexo();
 		this.identidade = proprietario.getIdentidade();
-		this.cpf = proprietario.getCpf();
+		this.cpfCnpj = proprietario.getCpfCnpj();
 		this.profissao = proprietario.getProfissao();
 		this.filiacao = proprietario.getFiliacao();
 		this.telResidencial = proprietario.getTelResidencial();

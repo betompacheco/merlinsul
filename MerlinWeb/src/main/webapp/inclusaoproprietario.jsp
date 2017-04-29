@@ -74,12 +74,12 @@
 											<td><h:message for="identidade" errorClass="erros" /></td>
 										</tr>
 										<tr>
-											<td>cpf:</td>
-											<td><h:inputText id="cpf"
-													value="#{incluirProprietario.cpf}"
+											<td>CPF / CNPJ:</td>
+											<td><h:inputText id="cpfCnpj"
+													value="#{incluirProprietario.cpfCnpj}"
 													styleClass="caixadetexto" required="true" size="16"
-													maxlength="14" /></td>
-											<td><h:message for="cpf" errorClass="erros" /></td>
+													maxlength="14" />(somente os números)</td>
+											<td><h:message for="cpfCnpj" errorClass="erros" /></td>
 										</tr>
 										<tr>
 											<td>Profiss&atilde;o:</td>

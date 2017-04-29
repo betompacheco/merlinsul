@@ -76,7 +76,7 @@
 														<f:facet name="header">
 															<h:outputText value="CPF / CNPJ" />
 														</f:facet>
-														<h:outputText value="#{proprietario.cpf}" />
+														<h:outputText value="#{proprietario.cpfCnpj}" />
 													</h:column>
 													<h:column>
 														<h:commandButton value="Editar"
