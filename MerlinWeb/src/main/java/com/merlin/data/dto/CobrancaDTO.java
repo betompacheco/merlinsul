@@ -11,6 +11,7 @@ import com.merlin.data.managers.EnderecoManager;
 import com.merlin.data.managers.ProprietarioManager;
 import com.merlin.util.Config;
 import com.merlin.util.NumberCodeGenerator;
+import com.merlin.util.Utilitario;
 
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -68,8 +69,8 @@ public class CobrancaDTO {
 		ProprietarioDTO proprietario = pm.select(apartamento.getCodigoproprietario().intValue());
 		EnderecoDTO enderecoDTO = em.selectApartamento(apartamento.getCodigoapartamento());
 		if (proprietario != null) {
-			nomeSacado = proprietario.getNomeproprietario();
-			cpfCnpjSacado = proprietario.getCpf();
+			nomeSacado = proprietario.getNomeproprietario().toUpperCase();
+			cpfCnpjSacado = Utilitario.formataCpfCnpj(proprietario.getCpf());
 		}
 
 		if (enderecoDTO != null) {
