@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 
 import com.merlin.data.DataBase;
 import com.merlin.data.dto.RemessaDTO;
+import com.merlin.enums.TipoDocumento;
 import com.merlin.util.NumberCodeGenerator;
 import com.merlin.util.Utilitario;
 import com.merlin.util.Utilitario.Direcao;
@@ -187,7 +188,10 @@ public class RemessaManager {
 				linha.append(Utilitario.complete(new DecimalFormat("0.##").format(rs.getDouble("valorcobrado") * 0.2).replace(",", ""), 13, "0", Direcao.DIREITA)); // Valor do desconto
 				linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); // Valor do IOF
 				linha.append(Utilitario.complete("", 13, "0", Direcao.ESQUERDA)); // Valor do abatimento a ser concedido ou cancelado
-				linha.append(rs.getString("cpfCnpj").length() == 11 ? "01" : "02"); // Identificacao do tipo de inscricao do pagador 01-CPF 02-CNPJ 03-PIS/PASEP 98-Nao tem 99-Outros
+
+				// Identificacao do tipo de inscricao do pagador
+				linha.append(rs.getString("cpfCnpj").length() == 11 ? TipoDocumento.CPF.getCodigo() : TipoDocumento.CNPJ.getCodigo());
+
 				linha.append(Utilitario.complete(rs.getString("cpfCnpj"), 14, "0", Direcao.DIREITA)); // Numero de inscricao do pagador
 				linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("nomeproprietario")).toUpperCase(), 40, " ", Direcao.ESQUERDA)); // Nome do pagador
 				linha.append(Utilitario.complete(Utilitario.removeAcentos(rs.getString("logradouro")).toUpperCase(), 40, " ", Direcao.ESQUERDA)); // Endereco completo
