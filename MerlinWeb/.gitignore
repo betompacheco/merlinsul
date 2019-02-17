@@ -1,2 +1,4 @@
 /nb-configuration.xml
 /.classpath
+.DS_Store
+.tern-project
