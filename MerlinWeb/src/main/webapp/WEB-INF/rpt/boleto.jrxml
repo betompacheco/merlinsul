@@ -642,7 +642,7 @@ CEP 22010-010 RIO DE JANEIRO]]></text>
 				<text><![CDATA[Autenticação Mecânica]]></text>
 			</staticText>
 			<line direction="BottomUp">
-				<reportElement key="line-22" mode="Opaque" x="0" y="467" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-22" mode="Opaque" x="-1" y="467" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
@@ -674,7 +674,7 @@ CEP 22010-010 RIO DE JANEIRO]]></text>
 				<text><![CDATA[Pagável preferencialmente na Rede Bradesco ou Bradesco Expresso]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-2" mode="Opaque" x="0" y="490" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-2" mode="Opaque" x="-1" y="490" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
@@ -727,7 +727,7 @@ CEP 22010-010 RIO DE JANEIRO]]></text>
 				<text><![CDATA[Data do Documento]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-5" mode="Opaque" x="0" y="540" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-5" mode="Opaque" x="-1" y="540" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
@@ -794,7 +794,7 @@ CEP 22010-010 RIO DE JANEIRO]]></text>
 				<text><![CDATA[Número do Documento]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-4" mode="Opaque" x="0" y="520" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-4" mode="Opaque" x="-1" y="520" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
@@ -924,7 +924,7 @@ CEP 22010-010 RIO DE JANEIRO]]></text>
 				<text><![CDATA[Espécie Moeda]]></text>
 			</staticText>
 			<line>
-				<reportElement key="line-14" mode="Opaque" x="-1" y="560" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-14" mode="Opaque" x="-2" y="560" width="512" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
@@ -969,31 +969,31 @@ CEP 22010-010 RIO DE JANEIRO]]></text>
 				<text><![CDATA[1 ( = ) Valor do Documento]]></text>
 			</staticText>
 			<line direction="BottomUp">
-				<reportElement key="line-20" mode="Opaque" x="407" y="579" width="104" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-20" mode="Opaque" x="407" y="579" width="103" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line direction="BottomUp">
-				<reportElement key="line-20" mode="Opaque" x="407" y="600" width="104" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-20" mode="Opaque" x="407" y="601" width="103" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line direction="BottomUp">
-				<reportElement key="line-20" mode="Opaque" x="407" y="620" width="104" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-20" mode="Opaque" x="407" y="620" width="103" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line direction="BottomUp">
-				<reportElement key="line-20" mode="Opaque" x="407" y="640" width="104" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-20" mode="Opaque" x="407" y="639" width="103" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line direction="BottomUp">
-				<reportElement key="line-19" mode="Opaque" x="0" y="660" width="511" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="line-19" mode="Opaque" x="0" y="660" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
 				<graphicElement fill="Solid">
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
