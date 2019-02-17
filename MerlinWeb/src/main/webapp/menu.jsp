@@ -55,7 +55,7 @@
 								</tr>
 								<tr>
 									<td colspan="2">&Uacute;ltima atualiza&ccedil;&atilde;o
-										efetuada em <b>29/04/2017.</b>
+										efetuada em <b>17/02/2019.</b>
 									</td>
 								</tr>
 								<tr>
